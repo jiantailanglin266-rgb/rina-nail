@@ -49,7 +49,11 @@ jobs:
           PAGES_BASE_PATH: /${{ github.event.repository.name }}
         run: node scripts/export-root-redirect.mjs
 
+      # enablement: true で、Settings を手動で開かなくても Pages を有効化します
       - uses: actions/configure-pages@v5
+        with:
+          enablement: true
+
       - uses: actions/upload-pages-artifact@v3
         with:
           path: out
