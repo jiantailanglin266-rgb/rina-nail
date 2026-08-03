@@ -71,3 +71,14 @@ curl -s "https://api.github.com/repos/$OWNER/$REPO/deployments/$did/statuses" \
 なお `github.io` への外部アクセスはプロキシで遮断されているため、
 **公開後の実表示はブラウザで確認できません。確認できていないことを、
 できたように書かないでください。**
+
+## public 配下の画像は必ず `AppImage` を使う
+
+`next/image` を直接使わないでください。
+
+GitHub Pages 向けの静的エクスポート（`output: "export"` ＋ `images.unoptimized`）では、
+next/image が src に `basePath` を付けません。その結果 `/rina-nail/images/...` ではなく
+`/images/...` を参照してしまい、**すべての画像が404になります**（CSS/JSには付くため気付きにくい）。
+
+`src/components/ui/AppImage.tsx` が `withBasePath()` を適用するので、必ずこれを経由してください。
+通常のビルド（Vercel など）では basePath が空文字のため、挙動は変わりません。

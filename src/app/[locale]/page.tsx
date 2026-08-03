@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Image from "next/image";
+import { AppImage } from "@/components/ui/AppImage";
 import { notFound } from "next/navigation";
 import {
   CalendarClock,
@@ -116,7 +116,7 @@ export default async function HomePage({ params }: LocalePageProps) {
 
           <Reveal direction="right">
             <div className="gradient-frame overflow-hidden rounded-[2rem]">
-              <Image
+              <AppImage
                 src="/images/salon/salon-01.jpg"
                 alt={home.concept.heading}
                 width={1400}

@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { AppImage } from "@/components/ui/AppImage";
 import { CalendarCheck, ChevronDown, Sparkles } from "lucide-react";
 
 import { AnimatedGoldBackground } from "@/components/animations/AnimatedGoldBackground";
@@ -105,7 +105,7 @@ export function Hero({ locale, messages }: Props) {
           </span>
 
           <div className="gradient-frame relative mx-auto w-full max-w-md overflow-hidden rounded-[2rem] lg:mr-0 lg:ml-auto">
-            <Image
+            <AppImage
               src="/images/hero/hero-main.jpg"
               alt={hero.imageAlt}
               width={1024}

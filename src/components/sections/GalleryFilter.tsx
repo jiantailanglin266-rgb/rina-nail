@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import Image from "next/image";
+import { AppImage } from "@/components/ui/AppImage";
 
 import { galleryCategories, type GalleryCategory, type GalleryItem } from "@/data/gallery";
 import { cn } from "@/lib/utils";
@@ -70,7 +70,7 @@ export function GalleryFilter({ items, labels }: Props) {
           return (
             <li key={item.id}>
               <figure className="group bg-soft-pink relative overflow-hidden rounded-2xl">
-                <Image
+                <AppImage
                   src={item.src}
                   alt={interpolate(labels.altTemplate, {
                     category: categoryName,

@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { AppImage } from "@/components/ui/AppImage";
 
 import { GradientText } from "@/components/ui/GradientText";
 import { store } from "@/data/site";
@@ -19,7 +19,7 @@ export function OwnerProfile({ messages, showSpecialty = false, className }: Pro
   return (
     <div className={cn("grid items-center gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-14", className)}>
       <div className="gradient-frame relative mx-auto w-full max-w-xs overflow-hidden rounded-[2rem] lg:mx-0">
-        <Image
+        <AppImage
           src="/images/owner/owner.jpg"
           alt={owner.imageAlt}
           width={800}

@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { AppImage } from "@/components/ui/AppImage";
 
 import { Reveal } from "@/components/animations/Reveal";
 import type { GalleryItem } from "@/data/gallery";
@@ -37,7 +37,7 @@ export function GalleryGrid({ items, messages, className, eagerCount = 0 }: Prop
         return (
           <Reveal as="li" key={item.id} delay={Math.min(index, 6) * 0.05}>
             <figure className="group bg-soft-pink relative overflow-hidden rounded-2xl">
-              <Image
+              <AppImage
                 src={item.src}
                 alt={alt}
                 width={item.width}
