@@ -1,43 +1,47 @@
 import type { ReactNode } from "react";
 
-import { AnimatedGoldBackground } from "@/components/animations/AnimatedGoldBackground";
-import { cn } from "@/lib/utils";
-
-const tones = {
-  white: "bg-white",
-  pink: "bg-soft-pink/50",
-  lilac: "bg-soft-lilac/50",
-  gold: "bg-soft-gold/60",
-} as const;
+import { GradientSection } from "@/components/backgrounds/GradientSection";
+import type { Intensity, PresetName } from "@/components/backgrounds/gradientPresets";
 
 type Props = {
   children: ReactNode;
-  /** セクションごとの背景色。基本はホワイトで、要所のみ淡い色を使います */
-  tone?: keyof typeof tones;
-  /** 金色の背景装飾を重ねるか */
-  decorated?: boolean;
+  /**
+   * セクションごとの背景プリセット。
+   * 色・不透明度・オーブ数は `src/components/backgrounds/gradientPresets.ts` で定義しています。
+   */
+  preset?: PresetName;
+  /** 背景の強さ。low ほど白に近づきます */
+  intensity?: Intensity;
+  /** ゴールドの曲線・光粒を重ねるか */
+  sparkles?: boolean;
   id?: string;
   className?: string;
   "aria-labelledby"?: string;
 };
 
-/** セクション共通のレイアウト（余白を広く取り、圧迫感を出さない） */
+/**
+ * セクション共通のレイアウト（余白を広く取り、圧迫感を出さない）。
+ * 背景の描画は GradientSection に委譲しています。
+ */
 export function Section({
   children,
-  tone = "white",
-  decorated = false,
+  preset = "plain",
+  intensity = "medium",
+  sparkles = false,
   id,
   className,
   ...rest
 }: Props) {
   return (
-    <section
+    <GradientSection
       id={id}
-      className={cn("relative overflow-hidden py-16 sm:py-20 lg:py-24", tones[tone], className)}
+      preset={preset}
+      intensity={intensity}
+      sparkles={sparkles}
+      className={className}
       {...rest}
     >
-      {decorated ? <AnimatedGoldBackground density="soft" /> : null}
-      <div className="container-page relative">{children}</div>
-    </section>
+      <div className="container-page">{children}</div>
+    </GradientSection>
   );
 }

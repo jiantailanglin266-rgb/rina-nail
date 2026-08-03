@@ -17,8 +17,9 @@ export function CouponCard({ coupon, locale, messages }: Props) {
   const text = messages.menu.coupons.items[coupon.id as keyof Messages["menu"]["coupons"]["items"]];
 
   return (
-    <article className="relative overflow-hidden rounded-3xl [background-image:var(--gradient-signature)] p-[1.5px]">
-      <div className="relative h-full rounded-[calc(1.5rem-1px)] bg-white p-6 sm:p-7">
+    <article className="glass-card relative h-full overflow-hidden rounded-3xl border-0 [background-image:var(--gradient-signature)] p-[1.5px]">
+      {/* 内側は半透明の白。背景のカラーオーブがうっすら透けます */}
+      <div className="relative h-full rounded-[calc(1.5rem-1px)] bg-white/92 p-6 backdrop-blur-xl sm:p-7">
         <div className="flex flex-wrap items-center gap-2">
           <span className="inline-flex items-center gap-1 rounded-full [background-image:var(--gradient-neon)] px-3 py-1 text-[0.7rem] font-medium text-white">
             <Ticket className="size-3" aria-hidden="true" />

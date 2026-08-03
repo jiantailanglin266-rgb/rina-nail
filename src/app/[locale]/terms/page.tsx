@@ -35,7 +35,7 @@ export default async function TermsPage({ params }: LocalePageProps) {
         <p className="text-muted mt-4 max-w-3xl text-sm leading-relaxed">{messages.terms.lead}</p>
       </header>
 
-      <Section tone="white">
+      <Section preset="plain">
         <LegalSections sections={messages.terms.sections} />
       </Section>
 

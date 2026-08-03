@@ -14,8 +14,8 @@ export function ServiceCard({ title, body, icon, className }: Props) {
   return (
     <article
       className={cn(
-        "gradient-frame group h-full rounded-2xl bg-white p-6 transition duration-300 ease-[var(--ease-soft)]",
-        "hover:-translate-y-1.5 hover:shadow-[0_24px_50px_-30px_rgba(139,61,255,0.55)]",
+        // ガラス調カード：背景のカラーオーブを透かしつつ、本文のコントラストは保ちます
+        "gradient-frame glass-card group h-full rounded-2xl p-6",
         className,
       )}
     >

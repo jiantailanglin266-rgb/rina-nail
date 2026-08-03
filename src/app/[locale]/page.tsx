@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 
 import { Marquee } from "@/components/animations/Marquee";
+import { GradientMesh } from "@/components/backgrounds/GradientMesh";
 import { Reveal } from "@/components/animations/Reveal";
 import { Section } from "@/components/layout/Section";
 import { AccessMap } from "@/components/sections/AccessMap";
@@ -76,9 +77,12 @@ export default async function HomePage({ params }: LocalePageProps) {
       <Hero locale={locale} messages={messages} />
 
       {/* マーキー（装飾。同じ情報は本文にも記載しています） */}
-      <div className="border-line/70 border-y bg-white py-5 sm:py-7">
-        <Marquee items={home.marquee.lineOne} direction="left" />
-        <Marquee items={home.marquee.lineTwo} direction="right" className="mt-3 sm:mt-4" />
+      <div className="border-line/70 relative isolate overflow-hidden border-y bg-white py-5 sm:py-7">
+        <GradientMesh opacity={0.42} className="-z-10" />
+        <div className="relative z-10">
+          <Marquee items={home.marquee.lineOne} direction="left" />
+          <Marquee items={home.marquee.lineTwo} direction="right" className="mt-3 sm:mt-4" />
+        </div>
       </div>
 
       {/* ページ要約（生成AI・検索エンジン向け） */}
@@ -89,7 +93,7 @@ export default async function HomePage({ params }: LocalePageProps) {
       </div>
 
       {/* コンセプト */}
-      <Section tone="white" aria-labelledby="concept-heading">
+      <Section preset="concept" aria-labelledby="concept-heading">
         <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
           <Reveal direction="left">
             <SectionHeading
@@ -123,7 +127,7 @@ export default async function HomePage({ params }: LocalePageProps) {
       </Section>
 
       {/* サロンの特徴 */}
-      <Section tone="pink" decorated aria-labelledby="features-heading">
+      <Section preset="concept" sparkles aria-labelledby="features-heading">
         <SectionHeading
           id="features-heading"
           eyebrow={home.features.eyebrow}
@@ -140,7 +144,7 @@ export default async function HomePage({ params }: LocalePageProps) {
       </Section>
 
       {/* フィルイン */}
-      <Section tone="white" aria-labelledby="fillin-heading">
+      <Section preset="fillIn" aria-labelledby="fillin-heading">
         <div className="grid items-center gap-10 lg:grid-cols-[1fr_1.1fr] lg:gap-16">
           <Reveal direction="left">
             <SectionHeading
@@ -168,7 +172,7 @@ export default async function HomePage({ params }: LocalePageProps) {
       </Section>
 
       {/* メニュー */}
-      <Section tone="lilac" aria-labelledby="menu-heading">
+      <Section preset="menu" aria-labelledby="menu-heading">
         <SectionHeading
           id="menu-heading"
           eyebrow={home.menu.eyebrow}
@@ -191,7 +195,7 @@ export default async function HomePage({ params }: LocalePageProps) {
       </Section>
 
       {/* クーポン */}
-      <Section tone="white" decorated aria-labelledby="coupon-heading">
+      <Section preset="coupon" intensity="high" sparkles aria-labelledby="coupon-heading">
         <SectionHeading
           id="coupon-heading"
           eyebrow={home.coupons.eyebrow}
@@ -209,7 +213,7 @@ export default async function HomePage({ params }: LocalePageProps) {
       </Section>
 
       {/* ギャラリー */}
-      <Section tone="pink" aria-labelledby="gallery-heading">
+      <Section preset="gallery" intensity="high" aria-labelledby="gallery-heading">
         <SectionHeading
           id="gallery-heading"
           eyebrow={home.gallery.eyebrow}
@@ -225,7 +229,7 @@ export default async function HomePage({ params }: LocalePageProps) {
       </Section>
 
       {/* オーナー紹介 */}
-      <Section tone="white" aria-labelledby="owner-heading">
+      <Section preset="owner" aria-labelledby="owner-heading">
         <SectionHeading
           id="owner-heading"
           eyebrow={home.owner.eyebrow}
@@ -241,7 +245,7 @@ export default async function HomePage({ params }: LocalePageProps) {
       </Section>
 
       {/* 初めての方へ・施術の流れ */}
-      <Section tone="gold" aria-labelledby="flow-heading">
+      <Section preset="flow" aria-labelledby="flow-heading">
         <SectionHeading
           id="flow-heading"
           eyebrow={home.firstVisit.eyebrow}
@@ -264,7 +268,7 @@ export default async function HomePage({ params }: LocalePageProps) {
       </Section>
 
       {/* FAQ */}
-      <Section tone="white" aria-labelledby="faq-heading">
+      <Section preset="faq" aria-labelledby="faq-heading">
         <SectionHeading
           id="faq-heading"
           eyebrow={home.faq.eyebrow}
@@ -282,7 +286,7 @@ export default async function HomePage({ params }: LocalePageProps) {
       </Section>
 
       {/* アクセス・営業情報 */}
-      <Section tone="lilac" aria-labelledby="access-heading">
+      <Section preset="access" aria-labelledby="access-heading">
         <SectionHeading
           id="access-heading"
           eyebrow={home.access.eyebrow}

@@ -39,7 +39,7 @@ export default async function FaqPage({ params }: LocalePageProps) {
         summaryLabel={messages.common.summaryLabel}
       />
 
-      <Section tone="white">
+      <Section preset="faq">
         <div className="mx-auto max-w-3xl space-y-12">
           {messages.faq.groups.map((group) => (
             <div key={group.heading}>

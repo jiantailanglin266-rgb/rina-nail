@@ -22,7 +22,7 @@ export function SectionHeading({
   lead,
   as: Tag = "h2",
   align = "center",
-  gradient = "signature",
+  gradient = "pinkPurple",
   id,
   className,
 }: Props) {

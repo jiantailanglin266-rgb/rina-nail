@@ -81,7 +81,7 @@ export default async function AboutPage({ params }: LocalePageProps) {
       />
 
       {/* サロン概要（表） */}
-      <Section tone="white">
+      <Section preset="access">
         <div className="mx-auto max-w-3xl">
           <h2 className="text-xl sm:text-2xl">{about.overview.heading}</h2>
           <div className="border-line mt-6 overflow-hidden rounded-2xl border">
@@ -106,7 +106,7 @@ export default async function AboutPage({ params }: LocalePageProps) {
       </Section>
 
       {/* オーナープロフィール */}
-      <Section tone="pink" decorated>
+      <Section preset="owner" sparkles>
         <div className="mx-auto max-w-4xl">
           <h2 className="text-xl sm:text-2xl">{about.owner.heading}</h2>
           <OwnerProfile messages={messages} showSpecialty className="mt-10" />
@@ -114,7 +114,7 @@ export default async function AboutPage({ params }: LocalePageProps) {
       </Section>
 
       {/* コンセプト・設備 */}
-      <Section tone="white">
+      <Section preset="concept">
         <div className="mx-auto grid max-w-4xl gap-12 lg:grid-cols-2">
           <div>
             <h2 className="text-xl sm:text-2xl">{about.concept.heading}</h2>

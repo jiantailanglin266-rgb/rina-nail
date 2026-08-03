@@ -24,32 +24,10 @@ export function AnimatedGoldBackground({ density = "soft", className }: Props) {
       aria-hidden="true"
       className={cn("pointer-events-none absolute inset-0 overflow-hidden", className)}
     >
-      {/* 白背景に溶け込む半透明グラデーションの光 */}
-      <div
-        className="anim-drift absolute -top-32 -left-24 size-[32rem] rounded-full opacity-60 blur-3xl"
-        style={{
-          background:
-            "radial-gradient(circle at 30% 30%, rgba(255,215,106,0.35), rgba(255,255,255,0) 65%)",
-        }}
-      />
-      <div
-        className="anim-drift absolute top-1/4 -right-28 size-[28rem] rounded-full opacity-50 blur-3xl"
-        style={{
-          animationDelay: "-9s",
-          background:
-            "radial-gradient(circle at 60% 40%, rgba(255,79,200,0.28), rgba(255,255,255,0) 65%)",
-        }}
-      />
-      {isFull ? (
-        <div
-          className="anim-drift decor-desktop-only absolute bottom-0 left-1/3 size-[26rem] rounded-full opacity-45 blur-3xl"
-          style={{
-            animationDelay: "-16s",
-            background:
-              "radial-gradient(circle at 50% 50%, rgba(139,61,255,0.24), rgba(255,255,255,0) 68%)",
-          }}
-        />
-      ) : null}
+      {/*
+        色の面は ColorfulGradientBackground のカラーオーブが担当します。
+        こちらは金色の線と光の粒だけを受け持ち、二重に色を重ねて濁らせないようにします。
+      */}
 
       {/* 金色の細い曲線 */}
       <svg

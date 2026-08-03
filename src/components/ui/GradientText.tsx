@@ -7,7 +7,12 @@ const variants = {
   pinkPurple: "text-gradient-pink-purple",
   purpleGold: "text-gradient-purple-gold",
   neon: "text-gradient-neon",
+  /** ゴールド → ネオンピンク → パープル → ブルー（斜め） */
   signature: "text-gradient-signature",
+  /** 同じ4色を横方向に。1〜2行の見出しでも全色が乗ります */
+  rainbow: "text-gradient-rainbow",
+  coral: "text-gradient-coral",
+  aqua: "text-gradient-aqua",
 } as const;
 
 export type GradientVariant = keyof typeof variants;

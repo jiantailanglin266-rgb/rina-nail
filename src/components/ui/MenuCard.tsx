@@ -28,7 +28,7 @@ export function MenuCard({ item, locale, messages }: Props) {
     : item.pricePlaceholder;
 
   return (
-    <article className="gradient-frame flex h-full flex-col rounded-2xl bg-white p-6 transition duration-300 ease-[var(--ease-soft)] hover:-translate-y-1.5 hover:shadow-[0_24px_50px_-30px_rgba(255,79,200,0.5)]">
+    <article className="gradient-frame glass-card flex h-full flex-col rounded-2xl p-6">
       <div className="flex items-start justify-between gap-4">
         <h3 className="text-lg leading-snug">{text.name}</h3>
         <p className="shrink-0 text-right">

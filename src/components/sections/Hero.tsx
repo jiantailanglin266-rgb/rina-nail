@@ -2,6 +2,7 @@ import Image from "next/image";
 import { CalendarCheck, ChevronDown, Sparkles } from "lucide-react";
 
 import { AnimatedGoldBackground } from "@/components/animations/AnimatedGoldBackground";
+import { ColorfulGradientBackground } from "@/components/backgrounds/ColorfulGradientBackground";
 import { ActionLink } from "@/components/ui/ActionLink";
 import { InstagramIcon } from "@/components/ui/icons/InstagramIcon";
 import { GradientText } from "@/components/ui/GradientText";
@@ -25,21 +26,24 @@ export function Hero({ locale, messages }: Props) {
   const hero = messages.home.hero;
 
   return (
-    <section className="relative overflow-hidden bg-white pt-16">
-      <AnimatedGoldBackground density="full" />
+    <section className="relative isolate overflow-hidden pt-16">
+      {/* 第1〜3層：多層グラデーション＋カラーオーブ＋虹色の反射 */}
+      <ColorfulGradientBackground preset="hero" intensity="high" className="-z-20" />
+      {/* ゴールドの曲線・光粒 */}
+      <AnimatedGoldBackground density="full" className="-z-10" />
 
-      <div className="container-page relative grid items-center gap-10 py-14 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16 lg:py-20">
+      <div className="container-page relative z-10 grid items-center gap-10 py-14 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16 lg:py-20">
         {/* テキスト（モバイルでも主要CTAがファーストビューに入るよう、画像より先に置きます） */}
         <div>
           <p
             className="font-accent text-[0.68rem] tracking-[0.3em] uppercase sm:text-xs"
             aria-hidden="true"
           >
-            <GradientText variant="goldPink">{hero.eyebrow}</GradientText>
+            <GradientText variant="pinkPurple">{hero.eyebrow}</GradientText>
           </p>
 
           <h1 className="font-heading-jp mt-5 text-[2rem] leading-[1.35] tracking-[0.02em] text-balance sm:text-[2.6rem] lg:text-[3.1rem]">
-            <GradientText variant="signature" animated>
+            <GradientText variant="rainbow" animated>
               {hero.title}
             </GradientText>
           </h1>

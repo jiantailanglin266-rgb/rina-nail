@@ -7,15 +7,22 @@
    ============================================================ */
 @theme {
   --color-white: #ffffff;
-  --color-soft-pink: #fff4fa;
+  --color-soft-pink: #fff2fa;
   --color-soft-lilac: #f7f2ff;
   --color-soft-gold: #fffaee;
+  --color-soft-aqua: #f0fbff;
   --color-neon-pink: #ff2fa4;
-  --color-hot-pink: #ff4fc8;
+  --color-hot-pink: #ff5fc8;
+  --color-coral: #ff7b9c;
+  --color-peach: #ffc8b6;
+  --color-lavender: #d9b8ff;
   --color-purple: #8b3dff;
-  --color-deep-purple: #4a157a;
+  --color-deep-purple: #4d167d;
+  --color-electric-blue: #55c7ff;
+  --color-aqua: #9cecff;
   --color-gold: #d4af37;
   --color-bright-gold: #ffd76a;
+  --color-light-gold: #ffe08a;
   --color-ink: #24172b;
   --color-muted: #6f6673;
   --color-line: #efe6f2;
@@ -30,12 +37,31 @@
 
   --breakpoint-xs: 24rem;
 
-  /* グラデーション（テキスト・ボーダー・背景装飾で共有） */
-  --gradient-gold-pink: linear-gradient(135deg, #ffd76a 0%, #ff4fc8 100%);
-  --gradient-pink-purple: linear-gradient(135deg, #ff4fc8 0%, #8b3dff 100%);
+  /* グラデーション（テキスト・ボーダー・ボタン・背景装飾で共有） */
+  --gradient-gold-pink: linear-gradient(135deg, #ffe08a 0%, #ff5fc8 100%);
+  --gradient-pink-purple: linear-gradient(135deg, #ff5fc8 0%, #8b3dff 100%);
   --gradient-purple-gold: linear-gradient(135deg, #8b3dff 0%, #d4af37 100%);
   --gradient-neon: linear-gradient(135deg, #ff2fa4 0%, #8b3dff 100%);
-  --gradient-signature: linear-gradient(135deg, #ffd76a 0%, #ff4fc8 45%, #8b3dff 100%);
+  --gradient-coral: linear-gradient(135deg, #ffc8b6 0%, #ff7b9c 50%, #ff2fa4 100%);
+  --gradient-aqua: linear-gradient(135deg, #9cecff 0%, #55c7ff 45%, #8b3dff 100%);
+
+  /* 4色の署名グラデーション。ゴールド → ネオンピンク → パープル → ブルー */
+  --gradient-signature: linear-gradient(135deg, #ffe08a 0%, #ff5fc8 38%, #8b3dff 72%, #55c7ff 100%);
+
+  /* 見出し用（横方向。文字幅が短くても4色すべてが乗るよう配分を詰めています） */
+  --gradient-rainbow: linear-gradient(90deg, #d4af37 0%, #ff2fa4 35%, #8b3dff 70%, #55c7ff 100%);
+
+  /* CTAボタン用。ホバーで background-position を動かすため 200% 幅で使います */
+  --gradient-button: linear-gradient(135deg, #ff2fa4 0%, #8b3dff 55%, #d4af37 100%);
+
+  /* カードのガラス表現 */
+  --gradient-glass: linear-gradient(135deg, rgb(255 255 255 / 0.88), rgb(255 242 250 / 0.68));
+  --gradient-card-border: linear-gradient(
+    135deg,
+    rgb(255 224 138 / 0.75),
+    rgb(255 95 200 / 0.65),
+    rgb(139 61 255 / 0.55)
+  );
 }
 
 /* ------------------------------------------------------------
@@ -143,6 +169,37 @@
   .text-gradient-signature {
     background-image: var(--gradient-signature);
   }
+  .text-gradient-rainbow {
+    background-image: var(--gradient-rainbow);
+  }
+  .text-gradient-coral {
+    background-image: var(--gradient-coral);
+  }
+  .text-gradient-aqua {
+    background-image: var(--gradient-aqua);
+  }
+
+  /*
+    ガラス調のカード。
+    半透明の白で背景のカラーオーブを透かしつつ、本文のコントラストは保ちます。
+  */
+  .glass-card {
+    background-image: var(--gradient-glass);
+    border: 1px solid rgb(255 255 255 / 0.7);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    box-shadow: 0 18px 40px -30px rgb(77 22 125 / 0.45);
+    transition:
+      transform 0.35s var(--ease-soft),
+      box-shadow 0.35s var(--ease-soft),
+      background-image 0.35s var(--ease-soft);
+  }
+  .glass-card:hover {
+    /* ホバーでほんの少し色を強め、1〜3px 浮かせます */
+    background-image: linear-gradient(135deg, rgb(255 255 255 / 0.92), rgb(255 236 248 / 0.78));
+    box-shadow: 0 26px 54px -28px rgb(139 61 255 / 0.5);
+    transform: translateY(-3px);
+  }
 
   /* カードの縁にグラデーションを回します（内側は白のまま） */
   .gradient-frame {
@@ -154,7 +211,7 @@
     inset: 0;
     border-radius: inherit;
     padding: 1px;
-    background: var(--gradient-signature);
+    background: var(--gradient-card-border);
     -webkit-mask:
       linear-gradient(#000 0 0) content-box,
       linear-gradient(#000 0 0);
@@ -280,6 +337,81 @@
 }
 
 /* ------------------------------------------------------------
+   カラーオーブ／多層グラデーション用
+   すべて 20〜40秒の低速ループ。transform と opacity のみを動かします。
+   ------------------------------------------------------------ */
+
+/* オーブがゆっくり漂いながら、呼吸するように伸縮します */
+@keyframes rn-orb-drift {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(var(--orb-shift-x, 5%), var(--orb-shift-y, -4%), 0)
+      scale(var(--orb-scale, 1.12));
+  }
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+/* 色の境界がゆっくり入れ替わります */
+@keyframes rn-mesh-shift {
+  0% {
+    background-position:
+      0% 0%,
+      100% 0%,
+      50% 100%,
+      0% 100%;
+  }
+  50% {
+    background-position:
+      20% 15%,
+      80% 20%,
+      45% 80%,
+      15% 85%;
+  }
+  100% {
+    background-position:
+      0% 0%,
+      100% 0%,
+      50% 100%,
+      0% 100%;
+  }
+}
+
+/* ゴールドの光が斜めに通過します */
+@keyframes rn-gold-sweep {
+  0% {
+    transform: translate3d(-30%, -20%, 0) rotate(-12deg);
+    opacity: 0;
+  }
+  25% {
+    opacity: 0.55;
+  }
+  75% {
+    opacity: 0.35;
+  }
+  100% {
+    transform: translate3d(35%, 25%, 0) rotate(-12deg);
+    opacity: 0;
+  }
+}
+
+/* 虹色の反射がゆっくり明滅します（点滅にならないよう振れ幅を抑えています） */
+@keyframes rn-rainbow-breathe {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.06);
+  }
+}
+
+/* ------------------------------------------------------------
    アニメーションユーティリティ
    ------------------------------------------------------------ */
 @layer components {
@@ -304,6 +436,21 @@
   }
   .anim-scroll-hint {
     animation: rn-scroll-hint 2.2s ease-in-out infinite;
+  }
+
+  /* 背景レイヤー用。速度は各コンポーネントから --orb-duration などで上書きします */
+  .anim-orb {
+    animation: rn-orb-drift var(--orb-duration, 28s) ease-in-out infinite alternate;
+    will-change: transform;
+  }
+  .anim-mesh {
+    animation: rn-mesh-shift var(--mesh-duration, 34s) ease-in-out infinite alternate;
+  }
+  .anim-gold-sweep {
+    animation: rn-gold-sweep var(--sweep-duration, 30s) ease-in-out infinite;
+  }
+  .anim-rainbow-breathe {
+    animation: rn-rainbow-breathe var(--rainbow-duration, 24s) ease-in-out infinite;
   }
 
   /* ボタンの光沢。::after を使うため、対象には relative / overflow-hidden が必要です */
@@ -360,11 +507,59 @@
     /* 停止時に文字が中途半端な位置で切れないよう先頭へ戻します */
     transform: translate3d(0, 0, 0) !important;
   }
+
+  /*
+    カラーオーブは「静止した多層グラデーション」として見せます。
+    transform を初期値へ戻し、ゴールドの光は完全に消さず薄く残します。
+  */
+  .anim-orb,
+  .anim-mesh,
+  .anim-rainbow-breathe {
+    transform: none !important;
+  }
+  .anim-gold-sweep {
+    opacity: 0.3 !important;
+    transform: none !important;
+  }
 }
 
-/* モバイルでは背景装飾の量を減らし、描画コストを抑えます */
-@media (max-width: 47.99rem) {
-  .decor-desktop-only {
+/* ------------------------------------------------------------
+   レスポンシブ — 背景装飾の量を段階的に減らします
+   ------------------------------------------------------------ */
+
+/* タブレット（〜1024px）: オーブを約70%に、ぼかしを弱める */
+@media (max-width: 63.99rem) {
+  .orb-tablet-hidden {
     display: none;
+  }
+  .bg-layer {
+    --orb-blur-scale: 0.8;
+  }
+}
+
+/* モバイル（〜768px）: オーブ数と不透明度をさらに下げ、中央を明るく保つ */
+@media (max-width: 47.99rem) {
+  .decor-desktop-only,
+  .orb-mobile-hidden {
+    display: none;
+  }
+
+  .bg-layer {
+    --orb-blur-scale: 0.6;
+    /* 文字・CTAの背後が濁らないよう、全体の彩度を落とします */
+    opacity: 0.72;
+  }
+
+  /* 中央のコンテンツ領域は白に近づけ、色は画面端へ寄せます */
+  .bg-layer::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      ellipse 62% 52% at 50% 45%,
+      rgb(255 255 255 / 0.72),
+      rgb(255 255 255 / 0) 72%
+    );
+    pointer-events: none;
   }
 }

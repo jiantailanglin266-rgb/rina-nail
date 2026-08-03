@@ -14,7 +14,7 @@ export function PageHeader({ eyebrow, title, lead, summary, summaryLabel }: Prop
   return (
     <header className="container-page pb-10 sm:pb-14">
       <p className="font-accent text-[0.7rem] tracking-[0.32em] uppercase" aria-hidden="true">
-        <GradientText variant="goldPink">{eyebrow}</GradientText>
+        <GradientText variant="pinkPurple">{eyebrow}</GradientText>
       </p>
       <h1 className="mt-3 text-3xl leading-snug text-balance sm:text-4xl lg:text-[2.75rem]">
         {title}

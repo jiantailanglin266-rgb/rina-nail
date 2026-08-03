@@ -46,7 +46,7 @@ export default async function FirstVisitPage({ params }: LocalePageProps) {
       />
 
       {/* 予約方法 */}
-      <Section tone="white">
+      <Section preset="concept">
         <div className="mx-auto grid max-w-4xl gap-10 lg:grid-cols-2">
           <div>
             <h2 className="flex items-center gap-2 text-xl">
@@ -83,7 +83,7 @@ export default async function FirstVisitPage({ params }: LocalePageProps) {
       </Section>
 
       {/* カウンセリングと施術の流れ */}
-      <Section tone="lilac" decorated>
+      <Section preset="flow" sparkles>
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="text-xl sm:text-2xl">{page.counseling.heading}</h2>
           <p className="text-muted mt-4 text-sm leading-relaxed sm:text-base">
@@ -100,7 +100,7 @@ export default async function FirstVisitPage({ params }: LocalePageProps) {
       </Section>
 
       {/* 所要時間・支払い・キャンセル */}
-      <Section tone="white">
+      <Section preset="access">
         <div className="mx-auto grid max-w-4xl gap-8 md:grid-cols-2">
           <div className="gradient-frame rounded-2xl bg-white p-6">
             <h2 className="flex items-center gap-2 text-lg">

@@ -5,11 +5,17 @@ import { isPlaceholder } from "@/data/site";
 import { cn } from "@/lib/utils";
 
 const variants = {
-  /** 予約CTA。グラデーション塗り＋光沢アニメーション */
-  primary:
-    "text-white shadow-[0_10px_30px_-12px_rgba(255,47,164,0.65)] [background-image:var(--gradient-signature)] hover:brightness-105",
-  /** 副次CTA。白地＋グラデーションの縁 */
-  secondary: "gradient-frame bg-white text-ink hover:bg-soft-pink",
+  /**
+   * 予約CTA。ネオンピンク → パープル → ゴールドのグラデーション塗り。
+   * 背景を 200% 幅にしておき、ホバーで位置を動かして色を変化させます。
+   */
+  primary: [
+    "text-white [background-image:var(--gradient-button)] [background-size:200%_100%] [background-position:0%_50%]",
+    "shadow-[0_10px_30px_-12px_rgba(255,47,164,0.65)]",
+    "hover:[background-position:100%_50%] hover:shadow-[0_16px_38px_-12px_rgba(139,61,255,0.6)] hover:scale-[1.02]",
+  ].join(" "),
+  /** 副次CTA。半透明の白地＋グラデーションの縁 */
+  secondary: "gradient-frame text-ink bg-white/85 backdrop-blur-md hover:bg-white",
   /** 3番手。下線のみ */
   ghost: "text-purple underline underline-offset-4 hover:text-neon-pink",
 } as const;
@@ -54,7 +60,7 @@ export function ActionLink({
 }: Props) {
   const unset = isPlaceholder(href);
   const classes = cn(
-    "relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-full font-medium tracking-wide transition duration-300 ease-[var(--ease-soft)] hover:-translate-y-0.5",
+    "relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-full font-medium tracking-wide transition-all duration-500 ease-[var(--ease-soft)] hover:-translate-y-0.5",
     variants[variant],
     sizes[size],
     variant !== "ghost" && "btn-sheen",

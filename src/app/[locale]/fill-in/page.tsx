@@ -49,7 +49,7 @@ export default async function FillInPage({ params }: LocalePageProps) {
       />
 
       {/* フィルインとは */}
-      <Section tone="white">
+      <Section preset="fillIn">
         <div className="mx-auto max-w-3xl">
           <h2 className="text-xl sm:text-2xl">{fillIn.whatIs.heading}</h2>
           <div className="text-muted mt-6 space-y-4 text-sm leading-relaxed sm:text-base">
@@ -61,7 +61,7 @@ export default async function FillInPage({ params }: LocalePageProps) {
       </Section>
 
       {/* 通常オフとの違い */}
-      <Section tone="lilac">
+      <Section preset="fillIn" intensity="high">
         <div className="mx-auto max-w-3xl">
           <h2 className="text-xl sm:text-2xl">{fillIn.difference.heading}</h2>
           <div className="mt-6 overflow-x-auto">
@@ -97,7 +97,7 @@ export default async function FillInPage({ params }: LocalePageProps) {
       </Section>
 
       {/* メリット */}
-      <Section tone="white" decorated>
+      <Section preset="concept" sparkles>
         <SectionHeading eyebrow="MERIT" heading={fillIn.merits.heading} />
         <ul className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {fillIn.merits.items.map((item, index) => (
@@ -109,7 +109,7 @@ export default async function FillInPage({ params }: LocalePageProps) {
       </Section>
 
       {/* 向いている方 */}
-      <Section tone="pink">
+      <Section preset="concept">
         <div className="mx-auto max-w-3xl">
           <h2 className="text-xl sm:text-2xl">{fillIn.suitable.heading}</h2>
           <ul className="mt-6 grid gap-3 sm:grid-cols-2">
@@ -127,7 +127,7 @@ export default async function FillInPage({ params }: LocalePageProps) {
       </Section>
 
       {/* 注意点 */}
-      <Section tone="white">
+      <Section preset="fillIn">
         <div className="mx-auto max-w-3xl">
           <h2 className="flex items-center gap-2 text-xl sm:text-2xl">
             <AlertCircle className="text-gold size-5" aria-hidden="true" />
@@ -147,7 +147,7 @@ export default async function FillInPage({ params }: LocalePageProps) {
       </Section>
 
       {/* よくある質問 */}
-      <Section tone="lilac">
+      <Section preset="faq">
         <div className="mx-auto max-w-3xl">
           <h2 className="text-xl sm:text-2xl">{messages.faq.title}</h2>
           <div className="mt-6">

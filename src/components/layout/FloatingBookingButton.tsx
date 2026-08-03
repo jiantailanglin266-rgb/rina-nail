@@ -27,7 +27,7 @@ export function FloatingBookingButton({ locale, messages }: Props) {
         </a>
         <a
           href={links.booking}
-          className="btn-sheen relative inline-flex flex-[1.3] items-center justify-center gap-1.5 overflow-hidden rounded-full [background-image:var(--gradient-signature)] px-2 py-3 text-[0.7rem] leading-tight font-medium whitespace-nowrap text-white"
+          className="btn-sheen relative inline-flex flex-[1.3] items-center justify-center gap-1.5 overflow-hidden rounded-full [background-image:var(--gradient-button)] px-2 py-3 text-[0.7rem] leading-tight font-medium whitespace-nowrap text-white"
           {...(links.booking.startsWith("http")
             ? { target: "_blank", rel: "noopener noreferrer" }
             : {})}

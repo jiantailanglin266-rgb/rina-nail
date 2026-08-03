@@ -17,7 +17,7 @@ type Props = {
  */
 export function FAQAccordion({ items, headingTag: Heading = "h3" }: Props) {
   return (
-    <ul className="divide-line border-line divide-y overflow-hidden rounded-2xl border bg-white">
+    <ul className="divide-line glass-card divide-y overflow-hidden rounded-2xl hover:translate-y-0 hover:shadow-[0_18px_40px_-30px_rgba(77,22,125,0.45)]">
       {items.map((item) => (
         <li key={item.q}>
           <details className="group">
