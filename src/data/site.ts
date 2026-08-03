@@ -88,6 +88,32 @@ export const links = {
   phone: placeholders.phoneNumber,
 } as const;
 
+/**
+ * Googleマップの埋め込みURLを組み立てます。
+ *
+ * APIキー不要の埋め込み方式で、住所（`store.address.full`）から生成します。
+ * 住所は `src/data/site.ts` の一元管理データなので、住所を変更すれば地図も追従します。
+ *
+ * `NEXT_PUBLIC_MAP_EMBED_URL` が設定されている場合はそちらを優先します
+ * （Maps Embed API のURLや、Place ID でピンを正確に指定したURLへ差し替える用）。
+ */
+export function mapEmbedUrl(locale: string): string {
+  const override = resolved(placeholders.mapEmbedUrl);
+  if (override) return override;
+
+  // Googleマップの言語パラメータ（hl）へ変換します
+  const hl =
+    locale === "zh-cn" ? "zh-CN" : locale === "zh-tw" ? "zh-TW" : locale === "ko" ? "ko" : locale;
+
+  const query = encodeURIComponent(store.address.full);
+  return `https://www.google.com/maps?q=${query}&z=16&hl=${hl}&output=embed`;
+}
+
+/** 「Googleマップで開く」用のURL（地図アプリでも開けます） */
+export function mapLinkUrl(): string {
+  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(store.address.full)}`;
+}
+
 /** 構造化データの sameAs に入れるSNS（未設定のものは除外されます） */
 export function sameAsUrls(): string[] {
   return [resolved(placeholders.instagramUrl)].filter((v): v is string => Boolean(v));

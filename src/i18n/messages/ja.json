@@ -118,7 +118,13 @@
       "scroll": "スクロール"
     },
     "marquee": {
-      "lineOne": ["RINA NAIL", "PRIVATE NAIL SALON", "FILL-IN", "YOKKAICHI", "BEAUTIFUL NAILS"],
+      "lineOne": [
+        "RINA NAIL",
+        "PRIVATE NAIL SALON",
+        "FILL-IN",
+        "YOKKAICHI",
+        "BEAUTIFUL NAILS"
+      ],
       "lineTwo": [
         "爪にやさしく、私らしく輝く。",
         "SIMPLE TO GLITTER",
@@ -503,7 +509,8 @@
     "closedHeading": "定休日",
     "closed": "基本的に土曜日・日曜日・祝日",
     "mapHeading": "地図",
-    "mapPlaceholder": "地図の埋め込みURLが未設定です。環境変数 NEXT_PUBLIC_MAP_EMBED_URL を設定すると、この位置に地図が表示されます。",
+    "openInMaps": "Googleマップで開く",
+    "mapNote": "地図はGoogleマップを埋め込んでいます。表示時にGoogleへの通信が発生します。",
     "contactHeading": "ご予約・お問い合わせ",
     "contactNote": "ご予約は予約サイトから承ります。完全予約制のため、ご来店前にご予約をお願いします。"
   },

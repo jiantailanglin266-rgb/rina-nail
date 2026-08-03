@@ -51,7 +51,7 @@ export default async function AccessPage({ params }: LocalePageProps) {
       >
         <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-14">
           <div className="space-y-10">
-            <AccessMap messages={messages} />
+            <AccessMap locale={locale} messages={messages} />
 
             <div>
               <h2 className="flex items-center gap-2 text-lg">

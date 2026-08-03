@@ -321,7 +321,7 @@ export default async function HomePage({ params }: LocalePageProps) {
         />
 
         <div className="mt-10 grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:gap-12">
-          <AccessMap messages={messages} />
+          <AccessMap locale={locale} messages={messages} />
 
           <div className="space-y-8">
             <div>

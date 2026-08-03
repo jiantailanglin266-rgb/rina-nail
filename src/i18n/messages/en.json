@@ -118,7 +118,13 @@
       "scroll": "Scroll"
     },
     "marquee": {
-      "lineOne": ["RINA NAIL", "PRIVATE NAIL SALON", "FILL-IN", "YOKKAICHI", "BEAUTIFUL NAILS"],
+      "lineOne": [
+        "RINA NAIL",
+        "PRIVATE NAIL SALON",
+        "FILL-IN",
+        "YOKKAICHI",
+        "BEAUTIFUL NAILS"
+      ],
       "lineTwo": [
         "Kind to your nails, bright in your own way.",
         "SIMPLE TO GLITTER",
@@ -503,7 +509,8 @@
     "closedHeading": "Closing days",
     "closed": "Generally Saturdays, Sundays and public holidays",
     "mapHeading": "Map",
-    "mapPlaceholder": "The map embed URL has not been set. Once the NEXT_PUBLIC_MAP_EMBED_URL environment variable is configured, the map will appear here.",
+    "openInMaps": "Open in Google Maps",
+    "mapNote": "The map is embedded from Google Maps. Loading it sends a request to Google.",
     "contactHeading": "Bookings & enquiries",
     "contactNote": "Bookings are taken through the booking site. As we work by appointment only, please book before visiting."
   },

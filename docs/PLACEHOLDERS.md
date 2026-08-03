@@ -17,7 +17,7 @@
 | `{{PHONE_NUMBER}}`  | `NEXT_PUBLIC_PHONE_NUMBER`  | フッターとアクセスページの電話導線、JSON-LD の `telephone`、`llms.txt`                                                              | 電話導線そのものが**非表示**になります                            |
 | `{{LATITUDE}}`      | `NEXT_PUBLIC_LATITUDE`      | JSON-LD の `geo.latitude`                                                                                                           | 文字列のまま出力されます                                          |
 | `{{LONGITUDE}}`     | `NEXT_PUBLIC_LONGITUDE`     | JSON-LD の `geo.longitude`                                                                                                          | 文字列のまま出力されます                                          |
-| `{{MAP_EMBED_URL}}` | `NEXT_PUBLIC_MAP_EMBED_URL` | アクセスページとトップページの地図枠                                                                                                | 地図枠に「未設定です」という案内文が表示されます                  |
+| `{{MAP_EMBED_URL}}` | `NEXT_PUBLIC_MAP_EMBED_URL` | アクセスページとトップページの地図（**任意**）                                                                                      | 住所から自動生成した Google マップが表示されます（設定不要）      |
 | （正規URL）         | `NEXT_PUBLIC_SITE_URL`      | canonical / hreflang / OGP / sitemap.xml / robots.txt / JSON-LD の全URL                                                             | `https://rina-nail.example.com` が使われます                      |
 
 > **重要**: `{{LATITUDE}}` `{{LONGITUDE}}` `{{PHONE_NUMBER}}` は、未設定のまま公開すると
