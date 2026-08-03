@@ -1,6 +1,10 @@
 import type { ReactNode } from "react";
 
 import { AnimatedGoldBackground } from "@/components/animations/AnimatedGoldBackground";
+import {
+  SalviaFlowerRain,
+  type SalviaFlowerRainProps,
+} from "@/components/animations/salvia/SalviaFlowerRain";
 import { ColorfulGradientBackground } from "@/components/backgrounds/ColorfulGradientBackground";
 import type { Intensity, PresetName } from "@/components/backgrounds/gradientPresets";
 import { cn } from "@/lib/utils";
@@ -12,6 +16,8 @@ type Props = {
   animated?: boolean;
   /** ゴールドの曲線・光粒（第3層）を重ねるか */
   sparkles?: boolean;
+  /** 四日市市の花「サルビア」を降らせる場合に設定します（省略時は非表示） */
+  salvia?: SalviaFlowerRainProps;
   /** 上下の余白を省き、内側で調整したい場合に使います */
   bare?: boolean;
   as?: "section" | "div";
@@ -33,6 +39,7 @@ export function GradientSection({
   intensity = "medium",
   animated = true,
   sparkles = false,
+  salvia,
   bare = false,
   as: Tag = "section",
   id,
@@ -49,14 +56,17 @@ export function GradientSection({
       )}
       {...rest}
     >
+      {/* 重なり順: グラデーション → ゴールド装飾 → サルビア → 本文 */}
       <ColorfulGradientBackground
         preset={preset}
         intensity={intensity}
         animated={animated}
-        className="-z-20"
+        className="-z-30"
       />
 
-      {sparkles ? <AnimatedGoldBackground density="soft" className="-z-10" /> : null}
+      {sparkles ? <AnimatedGoldBackground density="soft" className="-z-20" /> : null}
+
+      {salvia ? <SalviaFlowerRain {...salvia} className={cn("-z-10", salvia.className)} /> : null}
 
       <div className="relative z-10">{children}</div>
     </Tag>

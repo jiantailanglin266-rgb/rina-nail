@@ -106,7 +106,7 @@ export default async function AboutPage({ params }: LocalePageProps) {
       </Section>
 
       {/* オーナープロフィール */}
-      <Section preset="owner" sparkles>
+      <Section preset="owner" sparkles salvia={{ variant: "owner", density: "medium" }}>
         <div className="mx-auto max-w-4xl">
           <h2 className="text-xl sm:text-2xl">{about.owner.heading}</h2>
           <OwnerProfile messages={messages} showSpecialty className="mt-10" />

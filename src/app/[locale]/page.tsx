@@ -93,7 +93,11 @@ export default async function HomePage({ params }: LocalePageProps) {
       </div>
 
       {/* コンセプト */}
-      <Section preset="concept" aria-labelledby="concept-heading">
+      <Section
+        preset="concept"
+        salvia={{ variant: "section", density: "medium" }}
+        aria-labelledby="concept-heading"
+      >
         <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
           <Reveal direction="left">
             <SectionHeading
@@ -172,7 +176,11 @@ export default async function HomePage({ params }: LocalePageProps) {
       </Section>
 
       {/* メニュー */}
-      <Section preset="menu" aria-labelledby="menu-heading">
+      <Section
+        preset="menu"
+        salvia={{ variant: "section", density: "low", showFlowers: false, showBranches: false }}
+        aria-labelledby="menu-heading"
+      >
         <SectionHeading
           id="menu-heading"
           eyebrow={home.menu.eyebrow}
@@ -213,7 +221,12 @@ export default async function HomePage({ params }: LocalePageProps) {
       </Section>
 
       {/* ギャラリー */}
-      <Section preset="gallery" intensity="high" aria-labelledby="gallery-heading">
+      <Section
+        preset="gallery"
+        intensity="high"
+        salvia={{ variant: "gallery", density: "medium" }}
+        aria-labelledby="gallery-heading"
+      >
         <SectionHeading
           id="gallery-heading"
           eyebrow={home.gallery.eyebrow}
@@ -229,7 +242,11 @@ export default async function HomePage({ params }: LocalePageProps) {
       </Section>
 
       {/* オーナー紹介 */}
-      <Section preset="owner" aria-labelledby="owner-heading">
+      <Section
+        preset="owner"
+        salvia={{ variant: "owner", density: "medium" }}
+        aria-labelledby="owner-heading"
+      >
         <SectionHeading
           id="owner-heading"
           eyebrow={home.owner.eyebrow}
@@ -268,7 +285,11 @@ export default async function HomePage({ params }: LocalePageProps) {
       </Section>
 
       {/* FAQ */}
-      <Section preset="faq" aria-labelledby="faq-heading">
+      <Section
+        preset="faq"
+        salvia={{ variant: "section", density: "low", showFlowers: false, showBranches: false }}
+        aria-labelledby="faq-heading"
+      >
         <SectionHeading
           id="faq-heading"
           eyebrow={home.faq.eyebrow}
@@ -286,7 +307,11 @@ export default async function HomePage({ params }: LocalePageProps) {
       </Section>
 
       {/* アクセス・営業情報 */}
-      <Section preset="access" aria-labelledby="access-heading">
+      <Section
+        preset="access"
+        salvia={{ variant: "section", density: "low", showFlowers: false, showBranches: false }}
+        aria-labelledby="access-heading"
+      >
         <SectionHeading
           id="access-heading"
           eyebrow={home.access.eyebrow}

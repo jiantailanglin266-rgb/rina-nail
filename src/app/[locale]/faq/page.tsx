@@ -39,7 +39,10 @@ export default async function FaqPage({ params }: LocalePageProps) {
         summaryLabel={messages.common.summaryLabel}
       />
 
-      <Section preset="faq">
+      <Section
+        preset="faq"
+        salvia={{ variant: "section", density: "low", showFlowers: false, showBranches: false }}
+      >
         <div className="mx-auto max-w-3xl space-y-12">
           {messages.faq.groups.map((group) => (
             <div key={group.heading}>

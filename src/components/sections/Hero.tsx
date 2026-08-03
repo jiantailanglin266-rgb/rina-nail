@@ -2,6 +2,7 @@ import Image from "next/image";
 import { CalendarCheck, ChevronDown, Sparkles } from "lucide-react";
 
 import { AnimatedGoldBackground } from "@/components/animations/AnimatedGoldBackground";
+import { SalviaFlowerRain } from "@/components/animations/salvia/SalviaFlowerRain";
 import { ColorfulGradientBackground } from "@/components/backgrounds/ColorfulGradientBackground";
 import { ActionLink } from "@/components/ui/ActionLink";
 import { InstagramIcon } from "@/components/ui/icons/InstagramIcon";
@@ -28,9 +29,11 @@ export function Hero({ locale, messages }: Props) {
   return (
     <section className="relative isolate overflow-hidden pt-16">
       {/* 第1〜3層：多層グラデーション＋カラーオーブ＋虹色の反射 */}
-      <ColorfulGradientBackground preset="hero" intensity="high" className="-z-20" />
+      <ColorfulGradientBackground preset="hero" intensity="high" className="-z-30" />
       {/* ゴールドの曲線・光粒 */}
-      <AnimatedGoldBackground density="full" className="-z-10" />
+      <AnimatedGoldBackground density="full" className="-z-20" />
+      {/* 四日市市の花・サルビア。サイト内で最も密度を高くします */}
+      <SalviaFlowerRain variant="hero" density="high" colorMode="mixed" className="-z-10" />
 
       <div className="container-page relative z-10 grid items-center gap-10 py-14 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16 lg:py-20">
         {/* テキスト（モバイルでも主要CTAがファーストビューに入るよう、画像より先に置きます） */}

@@ -1,6 +1,7 @@
 import { CalendarCheck, MessageCircleHeart, Sparkles } from "lucide-react";
 
 import { AnimatedGoldBackground } from "@/components/animations/AnimatedGoldBackground";
+import { SalviaFlowerRain } from "@/components/animations/salvia/SalviaFlowerRain";
 import { ColorfulGradientBackground } from "@/components/backgrounds/ColorfulGradientBackground";
 import { ActionLink } from "@/components/ui/ActionLink";
 import { GradientText } from "@/components/ui/GradientText";
@@ -22,8 +23,10 @@ export function CTASection({ locale, messages, heading, lead, note }: Props) {
   return (
     <section className="relative isolate overflow-hidden py-16 sm:py-20">
       {/* サイト内で最も華やかなグラデーション */}
-      <ColorfulGradientBackground preset="cta" intensity="high" className="-z-20" />
-      <AnimatedGoldBackground density="soft" className="-z-10" />
+      <ColorfulGradientBackground preset="cta" intensity="high" className="-z-30" />
+      <AnimatedGoldBackground density="soft" className="-z-20" />
+      {/* CTAの外周を囲むように配置。ボタンの上には重ねません */}
+      <SalviaFlowerRain variant="cta" density="medium" colorMode="mixed" className="-z-10" />
 
       <div className="container-page relative z-10 flex flex-col items-center text-center">
         <h2 className="max-w-2xl text-2xl leading-snug text-balance sm:text-3xl">

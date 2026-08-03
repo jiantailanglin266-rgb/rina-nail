@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 
+import type { SalviaFlowerRainProps } from "@/components/animations/salvia/SalviaFlowerRain";
 import { GradientSection } from "@/components/backgrounds/GradientSection";
 import type { Intensity, PresetName } from "@/components/backgrounds/gradientPresets";
 
@@ -14,6 +15,8 @@ type Props = {
   intensity?: Intensity;
   /** ゴールドの曲線・光粒を重ねるか */
   sparkles?: boolean;
+  /** 四日市市の花「サルビア」を降らせる場合に設定します */
+  salvia?: SalviaFlowerRainProps;
   id?: string;
   className?: string;
   "aria-labelledby"?: string;
@@ -28,6 +31,7 @@ export function Section({
   preset = "plain",
   intensity = "medium",
   sparkles = false,
+  salvia,
   id,
   className,
   ...rest
@@ -38,6 +42,7 @@ export function Section({
       preset={preset}
       intensity={intensity}
       sparkles={sparkles}
+      salvia={salvia}
       className={className}
       {...rest}
     >

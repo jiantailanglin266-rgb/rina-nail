@@ -47,7 +47,10 @@ export default async function MenuPage({ params }: LocalePageProps) {
       />
 
       {/* メニュー一覧 */}
-      <Section preset="menu">
+      <Section
+        preset="menu"
+        salvia={{ variant: "section", density: "low", showFlowers: false, showBranches: false }}
+      >
         <div className="space-y-14">
           {CATEGORY_ORDER.map((category) => {
             const items = menuItems.filter((item) => item.category === category);
@@ -72,7 +75,13 @@ export default async function MenuPage({ params }: LocalePageProps) {
       </Section>
 
       {/* クーポン */}
-      <Section preset="coupon" intensity="high" sparkles id="coupons">
+      <Section
+        preset="coupon"
+        intensity="high"
+        sparkles
+        salvia={{ variant: "section", density: "medium" }}
+        id="coupons"
+      >
         <SectionHeading
           eyebrow="COUPON"
           heading={messages.menu.coupons.heading}
@@ -89,7 +98,10 @@ export default async function MenuPage({ params }: LocalePageProps) {
       </Section>
 
       {/* 注意事項 */}
-      <Section preset="menu">
+      <Section
+        preset="menu"
+        salvia={{ variant: "section", density: "low", showFlowers: false, showBranches: false }}
+      >
         <div className="mx-auto max-w-3xl">
           <h2 className="flex items-center gap-2 text-lg">
             <AlertCircle className="text-gold size-5" aria-hidden="true" />

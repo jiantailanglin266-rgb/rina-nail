@@ -45,7 +45,10 @@ export default async function AccessPage({ params }: LocalePageProps) {
         summaryLabel={messages.common.summaryLabel}
       />
 
-      <Section preset="access">
+      <Section
+        preset="access"
+        salvia={{ variant: "section", density: "low", showFlowers: false, showBranches: false }}
+      >
         <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-14">
           <div className="space-y-10">
             <AccessMap messages={messages} />

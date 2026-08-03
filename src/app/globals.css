@@ -27,6 +27,18 @@
   --color-muted: #6f6673;
   --color-line: #efe6f2;
 
+  /* サルビア（四日市市の花）。背景装飾のモチーフとして使用します */
+  --color-salvia-red: #ef315f;
+  --color-salvia-deep-red: #bf1746;
+  --color-salvia-pink: #ff4fa3;
+  --color-salvia-neon-pink: #ff2fa4;
+  --color-salvia-coral: #ff7b8f;
+  --color-salvia-purple: #8b3dff;
+  --color-salvia-lavender: #d9b8ff;
+  --color-salvia-white: #fff8fc;
+  --color-salvia-gold: #d4af37;
+  --color-salvia-light-gold: #ffe08a;
+
   --font-sans-jp: var(--font-noto-sans-jp), "Hiragino Sans", "Yu Gothic", sans-serif;
   --font-heading-jp: var(--font-zen-kaku), var(--font-noto-sans-jp), "Hiragino Sans", sans-serif;
   --font-mincho-jp: var(--font-shippori), "Hiragino Mincho ProN", "Yu Mincho", serif;
@@ -398,6 +410,58 @@
   }
 }
 
+/* ------------------------------------------------------------
+   サルビアの落下アニメーション
+   3つの transform を入れ子で合成します（落下／左右の揺れ／回転）。
+   1要素につき1プロパティずつしか動かさないため、合成が軽く済みます。
+   ------------------------------------------------------------ */
+
+/* 上から下へ。終盤に横へ流れ、画面外で自然に消えます */
+@keyframes rn-salvia-fall {
+  0% {
+    transform: translate3d(0, -22vh, 0);
+    opacity: 0;
+  }
+  7% {
+    opacity: var(--salvia-opacity, 0.7);
+  }
+  32% {
+    transform: translate3d(calc(var(--salvia-drift, 4vw) * 0.35), 22vh, 0);
+  }
+  /* 一度だけわずかに浮き上がらせ、風に乗った感じを出します */
+  55% {
+    transform: translate3d(calc(var(--salvia-drift, 4vw) * 0.5), 54vh, 0);
+  }
+  88% {
+    opacity: var(--salvia-opacity, 0.7);
+  }
+  100% {
+    transform: translate3d(var(--salvia-drift, 4vw), 118vh, 0);
+    opacity: 0;
+  }
+}
+
+/* 左右の揺れ。落下とは別周期にして、動きが単調にならないようにします */
+@keyframes rn-salvia-sway {
+  0%,
+  100% {
+    transform: translate3d(calc(var(--salvia-sway, 2vw) * -1), 0, 0);
+  }
+  50% {
+    transform: translate3d(var(--salvia-sway, 2vw), 0, 0);
+  }
+}
+
+/* ゆっくりした回転。高速回転させないよう、1周させず角度差だけを付けます */
+@keyframes rn-salvia-spin {
+  from {
+    transform: rotate(var(--salvia-rot-from, -10deg));
+  }
+  to {
+    transform: rotate(var(--salvia-rot-to, 14deg));
+  }
+}
+
 /* 虹色の反射がゆっくり明滅します（点滅にならないよう振れ幅を抑えています） */
 @keyframes rn-rainbow-breathe {
   0%,
@@ -451,6 +515,18 @@
   }
   .anim-rainbow-breathe {
     animation: rn-rainbow-breathe var(--rainbow-duration, 24s) ease-in-out infinite;
+  }
+
+  /* サルビア。3層を入れ子にして落下・揺れ・回転を合成します */
+  .salvia-fall {
+    animation: rn-salvia-fall var(--salvia-duration, 26s) linear infinite;
+    will-change: transform, opacity;
+  }
+  .salvia-sway {
+    animation: rn-salvia-sway var(--salvia-sway-duration, 7s) ease-in-out infinite alternate;
+  }
+  .salvia-spin {
+    animation: rn-salvia-spin var(--salvia-spin-duration, 18s) ease-in-out infinite alternate;
   }
 
   /* ボタンの光沢。::after を使うため、対象には relative / overflow-hidden が必要です */
@@ -521,6 +597,27 @@
     opacity: 0.3 !important;
     transform: none !important;
   }
+
+  /*
+    サルビアは落下・揺れ・回転を止め、静止した装飾として数輪だけ残します。
+    （`salvia-static-hidden` が付いた個体は非表示になります）
+  */
+  .salvia-fall,
+  .salvia-sway,
+  .salvia-spin {
+    animation: none !important;
+  }
+  .salvia-fall {
+    /* 画面外の初期位置ではなく、見える位置へ固定します */
+    transform: translate3d(0, var(--salvia-static-y, 30vh), 0) !important;
+    opacity: var(--salvia-opacity, 0.7) !important;
+  }
+  .salvia-spin {
+    transform: rotate(var(--salvia-rot-from, -10deg)) !important;
+  }
+  .salvia-static-hidden {
+    display: none !important;
+  }
 }
 
 /* ------------------------------------------------------------
@@ -529,7 +626,8 @@
 
 /* タブレット（〜1024px）: オーブを約70%に、ぼかしを弱める */
 @media (max-width: 63.99rem) {
-  .orb-tablet-hidden {
+  .orb-tablet-hidden,
+  .salvia-tablet-hidden {
     display: none;
   }
   .bg-layer {
@@ -540,7 +638,8 @@
 /* モバイル（〜768px）: オーブ数と不透明度をさらに下げ、中央を明るく保つ */
 @media (max-width: 47.99rem) {
   .decor-desktop-only,
-  .orb-mobile-hidden {
+  .orb-mobile-hidden,
+  .salvia-mobile-hidden {
     display: none;
   }
 

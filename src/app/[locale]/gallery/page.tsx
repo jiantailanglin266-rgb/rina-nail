@@ -40,7 +40,7 @@ export default async function GalleryPage({ params }: LocalePageProps) {
         summaryLabel={messages.common.summaryLabel}
       />
 
-      <Section preset="gallery" intensity="high">
+      <Section preset="gallery" intensity="high" salvia={{ variant: "gallery", density: "medium" }}>
         <GalleryFilter
           items={galleryItems}
           labels={{
