@@ -26,6 +26,11 @@ export const siteNameKana = "リナネイル";
 export const placeholders = {
   bookingUrl: process.env.NEXT_PUBLIC_BOOKING_URL ?? "{{BOOKING_URL}}",
   instagramUrl: process.env.NEXT_PUBLIC_INSTAGRAM_URL ?? "{{INSTAGRAM_URL}}",
+  lineUrl: process.env.NEXT_PUBLIC_LINE_URL ?? "{{LINE_URL}}",
+  xUrl: process.env.NEXT_PUBLIC_X_URL ?? "{{X_URL}}",
+  tiktokUrl: process.env.NEXT_PUBLIC_TIKTOK_URL ?? "{{TIKTOK_URL}}",
+  youtubeUrl: process.env.NEXT_PUBLIC_YOUTUBE_URL ?? "{{YOUTUBE_URL}}",
+  facebookUrl: process.env.NEXT_PUBLIC_FACEBOOK_URL ?? "{{FACEBOOK_URL}}",
   phoneNumber: process.env.NEXT_PUBLIC_PHONE_NUMBER ?? "{{PHONE_NUMBER}}",
   latitude: process.env.NEXT_PUBLIC_LATITUDE ?? "{{LATITUDE}}",
   longitude: process.env.NEXT_PUBLIC_LONGITUDE ?? "{{LONGITUDE}}",
@@ -114,9 +119,23 @@ export function mapLinkUrl(): string {
   return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(store.address.full)}`;
 }
 
-/** 構造化データの sameAs に入れるSNS（未設定のものは除外されます） */
+/**
+ * 構造化データの sameAs に入れるSNS（未設定のものは除外されます）。
+ *
+ * 表示用のアイコン一覧（`src/data/social.ts`）と同じ情報源なので、
+ * SNSを追加すると JSON-LD とヘッダー・フッターの両方に反映されます。
+ */
 export function sameAsUrls(): string[] {
-  return [resolved(placeholders.instagramUrl)].filter((v): v is string => Boolean(v));
+  return [
+    placeholders.instagramUrl,
+    placeholders.lineUrl,
+    placeholders.xUrl,
+    placeholders.tiktokUrl,
+    placeholders.youtubeUrl,
+    placeholders.facebookUrl,
+  ]
+    .map(resolved)
+    .filter((v): v is string => Boolean(v));
 }
 
 /** 対応する支払い方法（表示・構造化データ共通） */

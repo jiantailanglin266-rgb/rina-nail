@@ -154,6 +154,22 @@
 }
 
 @layer components {
+  /* SNSのカラーアイコン。
+     --brand には各SNSの公式ブランドカラーが SocialIconLink から渡されます。
+     白背景から浮かせるための影と、ホバー／フォーカス時のブランドカラーのグローを付けます。 */
+  .social-icon {
+    filter: drop-shadow(0 1px 2px rgb(15 15 30 / 0.14));
+  }
+  .social-link:hover .social-icon,
+  .social-link:focus-visible .social-icon {
+    filter: drop-shadow(0 5px 12px color-mix(in oklab, var(--brand, #b16ce8) 55%, transparent));
+  }
+  /* フォーカスリングもブランドカラーに合わせます（キーボード操作時のみ表示） */
+  .social-link:focus-visible {
+    outline: 2px solid var(--brand, var(--color-purple));
+    outline-offset: 3px;
+  }
+
   /* テキストへグラデーションを適用します（見出し・数字・英字アクセント用）。
      グラデーション文字は細いと読みづらいため、font-weight を上げています。 */
   .text-gradient {

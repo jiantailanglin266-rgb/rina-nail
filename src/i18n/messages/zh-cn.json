@@ -9,6 +9,10 @@
     "consultDesign": "咨询美甲设计",
     "chooseFromMenu": "从服务项目中选择",
     "instagram": "查看 Instagram",
+    "social": {
+      "heading": "社交媒体",
+      "visit": "查看我们的{name}（在新标签页中打开）"
+    },
     "phone": "电话咨询",
     "viewAll": "查看全部",
     "viewGallery": "查看设计作品集",

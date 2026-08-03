@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
 
@@ -13,6 +13,13 @@ type Props = {
   menuLabel: string;
   bookingHref: string;
   bookingLabel: string;
+  /**
+   * SNSアイコン。サーバーコンポーネント（`SocialLinks`）を
+   * そのまま差し込むため、要素として受け取ります。
+   * SNSが1件も設定されていない場合は `null` が渡され、見出しごと非表示になります。
+   */
+  social?: ReactNode;
+  socialHeading?: string;
 };
 
 /** モバイル用のナビゲーション。開閉状態を aria-expanded / aria-controls で伝えます。 */
@@ -23,6 +30,8 @@ export function MobileMenu({
   menuLabel,
   bookingHref,
   bookingLabel,
+  social,
+  socialHeading,
 }: Props) {
   const [open, setOpen] = useState(false);
 
@@ -66,7 +75,17 @@ export function MobileMenu({
       <div
         id="mobile-menu"
         hidden={!open}
-        className="border-line fixed inset-x-0 top-16 bottom-0 z-40 overflow-y-auto border-t bg-white/98 backdrop-blur-xl lg:hidden"
+        /*
+         * 高さは bottom-0 ではなく calc で指定します。
+         *
+         * 親のヘッダーが backdrop-filter（backdrop-blur）を持つため、
+         * ヘッダー自身が position: fixed の「包含ブロック」になります。
+         * その結果 bottom-0 はヘッダーの高さ（4rem）を基準に解決されてしまい、
+         * パネルの高さが 0 になって中身が見えなくなります。
+         * top は同じ理由でビューポート上端から 4rem の位置に一致するため、そのままで正しく並びます。
+         */
+        // 背面のヒーローが透けると読みづらいため、パネルは不透明にします
+        className="border-line fixed inset-x-0 top-16 z-40 h-[calc(100dvh-4rem)] overflow-y-auto border-t bg-white lg:hidden"
       >
         <nav aria-label={menuLabel} className="container-page py-8">
           <ul className="divide-line flex flex-col divide-y">
@@ -93,6 +112,15 @@ export function MobileMenu({
           >
             {bookingLabel}
           </a>
+
+          {social ? (
+            <div className="mt-10">
+              <h2 className="font-accent text-muted text-[0.7rem] tracking-[0.28em] uppercase">
+                {socialHeading}
+              </h2>
+              <div className="mt-4">{social}</div>
+            </div>
+          ) : null}
         </nav>
       </div>
     </>

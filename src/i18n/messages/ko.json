@@ -9,6 +9,10 @@
     "consultDesign": "네일 디자인 상담하기",
     "chooseFromMenu": "메뉴에서 고르기",
     "instagram": "인스타그램 보기",
+    "social": {
+      "heading": "SNS",
+      "visit": "{name} 보기 (새 탭에서 열립니다)"
+    },
     "phone": "전화로 문의하기",
     "viewAll": "전체 보기",
     "viewGallery": "디자인 갤러리 보기",

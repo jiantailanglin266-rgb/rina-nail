@@ -9,6 +9,10 @@
     "consultDesign": "諮詢美甲設計",
     "chooseFromMenu": "從服務項目中挑選",
     "instagram": "查看 Instagram",
+    "social": {
+      "heading": "社群媒體",
+      "visit": "查看我們的{name}（在新分頁開啟）"
+    },
     "phone": "電話洽詢",
     "viewAll": "查看全部",
     "viewGallery": "查看設計作品集",

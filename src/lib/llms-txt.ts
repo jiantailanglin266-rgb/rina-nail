@@ -2,6 +2,7 @@ import { businessHours } from "@/data/hours";
 import { coupons, formatPrice, menuItems } from "@/data/menu";
 import { allRoutes, routes, type RouteKey } from "@/data/navigation";
 import { paymentMethods, placeholders, siteName, siteUrl, store } from "@/data/site";
+import { socialAccounts } from "@/data/social";
 import { defaultLocale, localeNames, locales } from "@/i18n/config";
 import { interpolate, type Messages } from "@/i18n/dictionary";
 import { absoluteUrl } from "@/lib/seo";
@@ -12,6 +13,17 @@ import { absoluteUrl } from "@/lib/seo";
  * 内容はサイト本文・JSON-LD と同じデータ源から組み立てているため、
  * 三者の記述が食い違いません。原文である日本語を基準に出力します。
  */
+
+/**
+ * SNSの一覧。
+ * 設定済みのアカウントだけを列挙し、1件も無い場合は
+ * 「未確定である」ことが分かる1行を出します（存在しないアカウントを匂わせないため）。
+ */
+function socialLines(): string[] {
+  const accounts = socialAccounts();
+  if (accounts.length === 0) return [`- SNS: ${placeholders.instagramUrl}`];
+  return accounts.map((account) => `- ${account.name}: ${account.url}`);
+}
 
 function hoursLines(messages: Messages): string[] {
   return businessHours.map((day) => {
@@ -135,7 +147,7 @@ ${hoursLines(messages).join("\n")}
 ## お問い合わせ
 
 - 電話番号: ${placeholders.phoneNumber}
-- Instagram: ${placeholders.instagramUrl}
+${socialLines().join("\n")}
 
 ## 多言語ページ
 

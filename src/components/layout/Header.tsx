@@ -4,6 +4,8 @@ import { LanguageSwitcher } from "@/components/layout/LanguageSwitcher";
 import { MobileMenu } from "@/components/layout/MobileMenu";
 import { ActionLink } from "@/components/ui/ActionLink";
 import { GradientText } from "@/components/ui/GradientText";
+import { SocialLinks } from "@/components/ui/SocialLinks";
+import { socialAccounts } from "@/data/social";
 import { links, siteName } from "@/data/site";
 import { localeHref, mainNavKeys, routes } from "@/data/navigation";
 import type { Locale } from "@/i18n/config";
@@ -24,6 +26,9 @@ export function Header({ locale, messages }: Props) {
     href: localeHref(locale, routes[key].path),
     label: messages.nav[key],
   }));
+
+  // 未設定なら、モバイルメニュー側の見出しごと出しません
+  const hasSocial = socialAccounts().length > 0;
 
   return (
     <header className="border-line/70 fixed inset-x-0 top-0 z-50 border-b bg-white/85 backdrop-blur-xl">
@@ -47,7 +52,8 @@ export function Header({ locale, messages }: Props) {
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className="text-ink hover:text-purple text-[0.8rem] font-medium tracking-wide transition"
+                  // 折り返すとヘッダーの高さ（h-16）を超えてしまうため、改行させません
+                  className="text-ink hover:text-purple text-[0.8rem] font-medium tracking-wide whitespace-nowrap transition"
                 >
                   {item.label}
                 </Link>
@@ -56,7 +62,19 @@ export function Header({ locale, messages }: Props) {
           </ul>
         </nav>
 
-        <div className="flex items-center gap-2 sm:gap-3">
+        {/* 右側の操作群。ナビゲーションに押し潰されないよう shrink-0 で固定幅を保ちます */}
+        <div className="flex shrink-0 items-center gap-2 sm:gap-3">
+          {/* SNSアイコン。ヘッダーは横幅が限られるため、主要3件だけを小さめに置きます
+              （全件はフッターとモバイルメニューに表示）。
+              狭い画面ではナビゲーションが折り返すため非表示にします */}
+          <SocialLinks
+            messages={messages}
+            uid="header-"
+            size="xs"
+            maxItems={3}
+            className="flex-nowrap gap-1.5 max-xl:hidden"
+          />
+
           <LanguageSwitcher
             currentLocale={locale}
             label={messages.common.languageLabel}
@@ -74,6 +92,12 @@ export function Header({ locale, messages }: Props) {
             menuLabel={messages.common.menuLabel}
             bookingHref={links.booking}
             bookingLabel={messages.common.book}
+            socialHeading={hasSocial ? messages.common.social.heading : undefined}
+            social={
+              hasSocial ? (
+                <SocialLinks messages={messages} uid="menu-" size="md" showNames />
+              ) : null
+            }
           />
         </div>
       </div>

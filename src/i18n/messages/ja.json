@@ -9,6 +9,10 @@
     "consultDesign": "ネイルデザインを相談する",
     "chooseFromMenu": "メニューから選ぶ",
     "instagram": "Instagramを見る",
+    "social": {
+      "heading": "SNS",
+      "visit": "{name}を見る（別タブで開きます）"
+    },
     "phone": "電話でお問い合わせ",
     "viewAll": "すべて見る",
     "viewGallery": "デザインギャラリーを見る",

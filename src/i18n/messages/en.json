@@ -9,6 +9,10 @@
     "consultDesign": "Talk through a design",
     "chooseFromMenu": "Choose from the menu",
     "instagram": "View Instagram",
+    "social": {
+      "heading": "Social",
+      "visit": "Visit our {name} (opens in a new tab)"
+    },
     "phone": "Call the salon",
     "viewAll": "View all",
     "viewGallery": "View the design gallery",

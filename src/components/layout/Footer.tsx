@@ -1,13 +1,14 @@
 import Link from "next/link";
 import { MapPin, Phone } from "lucide-react";
 
-import { InstagramIcon } from "@/components/ui/icons/InstagramIcon";
 import { BusinessHours } from "@/components/sections/BusinessHours";
 import { PaymentMethods } from "@/components/sections/PaymentMethods";
 import { ActionLink } from "@/components/ui/ActionLink";
 import { GradientText } from "@/components/ui/GradientText";
+import { SocialLinks } from "@/components/ui/SocialLinks";
 import { localeHref, mainNavKeys, routes, utilityNavKeys } from "@/data/navigation";
-import { isPlaceholder, links, siteName, store, telHref } from "@/data/site";
+import { hasSocialAccounts } from "@/data/social";
+import { links, siteName, store, telHref } from "@/data/site";
 import type { Locale } from "@/i18n/config";
 import type { Messages } from "@/i18n/dictionary";
 
@@ -53,20 +54,16 @@ export function Footer({ locale, messages }: Props) {
                 </a>
               </p>
             ) : null}
-            {!isPlaceholder(links.instagram) ? (
-              <p className="flex items-center gap-2">
-                <InstagramIcon className="text-gold size-4 shrink-0" />
-                <a
-                  href={links.instagram}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-purple transition"
-                >
-                  Instagram
-                </a>
-              </p>
-            ) : null}
           </address>
+
+          {hasSocialAccounts() ? (
+            <div className="mt-7">
+              <h2 className="font-accent text-muted text-[0.7rem] tracking-[0.28em] uppercase">
+                {messages.common.social.heading}
+              </h2>
+              <SocialLinks messages={messages} uid="footer-" size="md" className="mt-4" />
+            </div>
+          ) : null}
         </div>
 
         {/* サイトマップ */}
