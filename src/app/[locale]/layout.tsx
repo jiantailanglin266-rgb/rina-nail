@@ -10,6 +10,7 @@ import {
 
 import "../globals.css";
 
+import { CrossMarquee } from "@/components/animations/CrossMarquee";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
 import { FloatingBookingButton } from "@/components/layout/FloatingBookingButton";
@@ -155,10 +156,14 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
         <SkipLink label={messages.common.skipToContent} />
         <Header locale={typedLocale} messages={messages} />
 
-        {/* モバイル固定バーの高さぶん、本文下部に余白を確保します */}
-        <main id="main" className="pb-24 lg:pb-0">
-          {children}
-        </main>
+        <main id="main">{children}</main>
+
+        {/* 本文とフッターのあいだの装飾。X字に交差するマーキーで余白を埋めます */}
+        <CrossMarquee
+          lineOne={messages.crossMarquee.lineOne}
+          lineTwo={messages.crossMarquee.lineTwo}
+          className="mt-14 sm:mt-16"
+        />
 
         <Footer locale={typedLocale} messages={messages} />
         <FloatingBookingButton locale={typedLocale} messages={messages} />

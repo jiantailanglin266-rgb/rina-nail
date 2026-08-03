@@ -41,6 +41,20 @@
       "sun": "星期日"
     }
   },
+  "crossMarquee": {
+    "lineOne": [
+      "BOOK YOUR NEXT NAIL",
+      "COMPLETELY PRIVATE",
+      "ONE GUEST AT A TIME",
+      "MIE · YOKKAICHI"
+    ],
+    "lineTwo": [
+      "完全预约制・完全私密",
+      "GENTLE ON YOUR NAILS",
+      "FILL-IN NAIL",
+      "SEE YOU AT THE SALON"
+    ]
+  },
   "nav": {
     "home": "首页",
     "menu": "服务项目与价格",

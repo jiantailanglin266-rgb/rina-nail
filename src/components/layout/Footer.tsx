@@ -21,7 +21,8 @@ export function Footer({ locale, messages }: Props) {
   const tel = telHref(links.phone);
 
   return (
-    <footer className="border-line bg-soft-pink/50 relative mt-24 border-t">
+    /* マーキーが本文との間を仕切るため、以前ほど大きな余白は取りません */
+    <footer className="border-line bg-soft-pink/50 relative mt-12 border-t sm:mt-16">
       <div className="container-page grid gap-12 py-16 lg:grid-cols-[1.1fr_1fr_1fr] lg:gap-16">
         {/* ブランド */}
         <div>
@@ -133,7 +134,8 @@ export function Footer({ locale, messages }: Props) {
       </div>
 
       <div className="border-line border-t">
-        <div className="container-page text-muted flex flex-col items-center justify-between gap-2 py-6 text-xs sm:flex-row">
+        {/* モバイルの固定予約バーに隠れないよう、最下部だけ余白を足します */}
+        <div className="container-page text-muted flex flex-col items-center justify-between gap-2 py-6 pb-28 text-xs sm:flex-row lg:pb-6">
           <p>
             © {new Date().getFullYear()} {messages.footer.copyright}
           </p>

@@ -41,6 +41,20 @@
       "sun": "日曜日"
     }
   },
+  "crossMarquee": {
+    "lineOne": [
+      "BOOK YOUR NEXT NAIL",
+      "COMPLETELY PRIVATE",
+      "ONE GUEST AT A TIME",
+      "MIE · YOKKAICHI"
+    ],
+    "lineTwo": [
+      "完全予約制・完全プライベート",
+      "GENTLE ON YOUR NAILS",
+      "FILL-IN NAIL",
+      "SEE YOU AT THE SALON"
+    ]
+  },
   "nav": {
     "home": "ホーム",
     "menu": "メニュー・料金",

@@ -154,6 +154,28 @@
 }
 
 @layer components {
+  /*
+   * X字マーキーの帯の傾き。
+   *
+   * 同じ角度でも、画面が広いほど帯の端の上下の振れ幅が大きくなります。
+   * 狭い画面では交差が分かる角度、広い画面では収まる角度になるよう、
+   * 画面幅ごとに角度を変えます（向きは --cross-dir に 1 / -1 を渡します）。
+   */
+  .cross-band {
+    --cross-angle: 9deg;
+    transform: translate(-50%, -50%) rotate(calc(var(--cross-angle) * var(--cross-dir, 1)));
+  }
+  @media (min-width: 40rem) {
+    .cross-band {
+      --cross-angle: 6deg;
+    }
+  }
+  @media (min-width: 64rem) {
+    .cross-band {
+      --cross-angle: 4deg;
+    }
+  }
+
   /* SNSのカラーアイコン。
      --brand には各SNSの公式ブランドカラーが SocialIconLink から渡されます。
      白背景から浮かせるための影と、ホバー／フォーカス時のブランドカラーのグローを付けます。 */
