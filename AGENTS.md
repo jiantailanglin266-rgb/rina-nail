@@ -19,23 +19,55 @@ This version has breaking changes — APIs, conventions, and file structure may 
 - クライアントコンポーネントは必要最小限に。装飾アニメーションはCSS、FAQは `<details>` で実装しています。
 - 変更後は `npm run typecheck && npm run lint && npm run test && npm run build` を通してください。
 
-## 変更したら必ず公開URLを報告する
+## 変更したら「デプロイ完了 → 公開URL報告」まで必ずやり切る
 
-サイトに変更を加えてプッシュしたら、**指示がなくても毎回**以下の3つを報告してください。
-「URLを教えて」と聞かれるのを待たないこと。
+サイトに変更を加えたら、**指示を待たずに毎回**、以下を最後まで実行してください。
+**プッシュした時点で終わらせないこと。** 「URLを教えて」と聞かれるのを待たないこと。
+
+### 手順（1つも省略しない）
+
+1. `npm run typecheck && npm run lint && npm run test && npm run build` を通す
+2. コミットして作業ブランチへプッシュする
+3. **デプロイを実行する**
+4. **デプロイ完了を確認する**（下記のコマンドで success を確認するまで待つ）
+5. **変更が反映された公開URLを出力する**
+
+### デプロイの実行
+
+Pages の環境保護ルールにより、**デプロイはデフォルトブランチからしか実行できません**。
+現在のデフォルトブランチは `claude/rina-nail-website-ygjezu` です
+（`main` に変更された場合は `main` への push で自動デプロイされます。
+deploy ジョブはデフォルトブランチ以外ではスキップされる設定です）。
+
+作業ブランチへの push では自動デプロイが走らないため、**手動でトリガーします**。
+
+```
+mcp__github__actions_run_trigger（method: run_workflow, workflow_id: pages.yml,
+                                  ref: claude/rina-nail-website-ygjezu）
+```
+
+### デプロイ完了の確認
+
+```bash
+OWNER=jiantailanglin266-rgb; REPO=rina-nail; BR=claude/rina-nail-website-ygjezu
+until [ "$(curl -s "https://api.github.com/repos/$OWNER/$REPO/actions/workflows/pages.yml/runs?branch=$BR&per_page=1" \
+  | python3 -c "import sys,json;print(json.load(sys.stdin)['workflow_runs'][0]['status'])")" = "completed" ]; do sleep 20; done
+
+did=$(curl -s "https://api.github.com/repos/$OWNER/$REPO/deployments?per_page=1" \
+  | python3 -c "import sys,json;print(json.load(sys.stdin)[0]['id'])")
+curl -s "https://api.github.com/repos/$OWNER/$REPO/deployments/$did/statuses" \
+  | python3 -c "import sys,json;s=json.load(sys.stdin)[0];print(s['state'], s.get('environment_url'))"
+```
+
+`state` が `success` になったら報告します。失敗した場合は、**その事実と原因を必ず報告**してください
+（黙ってプッシュだけで終えない）。
+
+### 報告に必ず含めるもの
 
 1. **公開サイト**: https://jiantailanglin266-rgb.github.io/rina-nail/
 2. **リポジトリ**: https://github.com/jiantailanglin266-rgb/rina-nail
-3. **デプロイ結果**: GitHub Pages のワークフローが success になったかどうか
+3. **デプロイ結果**: success / failure
 
-### デプロイ手順
-
-Pages の環境保護ルールにより、**デプロイはデフォルトブランチからしか実行できません**。
-現在のデフォルトブランチは `claude/rina-nail-website-ygjezu` です。
-
-```
-push → pages.yml を該当ブランチで workflow_dispatch → deployment status が success を確認 → URL を報告
-```
-
-デフォルトブランチが `main` に変更された場合は、`main` への push で自動デプロイされます
-（deploy ジョブはデフォルトブランチ以外ではスキップされます）。
+なお `github.io` への外部アクセスはプロキシで遮断されているため、
+**公開後の実表示はブラウザで確認できません。確認できていないことを、
+できたように書かないでください。**
