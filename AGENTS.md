@@ -18,3 +18,24 @@ This version has breaking changes — APIs, conventions, and file structure may 
 - **`noindex` / `nofollow` / `Disallow: /` を入れない。**
 - クライアントコンポーネントは必要最小限に。装飾アニメーションはCSS、FAQは `<details>` で実装しています。
 - 変更後は `npm run typecheck && npm run lint && npm run test && npm run build` を通してください。
+
+## 変更したら必ず公開URLを報告する
+
+サイトに変更を加えてプッシュしたら、**指示がなくても毎回**以下の3つを報告してください。
+「URLを教えて」と聞かれるのを待たないこと。
+
+1. **公開サイト**: https://jiantailanglin266-rgb.github.io/rina-nail/
+2. **リポジトリ**: https://github.com/jiantailanglin266-rgb/rina-nail
+3. **デプロイ結果**: GitHub Pages のワークフローが success になったかどうか
+
+### デプロイ手順
+
+Pages の環境保護ルールにより、**デプロイはデフォルトブランチからしか実行できません**。
+現在のデフォルトブランチは `claude/rina-nail-website-ygjezu` です。
+
+```
+push → pages.yml を該当ブランチで workflow_dispatch → deployment status が success を確認 → URL を報告
+```
+
+デフォルトブランチが `main` に変更された場合は、`main` への push で自動デプロイされます
+（deploy ジョブはデフォルトブランチ以外ではスキップされます）。
