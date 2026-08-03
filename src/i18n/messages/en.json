@@ -1,0 +1,770 @@
+{
+  "common": {
+    "skipToContent": "Skip to main content",
+    "tagline": "Kind to your nails, bright in your own way.",
+    "book": "Check availability & book",
+    "bookShort": "Book now",
+    "viewMenu": "View the menu",
+    "viewCoupons": "See first-visit offers",
+    "consultDesign": "Talk through a design",
+    "chooseFromMenu": "Choose from the menu",
+    "instagram": "View Instagram",
+    "phone": "Call the salon",
+    "viewAll": "View all",
+    "viewGallery": "View the design gallery",
+    "readMore": "Read more",
+    "taxIncluded": "All prices include tax.",
+    "priceFrom": "from {price}",
+    "regularPrice": "Regular price",
+    "priceTbd": "Price to be announced",
+    "closed": "Closed",
+    "openMenu": "Open the menu",
+    "closeMenu": "Close the menu",
+    "menuLabel": "Main menu",
+    "breadcrumbLabel": "Breadcrumb",
+    "languageLabel": "Select a language",
+    "currentLanguage": "Current language",
+    "toTop": "Back to top",
+    "summaryLabel": "Summary of this page",
+    "notConfigured": "Not set",
+    "weekdays": {
+      "mon": "Monday",
+      "tue": "Tuesday",
+      "wed": "Wednesday",
+      "thu": "Thursday",
+      "fri": "Friday",
+      "sat": "Saturday",
+      "sun": "Sunday"
+    }
+  },
+  "nav": {
+    "home": "Home",
+    "menu": "Menu & prices",
+    "gallery": "Gallery",
+    "fillIn": "About fill-in",
+    "firstVisit": "First visit",
+    "access": "Access",
+    "faq": "FAQ",
+    "about": "About the salon",
+    "privacy": "Privacy policy",
+    "terms": "Terms of use"
+  },
+  "seo": {
+    "keywords": [
+      "Yokkaichi nail salon",
+      "Yokkaichi fill-in nail",
+      "private nail salon Yokkaichi",
+      "nail salon Mie",
+      "Yokkaichi gel nail",
+      "Yokkaichi nail art",
+      "home nail salon Yokkaichi",
+      "men's nail Yokkaichi",
+      "Hirao-cho nail salon",
+      "one colour nail Yokkaichi"
+    ],
+    "home": {
+      "title": "Rina nail — Private fill-in nail salon in Yokkaichi, Mie",
+      "description": "Rina nail is a fully private, by-appointment nail salon in Hirao-cho, Yokkaichi, Mie. Fill-in work that is gentler on your natural nails, from simple one-colour to bold art. Large car park, men welcome."
+    },
+    "menu": {
+      "title": "Nail menu & prices",
+      "description": "Menu and prices at Rina nail in Hirao-cho, Yokkaichi. One-colour from ¥5,500 (removal included, fill-in available), designs with art, unlimited art and care. First-visit and weekday offers available. All prices include tax."
+    },
+    "gallery": {
+      "title": "Nail design gallery",
+      "description": "Nail design examples from Rina nail: simple, office, nuance, glitter, gorgeous, seasonal and men's designs. Bring your ideas to our private salon in Yokkaichi and we will shape them together."
+    },
+    "fillIn": {
+      "title": "Fill-in nails that are gentler on your nails, in Yokkaichi",
+      "description": "Fill-in means keeping one layer of base gel instead of removing everything each time. Rina nail explains how it differs from a full removal, its benefits, who it suits and what to keep in mind. By appointment only, in Hirao-cho, Yokkaichi, Mie."
+    },
+    "firstVisit": {
+      "title": "First visit — booking and what to expect",
+      "description": "For guests visiting Rina nail for the first time: how to book, what to check beforehand, the consultation, the treatment steps, how long it takes, payment methods, our cancellation policy and what to do if you cannot find the salon."
+    },
+    "access": {
+      "title": "Access & opening hours",
+      "description": "How to reach Rina nail at 3082-5 Hirao-cho, Yokkaichi, Mie. A home salon with a large car park, directions from Agata Post Office, opening hours and closing days. By appointment only, same-day bookings possible."
+    },
+    "faq": {
+      "title": "Frequently asked questions",
+      "description": "Answers about fill-in, treatment for weak nails, first-time appointments, men's bookings, removal surcharges, payment methods, parking, appointment length, out-of-hours requests and same-day bookings at Rina nail."
+    },
+    "about": {
+      "title": "About the salon & the nail artist",
+      "description": "An overview of Rina nail, a profile of owner and nail artist Rina Nakamura, our concept, facilities and payment methods. A fully private, by-appointment nail salon in Hirao-cho, Yokkaichi, Mie."
+    },
+    "privacy": {
+      "title": "Privacy policy",
+      "description": "How Rina nail handles personal information."
+    },
+    "terms": {
+      "title": "Terms of use",
+      "description": "Terms that apply to the Rina nail website and services."
+    },
+    "notFound": {
+      "title": "Page not found",
+      "description": "The page you are looking for may have been moved or removed."
+    }
+  },
+  "home": {
+    "summary": "Rina nail is a fully private, by-appointment nail salon in Hirao-cho, Yokkaichi, Mie Prefecture, Japan. The owner, a nail artist with ten years of experience, handles everything from the consultation to the finish herself, one guest at a time. We recommend fill-in work, which helps reduce the strain on your natural nails, and we cover everything from a simple one-colour to elaborate art. There is a large car park, and men are welcome.",
+    "hero": {
+      "eyebrow": "PRIVATE NAIL SALON — YOKKAICHI, MIE",
+      "title": "Kind to your nails, bright in your own way.",
+      "subtitle": "Fill-in work that looks after your natural nails, so you can enjoy them for longer.",
+      "lead": "Gentle fill-in nails in a completely private, one-to-one space.",
+      "imageAlt": "Nail design finished in a soft gold and pink gradient",
+      "scroll": "Scroll"
+    },
+    "marquee": {
+      "lineOne": ["RINA NAIL", "PRIVATE NAIL SALON", "FILL-IN", "YOKKAICHI", "BEAUTIFUL NAILS"],
+      "lineTwo": [
+        "Kind to your nails, bright in your own way.",
+        "SIMPLE TO GLITTER",
+        "ONE-ON-ONE SALON",
+        "NAIL ART"
+      ]
+    },
+    "concept": {
+      "eyebrow": "CONCEPT",
+      "heading": "Time set aside for one person.",
+      "lead": "A private, one-to-one space where the treatment is shaped around the condition of your nails.",
+      "body": [
+        "Rina nail is a by-appointment private nail salon in Hirao-cho, Yokkaichi. Because no two guests are ever booked at the same time, you can relax without worrying about anyone else in the room.",
+        "During the consultation we look at the condition of your nails, your daily routine and the look you have in mind, then suggest a design and a method that will not strain them. Even if you are only vaguely curious about something, please feel free to ask."
+      ]
+    },
+    "features": {
+      "eyebrow": "FEATURES",
+      "heading": "What makes Rina nail different",
+      "lead": "A small salon means the treatment can be built around you.",
+      "items": [
+        {
+          "title": "By appointment, fully private",
+          "body": "One chair, one member of staff. The space belongs to the guest who booked it."
+        },
+        {
+          "title": "Fill-in recommended",
+          "body": "Keeping one layer of base gel when we rebalance your nails helps reduce the strain on them."
+        },
+        {
+          "title": "Ten years as a nail artist",
+          "body": "From a simple one-colour through to glitter and stones, we cover a wide range of designs."
+        },
+        {
+          "title": "A finish that lifts less and lasts",
+          "body": "We adjust thickness and shape to suit your nails and your daily life, with longevity in mind."
+        },
+        {
+          "title": "Large car park",
+          "body": "As a home salon, there is plenty of easy parking on the property."
+        },
+        {
+          "title": "Men are welcome",
+          "body": "Male guests are welcome, including appointments for care only."
+        },
+        {
+          "title": "Cashless payment accepted",
+          "body": "Major credit cards, Apple Pay, iD and QUICPay are all accepted."
+        },
+        {
+          "title": "Same-day and out-of-hours enquiries",
+          "body": "Same-day bookings are possible subject to availability, and we are happy to discuss times outside our usual hours."
+        }
+      ]
+    },
+    "fillIn": {
+      "eyebrow": "FILL-IN",
+      "heading": "What fill-in means",
+      "lead": "Rebalancing your nails without filing everything away each time.",
+      "body": "We keep one layer of base gel, tidy up the regrowth and any lifting, then build the new colour or art on top. Compared with removing all of the gel every time, this puts less strain on your natural nails. Depending on their condition we may still recommend a full removal.",
+      "cta": "More about fill-in"
+    },
+    "menu": {
+      "eyebrow": "MENU",
+      "heading": "Menu & prices",
+      "lead": "From a single colour through to designs with art. All prices include tax.",
+      "cta": "See the full menu"
+    },
+    "coupons": {
+      "eyebrow": "COUPON",
+      "heading": "Popular offers",
+      "lead": "Offers for first-time guests and for those who can visit on a weekday.",
+      "cta": "See offer details"
+    },
+    "gallery": {
+      "eyebrow": "GALLERY",
+      "heading": "Design gallery",
+      "lead": "From understated to striking — browse examples while we talk through your ideas.",
+      "cta": "See the full gallery"
+    },
+    "owner": {
+      "eyebrow": "NAILIST",
+      "heading": "Meet the nail artist",
+      "name": "Rina Nakamura",
+      "role": "Owner / Nail artist",
+      "message": "From understated to full sparkle — leave it with me.",
+      "imageAlt": "Portrait of owner and nail artist Rina Nakamura (placeholder image)",
+      "greeting": [
+        "Thank you for choosing Rina nail from all the salons you could have picked.",
+        "Through an unhurried consultation, I check the condition of your nails and the look you have in mind so that I can bring your ideas as close to life as possible.",
+        "In a completely private space, please take your time and simply enjoy the appointment."
+      ],
+      "cta": "About the salon"
+    },
+    "firstVisit": {
+      "eyebrow": "FIRST VISIT",
+      "heading": "Visiting for the first time",
+      "lead": "Everything from booking to the day itself, so nothing catches you out.",
+      "cta": "Read the first-visit guide"
+    },
+    "flow": {
+      "eyebrow": "FLOW",
+      "heading": "How an appointment works",
+      "steps": [
+        {
+          "title": "Booking",
+          "body": "Choose your date, time and menu on the booking site. Same-day bookings are possible subject to availability."
+        },
+        {
+          "title": "Arrival & consultation",
+          "body": "We look at the condition of your nails, your daily routine and the look you want, then suggest a design and method."
+        },
+        {
+          "title": "Care & preparation",
+          "body": "We tidy the cuticle area so the gel adheres well. For fill-in, we keep one layer of base and reshape from there."
+        },
+        {
+          "title": "Colour & art",
+          "body": "We build the design you chose, checking the finish with you as we go."
+        },
+        {
+          "title": "Finishing & payment",
+          "body": "We refine the shape and surface to finish. Cashless payment is available."
+        }
+      ]
+    },
+    "faq": {
+      "eyebrow": "FAQ",
+      "heading": "Frequently asked questions",
+      "lead": "The questions we are asked most often before a booking.",
+      "cta": "See all questions"
+    },
+    "access": {
+      "eyebrow": "ACCESS",
+      "heading": "Access & opening hours",
+      "lead": "Hirao-cho, Yokkaichi, Mie. As a home salon, there is a large car park on the property.",
+      "cta": "See full access details"
+    },
+    "cta": {
+      "heading": "Make your next set kinder to your nails.",
+      "lead": "A private, by-appointment space where the design is built around you.",
+      "note": "Same-day bookings are possible subject to availability, and we are happy to discuss times outside our usual hours."
+    }
+  },
+  "menu": {
+    "title": "Nail menu & prices",
+    "lead": "From one-colour to designs with art, unlimited art and care. All prices include tax.",
+    "summary": "The Rina nail menu is built around one-colour gel (from ¥5,500, removal included, fill-in available), with designs including art, unlimited art, removal and care also available. First-time guests can use the First-visit design offer at ¥7,000, and new guests who can come between 13:00 and 16:00 on a weekday can use the Weekday one-colour offer at ¥5,000.",
+    "categories": {
+      "base": "Base menu",
+      "art": "Art & design",
+      "option": "Removal & options",
+      "care": "Care"
+    },
+    "items": {
+      "oneColor": {
+        "name": "One-colour",
+        "description": "A classic single-colour gel set. Removal included, fill-in available. We shape and prepare your nails first, then suggest a colour that suits your skin tone."
+      },
+      "artDesign": {
+        "name": "Design with art",
+        "description": "Glitter, stones, nuance art and more, combined into one design. Removal included, fill-in available. The price varies with the number of nails and the amount of decoration."
+      },
+      "unlimitedArt": {
+        "name": "Unlimited art",
+        "description": "For guests who want to enjoy art and decorations without counting nails. We discuss the design during the consultation."
+      },
+      "off": {
+        "name": "Removal",
+        "description": "Removing existing gel. Please ask us even if the work was done at another salon."
+      },
+      "care": {
+        "name": "Care",
+        "description": "Tidying the cuticle area and refining the shape and surface of your nails. Available on its own, without colour."
+      }
+    },
+    "coupons": {
+      "heading": "Offers",
+      "lead": "Offers for first-time guests and for those who can visit on a weekday.",
+      "firstTimeBadge": "First visit only",
+      "newCustomerBadge": "New guests only",
+      "timeLimitedBadge": "Selected hours",
+      "items": {
+        "firstDesign": {
+          "name": "First-visit design",
+          "description": "A design with art on one nail of each hand. Removal included.",
+          "condition": "For guests visiting for the first time."
+        },
+        "weekdayOneColor": {
+          "name": "Weekday one-colour",
+          "description": "A one-colour set using our gentle fill-in method. Removal included.",
+          "condition": "New guests only, for arrivals between 13:00 and 16:00 on weekdays."
+        }
+      }
+    },
+    "notes": {
+      "heading": "Please note",
+      "items": [
+        "All prices shown include tax.",
+        "When removing a full set, designs with many decorations or full coverage may incur a surcharge from ¥100 per nail, and may also take additional time.",
+        "Depending on the condition of your nails, we may need to change the treatment from the menu you selected.",
+        "Some menu prices vary with the design, the length and the amount of decoration. We will explain the details during the consultation.",
+        "Offers cannot be combined."
+      ]
+    }
+  },
+  "gallery": {
+    "title": "Nail design gallery",
+    "lead": "Examples of past work, grouped by category — from understated to striking.",
+    "summary": "The Rina nail design gallery, grouped into seven categories: simple, office, nuance, glitter, gorgeous, seasonal and men's. The images currently shown are placeholders. If a design catches your eye, mention it when you book or during the consultation.",
+    "note": "The images shown are placeholders. Photographs of real work will be published in due course.",
+    "filterLabel": "Filter by category",
+    "all": "All",
+    "altTemplate": "{category} nail design example {index}",
+    "categories": {
+      "simple": "Simple",
+      "office": "Office",
+      "nuance": "Nuance",
+      "glitter": "Glitter",
+      "gorgeous": "Gorgeous",
+      "seasonal": "Seasonal",
+      "mens": "Men's"
+    }
+  },
+  "fillIn": {
+    "title": "What fill-in means",
+    "lead": "Keeping one layer of base gel, so there is less strain on your natural nails.",
+    "summary": "Fill-in means keeping one layer of base gel in place and rebalancing mainly the regrowth before building the new design on top. Compared with a full removal, where all of the gel is filed away each time, it reduces how often the surface of your natural nail is touched. Rina nail recommends fill-in, though depending on the condition of your nails we may suggest a full removal instead.",
+    "whatIs": {
+      "heading": "What fill-in means",
+      "body": [
+        "Fill-in is a way of renewing gel nails while leaving one layer of base gel in place. We work mainly on the regrowth at the cuticle and on any areas that have lifted, then build the new colour or art on top.",
+        "Compared with filing away all of the gel each time, the surface of your natural nail is touched far less often. That is why it is chosen as a method that is gentler on your own nails."
+      ]
+    },
+    "difference": {
+      "heading": "How it differs from a full removal",
+      "caption": "Fill-in compared with a full removal",
+      "head": {
+        "item": "Item",
+        "fillIn": "Fill-in",
+        "normalOff": "Full removal"
+      },
+      "rows": [
+        {
+          "item": "Base gel",
+          "fillIn": "One layer kept",
+          "normalOff": "Removed entirely"
+        },
+        {
+          "item": "How often the natural nail is filed",
+          "fillIn": "Less often",
+          "normalOff": "Every time the set is renewed"
+        },
+        {
+          "item": "Who it suits",
+          "fillIn": "Guests who renew their nails regularly",
+          "normalOff": "Guests taking a break from nails"
+        },
+        {
+          "item": "Changing the design",
+          "fillIn": "Colour and art can still be changed",
+          "normalOff": "Completely free to change"
+        }
+      ]
+    },
+    "merits": {
+      "heading": "Benefits of fill-in",
+      "items": [
+        {
+          "title": "Less strain on your natural nails",
+          "body": "Because the surface is filed less often, there is less strain overall."
+        },
+        {
+          "title": "Lifts less, lasts longer",
+          "body": "Building on base that is still firmly attached means less lifting at the cuticle."
+        },
+        {
+          "title": "Often quicker",
+          "body": "Without the step of filing everything away, appointments tend to be shorter."
+        },
+        {
+          "title": "Easier to control thickness",
+          "body": "By balancing the layer kept against the layers added, we can keep the finish natural."
+        }
+      ]
+    },
+    "suitable": {
+      "heading": "Who fill-in suits",
+      "items": [
+        "Guests who renew their nails regularly",
+        "Guests who want to reduce the strain on their natural nails",
+        "Guests bothered by lifting at the cuticle",
+        "Guests who prefer a natural, slim finish",
+        "Guests who want to keep roughly the same length over time"
+      ]
+    },
+    "notes": {
+      "heading": "Things to keep in mind",
+      "items": [
+        "Depending on the condition of your nails and previous work, fill-in may not be possible. In that case we will suggest a full removal.",
+        "Gel applied at another salon may not be suitable for fill-in, depending on the base product used.",
+        "Where lifting or chipping is extensive, we remove that area first and then continue.",
+        "Fill-in helps reduce the strain on your natural nails, but it does not remove it entirely. We will always suggest a method based on how your nails look on the day."
+      ]
+    },
+    "cta": {
+      "heading": "Make fill-in part of your next set.",
+      "lead": "We check the condition of your nails and suggest a method that will not push them too far."
+    }
+  },
+  "firstVisit": {
+    "title": "Visiting for the first time",
+    "lead": "From booking to the day itself, laid out so a first visit is straightforward.",
+    "summary": "Rina nail is by appointment only. Bookings are taken through the booking site, and same-day appointments are possible subject to availability. After you arrive we confirm the condition of your nails and what you would like during the consultation, then move through care, colour and art, and finishing. We accept major credit cards, Apple Pay, iD and QUICPay. If you cannot find the salon, please contact us on the day of your visit.",
+    "booking": {
+      "heading": "How to book",
+      "body": [
+        "Rina nail is by appointment only. Choose your preferred date, time and menu on the booking site. Bookings are confirmed immediately.",
+        "Same-day appointments are possible subject to availability, and we are happy to discuss times outside our usual hours.",
+        "You can request a specific artist and pay per visit. Points can also be used."
+      ]
+    },
+    "beforeVisit": {
+      "heading": "Before you come",
+      "items": [
+        "If you have gel applied at another salon, please let us know when you book.",
+        "If you have pain, inflammation or any strong discomfort in your nails or fingers, please talk to us beforehand.",
+        "If you have a picture of the look you want, bringing it along makes the consultation easier.",
+        "If you are driving, please use the parking space on the property.",
+        "If you cannot find the salon, please contact us on the day of your visit."
+      ]
+    },
+    "counseling": {
+      "heading": "The consultation",
+      "body": "We check the condition of your nails, how you spend your days, and the length, shape and design you have in mind. If this is your first set and you are not sure what you want, we will suggest something that fits your daily life."
+    },
+    "flow": {
+      "heading": "How an appointment works"
+    },
+    "duration": {
+      "heading": "How long it takes",
+      "body": "It depends on the menu, the design and the condition of your nails. We give you an estimate when you book and again during the consultation. Designs with a lot of decoration or full coverage may take additional time."
+    },
+    "payment": {
+      "heading": "Payment",
+      "body": "We accept major credit cards and smart payments. Payment is made per visit."
+    },
+    "cancel": {
+      "heading": "Cancellations",
+      "body": [
+        "If you need to change or cancel your appointment, please let us know as early as you can.",
+        "As a by-appointment salon with a single chair, a last-minute cancellation affects other guests too. We appreciate your understanding.",
+        "If something unavoidable comes up, such as illness, please get in touch."
+      ]
+    },
+    "lost": {
+      "heading": "If you cannot find us",
+      "body": "As this is a home salon, it can be a little hard to find on a first visit. Contact us on the day and we will guide you in."
+    },
+    "cta": {
+      "heading": "A first booking is easy to make.",
+      "lead": "From consultation to finish, the owner looks after you one to one."
+    }
+  },
+  "access": {
+    "title": "Access & opening hours",
+    "lead": "Hirao-cho, Yokkaichi, Mie. As a home salon, there is a large car park on the property.",
+    "summary": "Rina nail is located at 3082-5 Hirao-cho, Yokkaichi, Mie. Keep Agata Post Office on your right, turn left just after passing it, follow the road, then turn right at the three-way junction with a green house on the right-hand corner. The salon is the house with a basketball hoop and a camper van in the car park. We open 10:00–18:00 on Monday, Tuesday, Thursday and Friday, and 10:00–16:00 on Wednesday, and are generally closed on Saturdays, Sundays and public holidays. Times outside these hours can be arranged on request.",
+    "addressHeading": "Address",
+    "directionsHeading": "Directions",
+    "directions": [
+      "Keep Agata Post Office on your right and turn left just after passing it.",
+      "Follow the road, then turn right at the three-way junction with a green house on the right-hand corner.",
+      "The salon is the house with a basketball hoop and a camper van in the car park."
+    ],
+    "directionsNote": "If you have trouble finding us, please contact us on the day of your visit and we will guide you in.",
+    "parkingHeading": "Parking",
+    "parking": "As a home salon, there is a large parking area on the property. Please use whichever space is easiest for you.",
+    "hoursHeading": "Opening hours",
+    "hoursNote": "Times outside our usual hours can be arranged on request. Same-day bookings are possible subject to availability.",
+    "closedHeading": "Closing days",
+    "closed": "Generally Saturdays, Sundays and public holidays",
+    "mapHeading": "Map",
+    "mapPlaceholder": "The map embed URL has not been set. Once the NEXT_PUBLIC_MAP_EMBED_URL environment variable is configured, the map will appear here.",
+    "contactHeading": "Bookings & enquiries",
+    "contactNote": "Bookings are taken through the booking site. As we work by appointment only, please book before visiting."
+  },
+  "faq": {
+    "title": "Frequently asked questions",
+    "lead": "The questions we are asked most often before a booking.",
+    "summary": "Questions and answers from Rina nail, covering what fill-in involves, treatment for weak nails, first-time appointments, men's bookings, removal surcharges, payment methods, parking, how long an appointment takes, out-of-hours requests and same-day bookings.",
+    "groups": [
+      {
+        "heading": "Fill-in and treatments",
+        "items": [
+          {
+            "q": "What is fill-in?",
+            "a": "It is a method where one layer of base gel is kept in place and the set is renewed by reworking mainly the regrowth. Compared with filing away all of the gel each time, it puts less strain on your natural nails."
+          },
+          {
+            "q": "Can I have a treatment if my nails are weak?",
+            "a": "We suggest a method while checking the condition of your nails. Depending on how they look, we may change what we do."
+          },
+          {
+            "q": "Is it fine if this is my first time having nails done?",
+            "a": "Yes. We go through the design, the colour, the length and how you spend your days, without rushing."
+          },
+          {
+            "q": "Can men book an appointment?",
+            "a": "Yes. Male guests are welcome."
+          },
+          {
+            "q": "Is there a surcharge for removal?",
+            "a": "For designs with a lot of decoration or full coverage, a surcharge from ¥100 per nail may apply, and the appointment may take additional time."
+          },
+          {
+            "q": "How long does an appointment take?",
+            "a": "It depends on the menu, the design and the condition of your nails. We give you an estimate when you book and again during the consultation."
+          }
+        ]
+      },
+      {
+        "heading": "Bookings and payment",
+        "items": [
+          {
+            "q": "Can I book on the same day?",
+            "a": "Same-day bookings are possible subject to availability."
+          },
+          {
+            "q": "Can I book outside your opening hours?",
+            "a": "Times outside our usual opening hours can be arranged on request."
+          },
+          {
+            "q": "Which payment methods do you accept?",
+            "a": "We accept Visa, Mastercard, JCB, American Express, Apple Pay, iD and QUICPay."
+          }
+        ]
+      },
+      {
+        "heading": "Getting here",
+        "items": [
+          {
+            "q": "Is there parking?",
+            "a": "Yes. There is a large, easy-to-use parking area on the grounds of the home salon."
+          },
+          {
+            "q": "What should I do if I cannot find the salon?",
+            "a": "Please contact us on the day of your visit and we will guide you in."
+          }
+        ]
+      }
+    ]
+  },
+  "about": {
+    "title": "About the salon",
+    "lead": "An overview of Rina nail, a profile of the nail artist, our concept and our facilities.",
+    "summary": "Rina nail is a fully private, by-appointment nail salon at 3082-5 Hirao-cho, Yokkaichi, Mie. Owner and nail artist Rina Nakamura looks after every guest herself, with ten years of experience behind her. It is a home salon with one chair, one member of staff and a large car park. We recommend fill-in work, which helps reduce the strain on your natural nails.",
+    "overview": {
+      "heading": "Salon overview",
+      "caption": "Key information about Rina nail",
+      "labels": {
+        "name": "Salon name",
+        "nameKana": "Reading",
+        "owner": "Owner / Nail artist",
+        "career": "Years of experience",
+        "address": "Address",
+        "businessType": "Business type",
+        "hours": "Opening hours",
+        "closed": "Closing days",
+        "seats": "Facilities",
+        "staff": "Staff",
+        "parking": "Parking",
+        "payment": "Payment methods",
+        "reservation": "Bookings",
+        "languages": "Languages spoken"
+      },
+      "values": {
+        "career": "10 years",
+        "businessType": "Nail salon",
+        "seats": "1 chair",
+        "staff": "1 person",
+        "parking": "Large car park (home salon)",
+        "reservation": "By appointment only (same-day and instant booking available)",
+        "languages": "Japanese"
+      }
+    },
+    "owner": {
+      "heading": "About the nail artist",
+      "specialtyLabel": "Specialities",
+      "specialty": "Everything from simple nails to glitter, stones and bold designs"
+    },
+    "concept": {
+      "heading": "Our concept",
+      "body": [
+        "A nail salon offering fill-in work that is gentler on your natural nails, in a completely private, one-to-one space.",
+        "Our concept is simple: kind to your nails, bright in your own way. We suggest nails you can enjoy for longer while looking after the nails underneath.",
+        "We work across a wide range, from a simple one-colour to elaborate designs with glitter and stones. If you are unsure what you want, we will work it out together during the consultation."
+      ]
+    },
+    "facility": {
+      "heading": "Facilities",
+      "items": [
+        "A fully private space with a single chair",
+        "One-to-one treatment by a single nail artist",
+        "A large car park on the grounds of the home salon",
+        "Cashless payment accepted"
+      ]
+    },
+    "payment": {
+      "heading": "Payment methods",
+      "note": "Payment is made per visit. Points can also be used."
+    },
+    "legal": {
+      "heading": "Terms & policies"
+    }
+  },
+  "privacy": {
+    "title": "Privacy policy",
+    "lead": "How Rina nail (\"the salon\") handles personal information.",
+    "sections": [
+      {
+        "heading": "1. Information we collect",
+        "body": [
+          "The salon collects personal information to the extent necessary to take bookings and provide its services, including your name, contact details, booking details and information about the condition of your nails.",
+          "We may use analytics tools to understand how this website is used. The information collected in this way does not identify individuals."
+        ]
+      },
+      {
+        "heading": "2. How we use it",
+        "body": [
+          "We use the personal information we collect to manage bookings, to suggest and confirm treatments, to contact you and to improve our service.",
+          "If we need to use it beyond these purposes, we will obtain your consent in advance."
+        ]
+      },
+      {
+        "heading": "3. Sharing with third parties",
+        "body": [
+          "Except where required by law, we do not provide personal information to third parties without your consent."
+        ]
+      },
+      {
+        "heading": "4. Security",
+        "body": [
+          "We take appropriate measures to prevent personal information from being leaked, lost or damaged."
+        ]
+      },
+      {
+        "heading": "5. Access, correction and deletion",
+        "body": [
+          "At your request, we will disclose, correct, suspend the use of or delete the personal information we hold about you. Please contact the salon."
+        ]
+      },
+      {
+        "heading": "6. Use of the booking service",
+        "body": [
+          "Bookings may be taken through an external booking service. Personal information handled on that service is governed by that provider's own terms."
+        ]
+      },
+      {
+        "heading": "7. Changes",
+        "body": [
+          "This policy may be revised as necessary. Any revised version will be published on this page."
+        ]
+      },
+      {
+        "heading": "8. Contact",
+        "body": [
+          "For questions about this policy, please contact the salon through the booking site or the contact details provided."
+        ]
+      }
+    ]
+  },
+  "terms": {
+    "title": "Terms of use",
+    "lead": "Terms that apply to the Rina nail website and services.",
+    "sections": [
+      {
+        "heading": "1. Scope",
+        "body": [
+          "These terms apply to the services provided by Rina nail (\"the salon\") and to the use of this website."
+        ]
+      },
+      {
+        "heading": "2. Bookings",
+        "body": [
+          "The salon works by appointment only. Bookings are taken through the booking site.",
+          "Subject to availability, we may accept same-day bookings and discuss appointments outside our usual opening hours."
+        ]
+      },
+      {
+        "heading": "3. Changes and cancellations",
+        "body": [
+          "Please let us know as early as possible if you need to change or cancel a booking.",
+          "As a salon with a single chair, a last-minute cancellation affects other guests. We appreciate your cooperation."
+        ]
+      },
+      {
+        "heading": "4. Treatments",
+        "body": [
+          "Depending on the condition of your nails or fingers, we may be unable to carry out the treatment you requested, or may need to change it.",
+          "The salon does not provide medical treatment. If you are concerned about a condition affecting your nails or skin, we recommend consulting a medical professional."
+        ]
+      },
+      {
+        "heading": "5. Prices and payment",
+        "body": [
+          "All prices shown include tax.",
+          "A surcharge may apply depending on the design, the length and the amount of decoration. We will tell you in advance.",
+          "Payment is made after the appointment, per visit. Major credit cards and smart payments are accepted."
+        ]
+      },
+      {
+        "heading": "6. Website content",
+        "body": [
+          "Information published on this website may change without notice.",
+          "Some images on this site are placeholders prepared as design references."
+        ]
+      },
+      {
+        "heading": "7. Prohibited conduct",
+        "body": [
+          "Please do not copy, republish or alter the content of this website without permission.",
+          "We may decline conduct that disrupts other guests or the running of the salon."
+        ]
+      },
+      {
+        "heading": "8. Changes to these terms",
+        "body": [
+          "These terms may be amended as necessary. Any amended version will be published on this page."
+        ]
+      }
+    ]
+  },
+  "footer": {
+    "tagline": "A fully private, by-appointment nail salon in Hirao-cho, Yokkaichi, Mie.",
+    "navHeading": "Site map",
+    "infoHeading": "Salon information",
+    "legalHeading": "Legal",
+    "bookingHeading": "Bookings",
+    "bookingNote": "By appointment only. Please book through the booking site.",
+    "copyright": "Rina nail"
+  },
+  "notFound": {
+    "title": "Page not found",
+    "lead": "The page you are looking for may have been moved or removed. Please continue from one of the links below.",
+    "backHome": "Back to the home page"
+  }
+}

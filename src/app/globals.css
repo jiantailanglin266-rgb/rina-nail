@@ -1,0 +1,370 @@
+@import "tailwindcss";
+
+/* ============================================================
+   デザインシステム — Rina nail
+   ホワイトを基調に、ゴールド／ピンク／パープルをアクセントとして使います。
+   蛍光色に近いネオンカラーは、CTA・見出し・装飾・グラデーションに限定します。
+   ============================================================ */
+@theme {
+  --color-white: #ffffff;
+  --color-soft-pink: #fff4fa;
+  --color-soft-lilac: #f7f2ff;
+  --color-soft-gold: #fffaee;
+  --color-neon-pink: #ff2fa4;
+  --color-hot-pink: #ff4fc8;
+  --color-purple: #8b3dff;
+  --color-deep-purple: #4a157a;
+  --color-gold: #d4af37;
+  --color-bright-gold: #ffd76a;
+  --color-ink: #24172b;
+  --color-muted: #6f6673;
+  --color-line: #efe6f2;
+
+  --font-sans-jp: var(--font-noto-sans-jp), "Hiragino Sans", "Yu Gothic", sans-serif;
+  --font-heading-jp: var(--font-zen-kaku), var(--font-noto-sans-jp), "Hiragino Sans", sans-serif;
+  --font-mincho-jp: var(--font-shippori), "Hiragino Mincho ProN", "Yu Mincho", serif;
+  --font-display: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
+  --font-accent: var(--font-montserrat), "Helvetica Neue", Arial, sans-serif;
+
+  --ease-soft: cubic-bezier(0.22, 1, 0.36, 1);
+
+  --breakpoint-xs: 24rem;
+
+  /* グラデーション（テキスト・ボーダー・背景装飾で共有） */
+  --gradient-gold-pink: linear-gradient(135deg, #ffd76a 0%, #ff4fc8 100%);
+  --gradient-pink-purple: linear-gradient(135deg, #ff4fc8 0%, #8b3dff 100%);
+  --gradient-purple-gold: linear-gradient(135deg, #8b3dff 0%, #d4af37 100%);
+  --gradient-neon: linear-gradient(135deg, #ff2fa4 0%, #8b3dff 100%);
+  --gradient-signature: linear-gradient(135deg, #ffd76a 0%, #ff4fc8 45%, #8b3dff 100%);
+}
+
+/* ------------------------------------------------------------
+   ベース
+   ------------------------------------------------------------ */
+@layer base {
+  :root {
+    color-scheme: light;
+    scroll-behavior: smooth;
+    /* 固定ヘッダー分のアンカーオフセット */
+    scroll-padding-top: 5.5rem;
+  }
+
+  html,
+  body {
+    max-width: 100%;
+    /* 装飾がはみ出しても横スクロールを発生させません */
+    overflow-x: clip;
+  }
+
+  body {
+    background-color: var(--color-white);
+    color: var(--color-ink);
+    font-family: var(--font-sans-jp);
+    font-feature-settings: "palt";
+    letter-spacing: 0.02em;
+    line-height: 1.9;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-heading-jp);
+    font-weight: 600;
+    line-height: 1.5;
+    letter-spacing: 0.04em;
+  }
+
+  ::selection {
+    background: var(--color-hot-pink);
+    color: var(--color-white);
+  }
+
+  /* キーボード操作時のフォーカスを必ず視認できるようにします */
+  :focus-visible {
+    outline: 3px solid var(--color-purple);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  /* 画像はレイアウトシフトを防ぐため常に比率を保ちます */
+  img,
+  svg,
+  video {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+/* ------------------------------------------------------------
+   ユーティリティ
+   ------------------------------------------------------------ */
+@utility container-page {
+  width: 100%;
+  margin-inline: auto;
+  max-width: 78rem;
+  padding-inline: 1.25rem;
+
+  @media (width >= 48rem) {
+    padding-inline: 2rem;
+  }
+  @media (width >= 80rem) {
+    padding-inline: 2.5rem;
+  }
+}
+
+@layer components {
+  /* テキストへグラデーションを適用します（見出し・数字・英字アクセント用）。
+     グラデーション文字は細いと読みづらいため、font-weight を上げています。 */
+  .text-gradient {
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    font-weight: 600;
+    /* 背景が透けるため、選択時だけは実色に戻します */
+    &::selection {
+      -webkit-text-fill-color: var(--color-white);
+    }
+  }
+  .text-gradient-gold-pink {
+    background-image: var(--gradient-gold-pink);
+  }
+  .text-gradient-pink-purple {
+    background-image: var(--gradient-pink-purple);
+  }
+  .text-gradient-purple-gold {
+    background-image: var(--gradient-purple-gold);
+  }
+  .text-gradient-neon {
+    background-image: var(--gradient-neon);
+  }
+  .text-gradient-signature {
+    background-image: var(--gradient-signature);
+  }
+
+  /* カードの縁にグラデーションを回します（内側は白のまま） */
+  .gradient-frame {
+    position: relative;
+  }
+  .gradient-frame::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: var(--gradient-signature);
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+}
+
+/* ------------------------------------------------------------
+   キーフレーム
+   無限ループはすべて低速にし、GPU負荷の低い transform / opacity のみを動かします。
+   ------------------------------------------------------------ */
+@keyframes rn-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -14px, 0);
+  }
+}
+
+@keyframes rn-drift {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  33% {
+    transform: translate3d(18px, -22px, 0) scale(1.04);
+  }
+  66% {
+    transform: translate3d(-14px, 12px, 0) scale(0.98);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes rn-spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rn-twinkle {
+  0%,
+  100% {
+    opacity: 0.15;
+    transform: scale(0.85);
+  }
+  50% {
+    opacity: 0.75;
+    transform: scale(1.1);
+  }
+}
+
+@keyframes rn-gradient-move {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes rn-sheen {
+  0% {
+    transform: translateX(-120%) skewX(-18deg);
+  }
+  60%,
+  100% {
+    transform: translateX(220%) skewX(-18deg);
+  }
+}
+
+@keyframes rn-marquee-left {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@keyframes rn-marquee-right {
+  from {
+    transform: translate3d(-50%, 0, 0);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes rn-pulse-soft {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgb(255 79 200 / 0.35);
+  }
+  70% {
+    box-shadow: 0 0 0 14px rgb(255 79 200 / 0);
+  }
+}
+
+@keyframes rn-scroll-hint {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(14px);
+    opacity: 0;
+  }
+}
+
+/* ------------------------------------------------------------
+   アニメーションユーティリティ
+   ------------------------------------------------------------ */
+@layer components {
+  .anim-float {
+    animation: rn-float 9s var(--ease-soft) infinite;
+  }
+  .anim-drift {
+    animation: rn-drift 26s ease-in-out infinite;
+  }
+  .anim-spin-slow {
+    animation: rn-spin-slow 44s linear infinite;
+  }
+  .anim-twinkle {
+    animation: rn-twinkle 5s ease-in-out infinite;
+  }
+  .anim-gradient-move {
+    background-size: 220% 220%;
+    animation: rn-gradient-move 14s ease-in-out infinite;
+  }
+  .anim-pulse-soft {
+    animation: rn-pulse-soft 3.4s ease-out infinite;
+  }
+  .anim-scroll-hint {
+    animation: rn-scroll-hint 2.2s ease-in-out infinite;
+  }
+
+  /* ボタンの光沢。::after を使うため、対象には relative / overflow-hidden が必要です */
+  .btn-sheen::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 45%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgb(255 255 255 / 0.55), transparent);
+    transform: translateX(-120%) skewX(-18deg);
+    pointer-events: none;
+  }
+  .btn-sheen:hover::after,
+  .btn-sheen:focus-visible::after {
+    animation: rn-sheen 1.1s var(--ease-soft);
+  }
+
+  /* マーキー */
+  .marquee-track-left {
+    animation: rn-marquee-left var(--marquee-duration, 48s) linear infinite;
+  }
+  .marquee-track-right {
+    animation: rn-marquee-right var(--marquee-duration, 56s) linear infinite;
+  }
+  .marquee-hover:hover .marquee-track-left,
+  .marquee-hover:hover .marquee-track-right {
+    animation-play-state: running;
+    animation-duration: calc(var(--marquee-duration, 48s) * 1.8);
+  }
+}
+
+/* ------------------------------------------------------------
+   アクセシビリティ — アニメーション抑制
+   prefers-reduced-motion が有効な場合、装飾アニメーションを停止します。
+   ------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .marquee-track-left,
+  .marquee-track-right {
+    /* 停止時に文字が中途半端な位置で切れないよう先頭へ戻します */
+    transform: translate3d(0, 0, 0) !important;
+  }
+}
+
+/* モバイルでは背景装飾の量を減らし、描画コストを抑えます */
+@media (max-width: 47.99rem) {
+  .decor-desktop-only {
+    display: none;
+  }
+}

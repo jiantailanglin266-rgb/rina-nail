@@ -1,0 +1,150 @@
+import Link from "next/link";
+import { MapPin, Phone } from "lucide-react";
+
+import { InstagramIcon } from "@/components/ui/icons/InstagramIcon";
+import { BusinessHours } from "@/components/sections/BusinessHours";
+import { PaymentMethods } from "@/components/sections/PaymentMethods";
+import { ActionLink } from "@/components/ui/ActionLink";
+import { GradientText } from "@/components/ui/GradientText";
+import { localeHref, mainNavKeys, routes, utilityNavKeys } from "@/data/navigation";
+import { isPlaceholder, links, siteName, store, telHref } from "@/data/site";
+import type { Locale } from "@/i18n/config";
+import type { Messages } from "@/i18n/dictionary";
+
+type Props = {
+  locale: Locale;
+  messages: Messages;
+};
+
+export function Footer({ locale, messages }: Props) {
+  const tel = telHref(links.phone);
+
+  return (
+    <footer className="border-line bg-soft-pink/50 relative mt-24 border-t">
+      <div className="container-page grid gap-12 py-16 lg:grid-cols-[1.1fr_1fr_1fr] lg:gap-16">
+        {/* ブランド */}
+        <div>
+          <Link
+            href={localeHref(locale, routes.home.path)}
+            className="inline-flex flex-col leading-none"
+          >
+            <GradientText variant="signature" className="font-display text-3xl tracking-wide">
+              {siteName}
+            </GradientText>
+            <span className="font-accent text-muted mt-1 text-[0.55rem] tracking-[0.28em] uppercase">
+              Private Nail Salon · Yokkaichi
+            </span>
+          </Link>
+
+          <p className="text-muted mt-5 max-w-sm text-sm leading-relaxed">
+            {messages.footer.tagline}
+          </p>
+
+          <address className="mt-6 space-y-2 text-sm not-italic">
+            <p className="flex items-start gap-2">
+              <MapPin className="text-gold mt-1 size-4 shrink-0" aria-hidden="true" />
+              <span>{store.address.full}</span>
+            </p>
+            {tel ? (
+              <p className="flex items-center gap-2">
+                <Phone className="text-gold size-4 shrink-0" aria-hidden="true" />
+                <a href={tel} className="hover:text-purple transition">
+                  {links.phone}
+                </a>
+              </p>
+            ) : null}
+            {!isPlaceholder(links.instagram) ? (
+              <p className="flex items-center gap-2">
+                <InstagramIcon className="text-gold size-4 shrink-0" />
+                <a
+                  href={links.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-purple transition"
+                >
+                  Instagram
+                </a>
+              </p>
+            ) : null}
+          </address>
+        </div>
+
+        {/* サイトマップ */}
+        <nav aria-label={messages.footer.navHeading}>
+          <h2 className="font-accent text-muted text-[0.7rem] tracking-[0.28em] uppercase">
+            {messages.footer.navHeading}
+          </h2>
+          <ul className="mt-5 space-y-3 text-sm">
+            <li>
+              <Link
+                href={localeHref(locale, routes.home.path)}
+                className="hover:text-purple transition"
+              >
+                {messages.nav.home}
+              </Link>
+            </li>
+            {mainNavKeys.map((key) => (
+              <li key={key}>
+                <Link
+                  href={localeHref(locale, routes[key].path)}
+                  className="hover:text-purple transition"
+                >
+                  {messages.nav[key]}
+                </Link>
+              </li>
+            ))}
+          </ul>
+
+          <h2 className="font-accent text-muted mt-8 text-[0.7rem] tracking-[0.28em] uppercase">
+            {messages.footer.legalHeading}
+          </h2>
+          <ul className="mt-4 space-y-3 text-sm">
+            {utilityNavKeys.map((key) => (
+              <li key={key}>
+                <Link
+                  href={localeHref(locale, routes[key].path)}
+                  className="hover:text-purple transition"
+                >
+                  {messages.nav[key]}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+
+        {/* 店舗情報 */}
+        <div>
+          <h2 className="font-accent text-muted text-[0.7rem] tracking-[0.28em] uppercase">
+            {messages.footer.infoHeading}
+          </h2>
+          <BusinessHours messages={messages} className="mt-5" />
+          <p className="text-muted mt-3 text-xs">{messages.access.closed}</p>
+
+          <h2 className="font-accent text-muted mt-8 text-[0.7rem] tracking-[0.28em] uppercase">
+            {messages.about.payment.heading}
+          </h2>
+          <PaymentMethods className="mt-4" label={messages.about.payment.heading} />
+
+          <h2 className="font-accent text-muted mt-8 text-[0.7rem] tracking-[0.28em] uppercase">
+            {messages.footer.bookingHeading}
+          </h2>
+          <p className="text-muted mt-3 text-xs">{messages.footer.bookingNote}</p>
+          <ActionLink href={links.booking} external size="sm" className="mt-4">
+            {messages.common.book}
+          </ActionLink>
+        </div>
+      </div>
+
+      <div className="border-line border-t">
+        <div className="container-page text-muted flex flex-col items-center justify-between gap-2 py-6 text-xs sm:flex-row">
+          <p>
+            © {new Date().getFullYear()} {messages.footer.copyright}
+          </p>
+          <p lang="ja">
+            {store.name}（{store.nameKana}）
+          </p>
+        </div>
+      </div>
+    </footer>
+  );
+}
