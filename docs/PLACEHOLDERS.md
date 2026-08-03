@@ -65,18 +65,19 @@
 
 ## 3. 画像
 
-`public/images/` 以下はすべて `npm run placeholders` で生成した**仮画像**です。
+`public/images/` 以下は `npm run placeholders` で生成した**仮画像**です
+（ヒーロー画像のみブランドキービジュアルに差し替え済み）。
 実写に差し替える手順は [README](../README.md#8-画像の差し替え) を参照してください。
 
-| パス                               | 用途                  | 推奨サイズ |
-| ---------------------------------- | --------------------- | ---------- |
-| `public/images/hero/hero-main.jpg` | ヒーロー（LCP要素）   | 1200×1500  |
-| `public/images/salon/salon-01.jpg` | コンセプトセクション  | 1400×933   |
-| `public/images/owner/owner.jpg`    | オーナープロフィール  | 800×1000   |
-| `public/images/gallery/*.jpg`      | ギャラリー（14枚）    | 1000×1250  |
-| `public/images/common/ogp.png`     | OGP画像（全言語共通） | 1200×630   |
-| `public/icon.png`                  | ファビコン            | 512×512    |
-| `public/apple-touch-icon.png`      | ホーム画面アイコン    | 180×180    |
+| パス                               | 用途                             | 推奨サイズ |
+| ---------------------------------- | -------------------------------- | ---------- |
+| `public/images/hero/hero-main.jpg` | ヒーロー（LCP要素）※差し替え済み | 1024×1536  |
+| `public/images/salon/salon-01.jpg` | コンセプトセクション             | 1400×933   |
+| `public/images/owner/owner.jpg`    | オーナープロフィール             | 800×1000   |
+| `public/images/gallery/*.jpg`      | ギャラリー（14枚）               | 1000×1250  |
+| `public/images/common/ogp.png`     | OGP画像（全言語共通）            | 1200×630   |
+| `public/icon.png`                  | ファビコン                       | 512×512    |
+| `public/apple-touch-icon.png`      | ホーム画面アイコン               | 180×180    |
 
 ---
 

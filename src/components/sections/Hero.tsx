@@ -8,7 +8,7 @@ import { ActionLink } from "@/components/ui/ActionLink";
 import { InstagramIcon } from "@/components/ui/icons/InstagramIcon";
 import { GradientText } from "@/components/ui/GradientText";
 import { localeHref, routes } from "@/data/navigation";
-import { isPlaceholder, links, siteName } from "@/data/site";
+import { isPlaceholder, links } from "@/data/site";
 import type { Locale } from "@/i18n/config";
 import type { Messages } from "@/i18n/dictionary";
 
@@ -108,8 +108,8 @@ export function Hero({ locale, messages }: Props) {
             <Image
               src="/images/hero/hero-main.jpg"
               alt={hero.imageAlt}
-              width={1200}
-              height={1500}
+              width={1024}
+              height={1536}
               priority
               sizes="(max-width: 1024px) 90vw, 460px"
               className="h-auto w-full object-cover"
@@ -125,18 +125,11 @@ export function Hero({ locale, messages }: Props) {
             />
           </div>
 
-          {/* 浮遊するゴールドのバッジ */}
-          <div
-            aria-hidden="true"
-            className="anim-float border-gold/30 absolute -bottom-4 -left-2 hidden rounded-2xl border bg-white/90 px-4 py-3 shadow-[0_18px_40px_-24px_rgba(139,61,255,0.5)] backdrop-blur sm:block"
-          >
-            <p className="font-display text-lg leading-none">
-              <GradientText variant="purpleGold">{siteName}</GradientText>
-            </p>
-            <p className="font-accent text-muted mt-1 text-[0.55rem] tracking-[0.24em] uppercase">
-              Fill-in Nail Salon
-            </p>
-          </div>
+          {/*
+            以前はここに小さなロゴバッジを置いていましたが、
+            キービジュアル自体にワードマークが入っているため、
+            ブランド名が二重に表示されてしまうので削除しました。
+          */}
         </div>
       </div>
     </section>
