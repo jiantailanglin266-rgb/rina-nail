@@ -11,6 +11,7 @@ import {
 import "../globals.css";
 
 import { CrossMarquee } from "@/components/animations/CrossMarquee";
+import { SiteChat } from "@/components/chat/SiteChat";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
 import { FloatingBookingButton } from "@/components/layout/FloatingBookingButton";
@@ -167,6 +168,13 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
 
         <Footer locale={typedLocale} messages={messages} />
         <FloatingBookingButton locale={typedLocale} messages={messages} />
+
+        {/*
+          チャットはヘッダーの外（body直下）に置きます。
+          ヘッダーは backdrop-filter を持つため position: fixed の基準になり、
+          中に入れると画面ではなくヘッダーを基準に配置されてしまいます。
+        */}
+        <SiteChat locale={typedLocale} messages={messages} />
 
         {/* サイト全体に共通する構造化データ（各ページ側で WebPage / パンくずを追加します） */}
         <JsonLd

@@ -55,6 +55,214 @@
       "SEE YOU AT THE SALON"
     ]
   },
+  "chat": {
+    "launcher": "Ask a question",
+    "open": "Open chat",
+    "close": "Close chat",
+    "title": "Frequently asked questions",
+    "subtitle": "Answered automatically",
+    "placeholder": "Type your question",
+    "send": "Send",
+    "greeting": "Hello. I can answer questions about Rina nail automatically. Pick a button below, or type your question.",
+    "fallback": "Sorry, I could not find an answer. Please see the FAQ page. For anything specific, let us know when you book.",
+    "suggest": "Did you mean one of these?",
+    "disclaimer": "Automated replies, based on the information published on this site.",
+    "quickTitle": "Common questions",
+    "historyLabel": "Chat history",
+    "you": "You",
+    "bot": "Rina nail",
+    "intents": {
+      "booking": {
+        "question": "How do I book?",
+        "keywords": [
+          "book",
+          "booking",
+          "reserve",
+          "reservation",
+          "appointment",
+          "availability",
+          "cancel",
+          "change"
+        ]
+      },
+      "hours": {
+        "question": "What are your opening hours?",
+        "keywords": [
+          "hours",
+          "open",
+          "close",
+          "closed",
+          "time",
+          "day off",
+          "holiday",
+          "saturday",
+          "sunday",
+          "when"
+        ]
+      },
+      "price": {
+        "question": "How much does it cost?",
+        "keywords": [
+          "price",
+          "cost",
+          "how much",
+          "fee",
+          "yen",
+          "cheap",
+          "expensive",
+          "rate"
+        ]
+      },
+      "access": {
+        "question": "Where are you located?",
+        "keywords": [
+          "where",
+          "location",
+          "address",
+          "access",
+          "map",
+          "directions",
+          "station",
+          "lost",
+          "how to get"
+        ]
+      },
+      "flow": {
+        "question": "What happens during the appointment?",
+        "keywords": [
+          "flow",
+          "steps",
+          "process",
+          "procedure",
+          "what happens",
+          "on the day"
+        ]
+      },
+      "menu": {
+        "question": "What services do you offer?",
+        "keywords": [
+          "menu",
+          "services",
+          "options",
+          "treatments",
+          "what can"
+        ]
+      },
+      "gallery": {
+        "question": "Can I see design examples?",
+        "keywords": [
+          "design",
+          "gallery",
+          "photos",
+          "examples",
+          "samples",
+          "reference",
+          "image"
+        ]
+      },
+      "salon": {
+        "question": "What kind of salon is this?",
+        "keywords": [
+          "salon",
+          "private",
+          "room",
+          "atmosphere",
+          "nail artist",
+          "staff"
+        ]
+      }
+    },
+    "faqKeywords": {
+      "fillIn": [
+        "fill in",
+        "fill-in",
+        "one layer",
+        "base",
+        "natural nail",
+        "damage",
+        "thin",
+        "paragel",
+        "other salon"
+      ],
+      "weakNails": [
+        "weak nails",
+        "thin nails",
+        "brittle",
+        "peeling",
+        "split",
+        "damaged",
+        "bitten"
+      ],
+      "firstTime": [
+        "first time",
+        "first visit",
+        "beginner",
+        "nervous",
+        "worried",
+        "new"
+      ],
+      "mens": [
+        "men",
+        "male",
+        "man",
+        "boyfriend",
+        "husband",
+        "guys"
+      ],
+      "offFee": [
+        "off",
+        "removal",
+        "extra charge",
+        "additional fee",
+        "parts",
+        "full art"
+      ],
+      "duration": [
+        "how long",
+        "duration",
+        "time",
+        "hours",
+        "take"
+      ],
+      "sameDay": [
+        "same day",
+        "today",
+        "last minute",
+        "walk in"
+      ],
+      "afterHours": [
+        "after hours",
+        "early",
+        "evening",
+        "late",
+        "outside opening"
+      ],
+      "payment": [
+        "payment",
+        "pay",
+        "card",
+        "credit",
+        "cash",
+        "apple pay",
+        "quicpay",
+        "electronic money"
+      ],
+      "parking": [
+        "parking",
+        "park",
+        "car",
+        "lot",
+        "spaces"
+      ],
+      "lost": [
+        "lost",
+        "cannot find",
+        "directions",
+        "landmark",
+        "how to get"
+      ]
+    }
+  },
   "nav": {
     "home": "Home",
     "menu": "Menu & prices",
@@ -541,26 +749,32 @@
         "heading": "Fill-in and treatments",
         "items": [
           {
+            "id": "fillIn",
             "q": "What is fill-in?",
             "a": "It is a method where one layer of base gel is kept in place and the set is renewed by reworking mainly the regrowth. Compared with filing away all of the gel each time, it puts less strain on your natural nails."
           },
           {
+            "id": "weakNails",
             "q": "Can I have a treatment if my nails are weak?",
             "a": "We suggest a method while checking the condition of your nails. Depending on how they look, we may change what we do."
           },
           {
+            "id": "firstTime",
             "q": "Is it fine if this is my first time having nails done?",
             "a": "Yes. We go through the design, the colour, the length and how you spend your days, without rushing."
           },
           {
+            "id": "mens",
             "q": "Can men book an appointment?",
             "a": "Yes. Male guests are welcome."
           },
           {
+            "id": "offFee",
             "q": "Is there a surcharge for removal?",
             "a": "For designs with a lot of decoration or full coverage, a surcharge from ¥100 per nail may apply, and the appointment may take additional time."
           },
           {
+            "id": "duration",
             "q": "How long does an appointment take?",
             "a": "It depends on the menu, the design and the condition of your nails. We give you an estimate when you book and again during the consultation."
           }
@@ -570,14 +784,17 @@
         "heading": "Bookings and payment",
         "items": [
           {
+            "id": "sameDay",
             "q": "Can I book on the same day?",
             "a": "Same-day bookings are possible subject to availability."
           },
           {
+            "id": "afterHours",
             "q": "Can I book outside your opening hours?",
             "a": "Times outside our usual opening hours can be arranged on request."
           },
           {
+            "id": "payment",
             "q": "Which payment methods do you accept?",
             "a": "We accept Visa, Mastercard, JCB, American Express, Apple Pay, iD and QUICPay."
           }
@@ -587,10 +804,12 @@
         "heading": "Getting here",
         "items": [
           {
+            "id": "parking",
             "q": "Is there parking?",
             "a": "Yes. There is a large, easy-to-use parking area on the grounds of the home salon."
           },
           {
+            "id": "lost",
             "q": "What should I do if I cannot find the salon?",
             "a": "Please contact us on the day of your visit and we will guide you in."
           }
