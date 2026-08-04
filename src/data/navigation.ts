@@ -15,6 +15,7 @@ export type RouteKey =
   | "access"
   | "faq"
   | "about"
+  | "booking"
   | "privacy"
   | "terms";
 
@@ -40,6 +41,8 @@ export const routes: Record<RouteKey, Route> = {
   access: { key: "access", path: "/access", changeFrequency: "monthly", priority: 0.8 },
   faq: { key: "faq", path: "/faq", changeFrequency: "monthly", priority: 0.7 },
   about: { key: "about", path: "/about", changeFrequency: "monthly", priority: 0.6 },
+  // ネット予約。予約導線の着地点なので優先度を高くします
+  booking: { key: "booking", path: "/booking", changeFrequency: "weekly", priority: 0.9 },
   privacy: { key: "privacy", path: "/privacy", changeFrequency: "yearly", priority: 0.2 },
   terms: { key: "terms", path: "/terms", changeFrequency: "yearly", priority: 0.2 },
 };

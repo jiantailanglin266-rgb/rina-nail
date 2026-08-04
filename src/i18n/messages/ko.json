@@ -243,6 +243,202 @@
       ]
     }
   },
+  "booking": {
+    "title": "온라인 예약",
+    "lead": "메뉴와 일시를 선택해 주세요. 소요 시간과 요금이 자동으로 계산됩니다.",
+    "summary": "Rina nail 온라인 예약 페이지입니다. 메뉴와 옵션을 고르고 캘린더에서 빈 시간을 선택해 바로 예약할 수 있습니다.",
+    "steps": {
+      "menu": "메뉴",
+      "options": "옵션",
+      "staff": "담당",
+      "datetime": "일시",
+      "info": "고객 정보",
+      "confirm": "확인",
+      "done": "완료"
+    },
+    "stepOf": "Step {current} of {total}",
+    "next": "다음",
+    "back": "뒤로",
+    "prevMonth": "이전 달",
+    "nextMonth": "다음 달",
+    "confirmAndBook": "예약 확정",
+    "selectMenu": "메뉴 선택",
+    "optionsLead": "추가하실 시술이 있으면 선택해 주세요(복수 선택 가능).",
+    "optionsSkip": "추가하지 않음",
+    "staffLead": "담당자를 선택해 주세요.",
+    "staffAny": "지정 없음",
+    "dateLead": "날짜를 선택해 주세요.",
+    "timeLead": "가능한 시간을 선택해 주세요.",
+    "noSlots": "이 날은 예약이 불가합니다. 다른 날을 선택해 주세요.",
+    "loadingSlots": "예약 가능 시간을 확인하고 있습니다…",
+    "closedDay": "정기휴무",
+    "selectedDateTime": "선택한 일시",
+    "infoLead": "연락처를 입력해 주세요. 확인 메일을 보내드립니다.",
+    "required": "필수",
+    "optional": "선택",
+    "fields": {
+      "name": "Name",
+      "kana": "Name (kana)",
+      "phone": "Phone",
+      "email": "Email",
+      "needsOff": "Gel removal",
+      "nailCondition": "Nail condition",
+      "allergy": "Allergies",
+      "color": "Preferred colour",
+      "design": "Preferred design",
+      "note": "Notes",
+      "visitType": "Visit",
+      "contactPreference": "Preferred contact"
+    },
+    "placeholders": {
+      "name": "Hanako Yamada",
+      "kana": "ヤマダ ハナコ",
+      "phone": "09012345678",
+      "email": "example@mail.com",
+      "nailCondition": "Chipped, thin, etc.",
+      "allergy": "Metal allergy, etc.",
+      "color": "Beige tones",
+      "design": "Simple / I will bring an image",
+      "note": "Anything else"
+    },
+    "off": {
+      "none": "None",
+      "own": "Removal of gel applied here",
+      "other": "Removal of gel from another salon"
+    },
+    "visit": {
+      "first": "First visit",
+      "repeat": "Returning"
+    },
+    "contact": {
+      "email": "Email",
+      "phone": "Phone"
+    },
+    "agree": {
+      "terms": "I agree to the terms of use",
+      "cancel": "I agree to the cancellation policy",
+      "privacy": "I agree to the privacy policy",
+      "readMore": "Read"
+    },
+    "errors": {
+      "required": "This field is required",
+      "kana": "Please use hiragana or katakana",
+      "phone": "Please check the phone number",
+      "email": "Please check the email address",
+      "tooLong": "Too long",
+      "fixFields": "Please check the highlighted fields"
+    },
+    "api": {
+      "slotTaken": "Sorry — that time was just booked by someone else. Please choose another time.",
+      "outsideHours": "That date and time is not available. Please choose another.",
+      "pastDate": "You cannot choose a past time.",
+      "tooSoon": "Same-day bookings close 3 hours before the appointment.",
+      "dailyLimit": "This day is fully booked. Please choose another day.",
+      "invalidInput": "Please check your details.",
+      "invalidToken": "This link is not valid. Please use the link in your confirmation email.",
+      "expiredToken": "This link has expired. Please contact us.",
+      "alreadyCancelled": "This booking has already been cancelled.",
+      "rateLimited": "Please wait a moment and try again.",
+      "calendarError": "We could not reach the booking system. Please try again shortly.",
+      "network": "Connection failed. Please check your signal and try again.",
+      "unknown": "Something went wrong. Please try again shortly."
+    },
+    "confirmLead": "내용을 확인하시고 예약을 확정해 주세요.",
+    "totalDuration": "예상 소요 시간",
+    "totalPrice": "예상 요금",
+    "priceUndecided": "방문 시 안내",
+    "submitting": "예약을 확정하고 있습니다…",
+    "done": {
+      "heading": "Your booking is confirmed",
+      "lead": "We have sent a confirmation email. Please check your spam folder if it does not arrive.",
+      "reservationId": "Booking number",
+      "addToCalendar": "Add to calendar",
+      "backToTop": "Back to home",
+      "manageNote": "You can change or cancel from the link in your confirmation email."
+    },
+    "manage": {
+      "title": "Manage your booking",
+      "lead": "Please use the link from your confirmation email.",
+      "loading": "Loading your booking…",
+      "current": "Your booking",
+      "reschedule": "Change date and time",
+      "cancel": "Cancel booking",
+      "cancelConfirm": "Cancel this booking?",
+      "cancelled": "Your booking has been cancelled.",
+      "rescheduled": "Your booking has been moved.",
+      "noToken": "Invalid link. Please use the link in your confirmation email."
+    },
+    "disabled": {
+      "heading": "Online booking is being set up",
+      "lead": "Online booking is not available yet. Please contact us instead."
+    },
+    "cta": "온라인 예약",
+    "menus": {
+      "oneColor": {
+        "name": "원컬러",
+        "description": "한 가지 색으로 마무리하는 심플한 젤네일."
+      },
+      "gradation": {
+        "name": "그라데이션",
+        "description": "뿌리에서 끝으로 자연스럽게 색을 올려 자라도 티가 덜 납니다."
+      },
+      "french": {
+        "name": "프렌치",
+        "description": "손톱 끝에 색을 넣는 정통 디자인. 폭과 색을 조절합니다."
+      },
+      "flatSimple": {
+        "name": "정액 심플 코스",
+        "description": "심플한 아트를 조합한 정액 메뉴입니다."
+      },
+      "flatDesign": {
+        "name": "정액 디자인 코스",
+        "description": "아트와 파츠를 사용한 화려한 정액 메뉴입니다."
+      },
+      "broughtDesign": {
+        "name": "이미지 지참 디자인",
+        "description": "가져오신 이미지를 바탕으로 제안드립니다."
+      },
+      "gelOff": {
+        "name": "젤 제거",
+        "description": "제거만 진행합니다. 타 매장 시술도 가능합니다."
+      },
+      "sculpture": {
+        "name": "스컬프",
+        "description": "길이와 강도가 필요할 때. 형태부터 상담해 주세요."
+      },
+      "nailCare": {
+        "name": "네일 케어",
+        "description": "큐티클과 손톱 형태만 정리합니다. 컬러 없음."
+      },
+      "footNail": {
+        "name": "페디큐어",
+        "description": "발톱 젤네일입니다."
+      },
+      "extension": {
+        "name": "길이 연장",
+        "description": "부러지거나 짧은 손톱을 보완합니다. 1개부터."
+      },
+      "repair": {
+        "name": "균열 보강",
+        "description": "갈라진 손톱을 보강합니다. 1개부터."
+      },
+      "consult": {
+        "name": "기타 상담",
+        "description": "위에 없는 상담. 내용을 듣고 제안드립니다."
+      }
+    },
+    "options": {
+      "offOther": "타 매장 제거",
+      "offOwn": "자사 제거",
+      "extension": "길이 연장",
+      "repair": "균열 보강",
+      "parts": "파츠 추가",
+      "art": "아트 추가",
+      "footChange": "페디 변경",
+      "colorAdd": "컬러 추가",
+      "stone": "스톤 추가"
+    }
+  },
   "nav": {
     "home": "홈",
     "menu": "메뉴・요금",
@@ -252,6 +448,7 @@
     "access": "오시는 길",
     "faq": "자주 묻는 질문",
     "about": "살롱 정보",
+    "booking": "온라인 예약",
     "privacy": "개인정보 처리방침",
     "terms": "이용약관"
   },
@@ -295,6 +492,10 @@
     "faq": {
       "title": "자주 묻는 질문",
       "description": "필인 시술, 손톱이 약할 때의 대응, 처음 받는 네일, 남성 이용, 오프 추가 요금, 결제 방법, 주차장, 소요 시간, 영업시간 외 대응, 당일 예약에 대한 질문과 답변입니다."
+    },
+    "booking": {
+      "title": "온라인 예약｜욧카이치 네일살롱 Rina nail",
+      "description": "미에현 욧카이치시 히라오초의 네일살롱 Rina nail 온라인 예약. 메뉴를 고르고 빈 시간을 확인해 바로 예약하세요."
     },
     "about": {
       "title": "살롱 정보・네일리스트 소개",

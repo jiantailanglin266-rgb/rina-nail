@@ -41,6 +41,9 @@ jobs:
           GITHUB_PAGES: "true"
           PAGES_BASE_PATH: /${{ github.event.repository.name }}
           NEXT_PUBLIC_SITE_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}
+          # ネット予約API（Google Apps Script のウェブアプリURL）。
+          # 未設定でもビルドは通り、予約フォームの代わりに案内文が表示されます。
+          NEXT_PUBLIC_BOOKING_API_URL: ${{ vars.NEXT_PUBLIC_BOOKING_API_URL }}
         run: npm run build
 
       # 静的ホスティングでは proxy.ts が動かないため、「/」用の言語振り分けページを生成します

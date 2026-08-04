@@ -246,6 +246,202 @@
       ]
     }
   },
+  "booking": {
+    "title": "网上预约",
+    "lead": "请选择项目与时间。所需时间与费用会自动计算。",
+    "summary": "Rina nail 的网上预约页面。选择项目与附加项，从日历中挑选空闲时段即可完成预约，并会收到确认邮件。",
+    "steps": {
+      "menu": "项目",
+      "options": "附加",
+      "staff": "美甲师",
+      "datetime": "日期时间",
+      "info": "客户信息",
+      "confirm": "确认",
+      "done": "完成"
+    },
+    "stepOf": "步骤 {current} / {total}",
+    "next": "下一步",
+    "back": "返回",
+    "prevMonth": "上个月",
+    "nextMonth": "下个月",
+    "confirmAndBook": "确认预约",
+    "selectMenu": "选择项目",
+    "optionsLead": "如需追加项目请选择（可多选，也可不选）。",
+    "optionsSkip": "不追加",
+    "staffLead": "请选择美甲师。",
+    "staffAny": "不指定",
+    "dateLead": "请选择日期。",
+    "timeLead": "请选择空闲时段。",
+    "noSlots": "当天没有空位，请选择其他日期。",
+    "loadingSlots": "正在确认空位…",
+    "closedDay": "公休",
+    "selectedDateTime": "已选择",
+    "infoLead": "请填写联系方式，我们会发送确认邮件。",
+    "required": "必填",
+    "optional": "选填",
+    "fields": {
+      "name": "Name",
+      "kana": "Name (kana)",
+      "phone": "Phone",
+      "email": "Email",
+      "needsOff": "Gel removal",
+      "nailCondition": "Nail condition",
+      "allergy": "Allergies",
+      "color": "Preferred colour",
+      "design": "Preferred design",
+      "note": "Notes",
+      "visitType": "Visit",
+      "contactPreference": "Preferred contact"
+    },
+    "placeholders": {
+      "name": "Hanako Yamada",
+      "kana": "ヤマダ ハナコ",
+      "phone": "09012345678",
+      "email": "example@mail.com",
+      "nailCondition": "Chipped, thin, etc.",
+      "allergy": "Metal allergy, etc.",
+      "color": "Beige tones",
+      "design": "Simple / I will bring an image",
+      "note": "Anything else"
+    },
+    "off": {
+      "none": "None",
+      "own": "Removal of gel applied here",
+      "other": "Removal of gel from another salon"
+    },
+    "visit": {
+      "first": "First visit",
+      "repeat": "Returning"
+    },
+    "contact": {
+      "email": "Email",
+      "phone": "Phone"
+    },
+    "agree": {
+      "terms": "I agree to the terms of use",
+      "cancel": "I agree to the cancellation policy",
+      "privacy": "I agree to the privacy policy",
+      "readMore": "Read"
+    },
+    "errors": {
+      "required": "This field is required",
+      "kana": "Please use hiragana or katakana",
+      "phone": "Please check the phone number",
+      "email": "Please check the email address",
+      "tooLong": "Too long",
+      "fixFields": "Please check the highlighted fields"
+    },
+    "api": {
+      "slotTaken": "Sorry — that time was just booked by someone else. Please choose another time.",
+      "outsideHours": "That date and time is not available. Please choose another.",
+      "pastDate": "You cannot choose a past time.",
+      "tooSoon": "Same-day bookings close 3 hours before the appointment.",
+      "dailyLimit": "This day is fully booked. Please choose another day.",
+      "invalidInput": "Please check your details.",
+      "invalidToken": "This link is not valid. Please use the link in your confirmation email.",
+      "expiredToken": "This link has expired. Please contact us.",
+      "alreadyCancelled": "This booking has already been cancelled.",
+      "rateLimited": "Please wait a moment and try again.",
+      "calendarError": "We could not reach the booking system. Please try again shortly.",
+      "network": "Connection failed. Please check your signal and try again.",
+      "unknown": "Something went wrong. Please try again shortly."
+    },
+    "confirmLead": "请确认内容后完成预约。",
+    "totalDuration": "预计所需时间",
+    "totalPrice": "费用参考",
+    "priceUndecided": "到店时说明",
+    "submitting": "正在确认预约…",
+    "done": {
+      "heading": "Your booking is confirmed",
+      "lead": "We have sent a confirmation email. Please check your spam folder if it does not arrive.",
+      "reservationId": "Booking number",
+      "addToCalendar": "Add to calendar",
+      "backToTop": "Back to home",
+      "manageNote": "You can change or cancel from the link in your confirmation email."
+    },
+    "manage": {
+      "title": "Manage your booking",
+      "lead": "Please use the link from your confirmation email.",
+      "loading": "Loading your booking…",
+      "current": "Your booking",
+      "reschedule": "Change date and time",
+      "cancel": "Cancel booking",
+      "cancelConfirm": "Cancel this booking?",
+      "cancelled": "Your booking has been cancelled.",
+      "rescheduled": "Your booking has been moved.",
+      "noToken": "Invalid link. Please use the link in your confirmation email."
+    },
+    "disabled": {
+      "heading": "Online booking is being set up",
+      "lead": "Online booking is not available yet. Please contact us instead."
+    },
+    "cta": "网上预约",
+    "menus": {
+      "oneColor": {
+        "name": "单色",
+        "description": "单色美甲，适合有工作限制的顾客。"
+      },
+      "gradation": {
+        "name": "渐变",
+        "description": "由甲根向外自然过渡，长出后不明显。"
+      },
+      "french": {
+        "name": "法式",
+        "description": "经典的甲尖设计，宽度与颜色可调整。"
+      },
+      "flatSimple": {
+        "name": "定额简约套餐",
+        "description": "含简单彩绘的定额菜单。"
+      },
+      "flatDesign": {
+        "name": "定额设计套餐",
+        "description": "含彩绘与饰品的华丽定额菜单。"
+      },
+      "broughtDesign": {
+        "name": "自带图案",
+        "description": "根据您提供的图片提案，还原度依甲型而异。"
+      },
+      "gelOff": {
+        "name": "卸甲",
+        "description": "仅卸除甲油胶。他店施作也可。"
+      },
+      "sculpture": {
+        "name": "延长甲",
+        "description": "需要长度与强度时。形状可商量。"
+      },
+      "nailCare": {
+        "name": "指甲护理",
+        "description": "仅修整甘皮与甲型，不上色。"
+      },
+      "footNail": {
+        "name": "足部美甲",
+        "description": "足部的甲油胶美甲。"
+      },
+      "extension": {
+        "name": "延长",
+        "description": "修补断裂或过短的指甲，可单片。"
+      },
+      "repair": {
+        "name": "裂痕加固",
+        "description": "加固快裂开的指甲，可单片。"
+      },
+      "consult": {
+        "name": "其他咨询",
+        "description": "以上以外的需求，我们会先了解再提案。"
+      }
+    },
+    "options": {
+      "offOther": "他店卸甲",
+      "offOwn": "本店卸甲",
+      "extension": "延长",
+      "repair": "裂痕加固",
+      "parts": "追加饰品",
+      "art": "追加彩绘",
+      "footChange": "改为足部",
+      "colorAdd": "追加颜色",
+      "stone": "追加钻饰"
+    }
+  },
   "nav": {
     "home": "首页",
     "menu": "服务项目与价格",
@@ -255,6 +451,7 @@
     "access": "交通与位置",
     "faq": "常见问题",
     "about": "沙龙信息",
+    "booking": "网上预约",
     "privacy": "隐私政策",
     "terms": "使用条款"
   },
@@ -298,6 +495,10 @@
     "faq": {
       "title": "常见问题",
       "description": "关于填补施术、指甲脆弱时的应对、初次美甲、男士利用、卸甲附加费用、支付方式、停车场、所需时间、非营业时间对应与当日预约等常见问题与解答。"
+    },
+    "booking": {
+      "title": "网上预约｜四日市美甲沙龙 Rina nail",
+      "description": "三重县四日市市平尾町的美甲沙龙 Rina nail 网上预约。选择项目，查看空闲时段，即可直接预约。"
     },
     "about": {
       "title": "沙龙信息与美甲师介绍",

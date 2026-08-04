@@ -1,6 +1,8 @@
 import "server-only";
 
 import ja from "./messages/ja.json";
+// 差し込み処理は client からも使うため別ファイルにあります
+export { interpolate } from "@/i18n/interpolate";
 import type { Locale } from "./config";
 
 /**
@@ -30,8 +32,3 @@ export async function getMessages(locale: Locale): Promise<Messages> {
  * "{price}〜" のようなプレースホルダーを差し込みます。
  * 翻訳側で語順が変わっても、キー名で対応関係が保たれます。
  */
-export function interpolate(template: string, values: Record<string, string | number>): string {
-  return template.replace(/\{(\w+)\}/g, (match, key: string) =>
-    key in values ? String(values[key]) : match,
-  );
-}
