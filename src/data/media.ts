@@ -34,13 +34,26 @@ export function videoAspectRatio(video: SiteVideo): string {
   return `${video.width} / ${video.height}`;
 }
 
-/** ファーストビューの直下に置く、サイトの入り口の動画 */
+/** ファーストビューの直下に置くブランド動画（CM） */
 export const heroVideo: SiteVideo = {
-  src: "/videos/rina-nail-opening.mp4",
+  src: "/videos/rina-nail-cm.mp4",
   /*
-   * 実寸は 864×496 です（16:9 の 864×486 より少しだけ縦長）。
+   * 実寸は 1728×992 です（16:9 の 1728×972 より少しだけ縦長）。
    * 16 / 9 として扱うと上下がわずかに切れるため、実寸をそのまま使います。
    */
+  width: 1728,
+  height: 992,
+};
+
+/**
+ * サイトへアクセスした直後に、**セッション中一度だけ**全画面で流すイントロ動画。
+ *
+ * 再生が終わるかスキップされると消え、同じタブ内では二度と出ません
+ * （ページ移動や言語切り替えで毎回流れると邪魔になるため）。
+ * ファイルが無ければイントロ自体が描画されません。
+ */
+export const introVideo: SiteVideo = {
+  src: "/videos/rina-nail-opening.mp4",
   width: 864,
   height: 496,
 };

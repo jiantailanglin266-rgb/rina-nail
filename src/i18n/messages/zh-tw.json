@@ -55,6 +55,10 @@
       "SEE YOU AT THE SALON"
     ]
   },
+  "intro": {
+    "label": "開場影片",
+    "skip": "跳過"
+  },
   "chat": {
     "launcher": "提問",
     "open": "開啟聊天",

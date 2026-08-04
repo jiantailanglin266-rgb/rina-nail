@@ -15,13 +15,16 @@ import { SiteChat } from "@/components/chat/SiteChat";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
 import { FloatingBookingButton } from "@/components/layout/FloatingBookingButton";
+import { IntroVideo } from "@/components/layout/IntroVideo";
 import { SkipLink } from "@/components/layout/SkipLink";
 import { JsonLd } from "@/components/ui/JsonLd";
+import { introVideo } from "@/data/media";
 import { routes } from "@/data/navigation";
 import { defaultOgImage, siteName, siteUrl } from "@/data/site";
 import { isLocale, localeHtmlLang, localeOgLocale, locales, type Locale } from "@/i18n/config";
 import { getMessages } from "@/i18n/dictionary";
 import { withBasePath } from "@/lib/base-path";
+import { publicFileExists } from "@/lib/public-assets";
 import type { LocaleLayoutProps, LocalePageProps } from "@/lib/route-params";
 import { absoluteUrl, buildLanguageAlternates } from "@/lib/seo";
 import { personJsonLd, salonJsonLd, websiteJsonLd } from "@/lib/structured-data";
@@ -175,6 +178,14 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
           中に入れると画面ではなくヘッダーを基準に配置されてしまいます。
         */}
         <SiteChat locale={typedLocale} messages={messages} />
+
+        {/*
+          アクセス直後に一度だけ流れるイントロ動画。全ページの上に重なるため、
+          最後（最前面）に置きます。ファイルが無ければ描画しません。
+        */}
+        {publicFileExists(introVideo.src) ? (
+          <IntroVideo video={introVideo} messages={messages} />
+        ) : null}
 
         {/* サイト全体に共通する構造化データ（各ページ側で WebPage / パンくずを追加します） */}
         <JsonLd

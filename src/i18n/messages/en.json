@@ -55,6 +55,10 @@
       "SEE YOU AT THE SALON"
     ]
   },
+  "intro": {
+    "label": "Opening video",
+    "skip": "Skip"
+  },
   "chat": {
     "launcher": "Ask a question",
     "open": "Open chat",

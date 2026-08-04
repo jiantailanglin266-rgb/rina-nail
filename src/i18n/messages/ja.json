@@ -55,6 +55,10 @@
       "SEE YOU AT THE SALON"
     ]
   },
+  "intro": {
+    "label": "オープニング動画",
+    "skip": "スキップ"
+  },
   "chat": {
     "launcher": "質問する",
     "open": "チャットを開く",
