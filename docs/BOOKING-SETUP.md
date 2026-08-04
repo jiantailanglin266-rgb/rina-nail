@@ -23,6 +23,69 @@ Googleカレンダーの読み書きとメール送信には認証情報が必�
 
 ---
 
+## 進捗（2026-08-04 時点）
+
+| 手順 | 状態 | 備考 |
+|---|---|---|
+| 1. カレンダー作成 | ⬜ **要作業** | Googleアカウントへのサインインが必要なため代行できません |
+| 2. スプレッドシート作成 | ✅ **完了** | 下記のIDを使ってください |
+| 3. Apps Script にコードを貼る | ⬜ **要作業** | Apps Script は外部から操作できません |
+| 4. スクリプトプロパティ設定 | ⬜ **要作業** | 下記の表を丸ごと貼れば済むようにしてあります |
+| 5. ウェブアプリとして公開 | ⬜ **要作業** | 公開操作は本人しか実行できません |
+| 6. サイトに接続 | ⬜ **要作業** | 手順5のURLが決まってから |
+
+### 作成済みのスプレッドシート
+
+- 名前: **Rina nail 予約台帳**
+- 所有者: jiantailanglin266@gmail.com
+- **SHEET_ID: `16lU5_9slQBpWei1_aZTrImvBwYE0mutIZAJZdVsNp4E`**
+- 開く: https://docs.google.com/spreadsheets/d/16lU5_9slQBpWei1_aZTrImvBwYE0mutIZAJZdVsNp4E/edit
+
+> シートIDは鍵ではありません（アクセスには権限が必要）。控えとして記載しています。
+> **手順3のApps Scriptは、このシートと同じGoogleアカウントで作成してください。**
+> 別アカウントで作る場合は、このシートをそのアカウントに編集者として共有する必要があります。
+
+### コードのコピー元（手順3）
+
+パソコンで次のURLを開き、全選択してコピーしてください（951行）。
+
+```
+https://raw.githubusercontent.com/jiantailanglin266-rgb/rina-nail/main/google-apps-script/Code.gs
+```
+
+> 手順3〜5は Apps Script のエディタ操作のため、**パソコンでの作業をおすすめします**。
+> スマートフォンでは編集画面が扱いにくく、公開設定の画面も操作しづらいためです。
+> 一度設定すれば、その後の日常運用はスマートフォンだけで完結します。
+
+### 手順4で入れる値（そのまま使えます）
+
+| プロパティ | 値 |
+|---|---|
+| `SHEET_ID` | `16lU5_9slQBpWei1_aZTrImvBwYE0mutIZAJZdVsNp4E` |
+| `SITE_URL` | `https://jiantailanglin266-rgb.github.io/rina-nail` |
+| `OWNER_EMAIL` | `jiantailanglin266@gmail.com` |
+| `SALON_NAME` | `Rina nail` |
+| `SALON_ADDRESS` | `三重県四日市市平尾町3082-5` |
+| `CALENDAR_ID` | **手順1で作ったカレンダーのID** |
+| `BOOKING_TOKEN_SECRET` | **下記の方法でご自身で生成** |
+| `SALON_PHONE` | 電話番号が決まったら |
+
+`BOOKING_TOKEN_SECRET` は、Apps Script のエディタに次を貼って一度だけ実行し、
+ログに出た文字列をコピーしてください。
+
+```js
+function makeSecret() {
+  console.log(Utilities.getUuid() + Utilities.getUuid());
+}
+```
+
+> **この値は私（作業者）に共有しないでください。** 予約変更リンクの署名鍵であり、
+> 知られると他人の予約を操作できてしまいます。チャットやメールに貼らず、
+> Apps Script の中だけで完結させるのが安全です。
+
+
+---
+
 ## 手順1. Googleカレンダーを作る
 
 1. パソコンで [Googleカレンダー](https://calendar.google.com/) を開く
