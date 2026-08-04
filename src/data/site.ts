@@ -86,6 +86,24 @@ export const store = {
   currency: "JPY",
 } as const;
 
+/**
+ * 商圏（構造化データの `areaServed`）。
+ *
+ * 四日市市と、そこから来店しやすい三重県北勢エリアの自治体です。
+ * 「対応エリア」の主張ではなく地理的な範囲の記述なので、
+ * 実態に合わせて増減して構いません。
+ */
+export const areaServed = [
+  { name: "四日市市", type: "City" },
+  { name: "桑名市", type: "City" },
+  { name: "鈴鹿市", type: "City" },
+  { name: "いなべ市", type: "City" },
+  { name: "菰野町", type: "AdministrativeArea" },
+  { name: "朝日町", type: "AdministrativeArea" },
+  { name: "川越町", type: "AdministrativeArea" },
+  { name: "東員町", type: "AdministrativeArea" },
+] as const;
+
 /** 予約・SNS導線 */
 export const links = {
   booking: placeholders.bookingUrl,

@@ -1,17 +1,21 @@
+import { galleryItems } from "@/data/gallery";
 import { coupons, menuItems } from "@/data/menu";
 import { openDays } from "@/data/hours";
 import { routes, type RouteKey } from "@/data/navigation";
 import {
+  areaServed,
   defaultOgImage,
+  mapLinkUrl,
   paymentMethods,
   placeholders,
+  resolved,
   sameAsUrls,
   siteName,
   siteUrl,
   store,
 } from "@/data/site";
 import { localeHtmlLang, locales, type Locale } from "@/i18n/config";
-import type { Messages } from "@/i18n/dictionary";
+import { interpolate, type Messages } from "@/i18n/dictionary";
 import { absoluteUrl } from "@/lib/seo";
 
 /**
@@ -20,9 +24,11 @@ import { absoluteUrl } from "@/lib/seo";
  * 本文に書かれている内容と一致させることを最優先にしています
  * （営業時間・住所・料金・支払い方法・サービス内容はすべて同じデータ源から生成）。
  *
- * 電話番号・緯度経度・SNS URL・予約URLは未確定のため、
- * `src/data/site.ts` のプレースホルダーをそのまま出力します。
- * 公開前に環境変数で実際の値へ差し替えてください。
+ * **未確定の値（`{{...}}`）は出力しません。**
+ * プレースホルダー文字列をそのまま出力すると、緯度経度や電話番号が
+ * 不正な値として解釈され、LocalBusiness 全体が無効と判定されるおそれがあります。
+ * 「間違った値がある」より「項目が無い」ほうが安全なため、未確定の項目は丸ごと省きます。
+ * 公開前に環境変数で実際の値を設定してください（`docs/PLACEHOLDERS.md`）。
  */
 
 const salonId = `${siteUrl}/#salon`;
@@ -30,6 +36,11 @@ const websiteId = `${siteUrl}/#website`;
 const personId = `${siteUrl}/#owner`;
 
 type JsonLdObject = Record<string, unknown>;
+
+/** 値が `undefined` のキーを取り除きます（未確定の項目を出力しないため） */
+function compact(obj: JsonLdObject): JsonLdObject {
+  return Object.fromEntries(Object.entries(obj).filter(([, value]) => value !== undefined));
+}
 
 function postalAddress(): JsonLdObject {
   return {
@@ -123,9 +134,38 @@ export function personJsonLd(messages: Messages): JsonLdObject {
   };
 }
 
+/** 緯度・経度。両方そろっている場合のみ出力します */
+function geoCoordinates(): JsonLdObject | undefined {
+  const latitude = resolved(placeholders.latitude);
+  const longitude = resolved(placeholders.longitude);
+  if (!latitude || !longitude) return undefined;
+  return { "@type": "GeoCoordinates", latitude, longitude };
+}
+
+/** 予約導線。予約URLが未設定なら出力しません */
+function reserveAction(locale: Locale): JsonLdObject | undefined {
+  const bookingUrl = resolved(placeholders.bookingUrl);
+  if (!bookingUrl) return undefined;
+  return {
+    "@type": "ReserveAction",
+    target: {
+      "@type": "EntryPoint",
+      urlTemplate: bookingUrl,
+      inLanguage: localeHtmlLang[locale],
+      actionPlatform: [
+        "https://schema.org/DesktopWebPlatform",
+        "https://schema.org/MobileWebPlatform",
+      ],
+    },
+    result: { "@type": "Reservation", name: siteName },
+  };
+}
+
 /** 店舗本体。NailSalon を主型とし、LocalBusiness / BeautySalon も併記します。 */
 export function salonJsonLd(locale: Locale, messages: Messages): JsonLdObject {
-  return {
+  const sameAs = sameAsUrls();
+
+  return compact({
     "@context": "https://schema.org",
     "@type": ["NailSalon", "BeautySalon", "LocalBusiness"],
     "@id": salonId,
@@ -136,17 +176,16 @@ export function salonJsonLd(locale: Locale, messages: Messages): JsonLdObject {
     image: `${siteUrl}${defaultOgImage}`,
     logo: `${siteUrl}/icon.png`,
     address: postalAddress(),
-    geo: {
-      "@type": "GeoCoordinates",
-      latitude: placeholders.latitude,
-      longitude: placeholders.longitude,
-    },
-    telephone: placeholders.phoneNumber,
+    geo: geoCoordinates(),
+    // 緯度経度が未設定でも、地図の場所は hasMap で示せます
+    hasMap: mapLinkUrl(),
+    telephone: resolved(placeholders.phoneNumber),
     openingHoursSpecification: openingHours(),
     priceRange: store.priceRange,
     currenciesAccepted: store.currency,
     paymentAccepted: paymentMethods.join(", "),
     availableLanguage: locales.map((l) => localeHtmlLang[l]),
+    areaServed: areaServed.map((area) => ({ "@type": area.type, name: area.name })),
     amenityFeature: {
       "@type": "LocationFeatureSpecification",
       name: messages.about.overview.labels.parking,
@@ -154,27 +193,16 @@ export function salonJsonLd(locale: Locale, messages: Messages): JsonLdObject {
     },
     founder: { "@id": personId },
     employee: { "@id": personId },
-    sameAs: sameAsUrls(),
-    potentialAction: {
-      "@type": "ReserveAction",
-      target: {
-        "@type": "EntryPoint",
-        urlTemplate: placeholders.bookingUrl,
-        inLanguage: localeHtmlLang[locale],
-        actionPlatform: [
-          "https://schema.org/DesktopWebPlatform",
-          "https://schema.org/MobileWebPlatform",
-        ],
-      },
-      result: { "@type": "Reservation", name: siteName },
-    },
+    // 未設定なら空配列になるため、キーごと落とします
+    sameAs: sameAs.length > 0 ? sameAs : undefined,
+    potentialAction: reserveAction(locale),
     makesOffer: services(locale, messages).map((s) => (s as { offers: unknown }).offers),
     hasOfferCatalog: {
       "@type": "OfferCatalog",
       name: messages.menu.title,
       itemListElement: services(locale, messages),
     },
-  };
+  });
 }
 
 /** サイト全体 */
@@ -189,6 +217,67 @@ export function websiteJsonLd(locale: Locale, messages: Messages): JsonLdObject 
     description: messages.seo.home.description,
     inLanguage: locales.map((l) => localeHtmlLang[l]),
     publisher: { "@id": salonId },
+  };
+}
+
+/**
+ * 施術の流れを HowTo として出力します。
+ *
+ * 「ネイルサロン 初めて」「施術の流れ」のような Know クエリと、
+ * 生成AIの「どういう流れですか？」という質問の両方に答えられる形にします。
+ * 手順は本文（home.flow.steps）と同じデータ源なので、記述がずれません。
+ */
+export function howToJsonLd(locale: Locale, messages: Messages): JsonLdObject {
+  const flow = messages.home.flow;
+  return {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "@id": `${siteUrl}/#howto-flow`,
+    name: flow.heading,
+    description: messages.firstVisit.lead,
+    inLanguage: localeHtmlLang[locale],
+    step: flow.steps.map((step, index) => ({
+      "@type": "HowToStep",
+      position: index + 1,
+      name: step.title,
+      text: step.body,
+      url: `${absoluteUrl(locale, routes.firstVisit.path)}#flow`,
+    })),
+  };
+}
+
+/**
+ * デザインギャラリーを ImageObject として出力します。
+ *
+ * 画像検索と、生成AIが「どんなデザインがあるか」を説明する際の
+ * 引用元になることを狙っています。
+ */
+export function galleryImagesJsonLd(locale: Locale, messages: Messages): JsonLdObject {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ImageGallery",
+    "@id": `${absoluteUrl(locale, routes.gallery.path)}#gallery`,
+    name: messages.gallery.title,
+    description: messages.gallery.summary,
+    inLanguage: localeHtmlLang[locale],
+    isPartOf: { "@id": websiteId },
+    associatedMedia: galleryItems.map((item, index) => {
+      const alt = interpolate(messages.gallery.altTemplate, {
+        category: messages.gallery.categories[item.category],
+        index: index + 1,
+      });
+      return {
+        "@type": "ImageObject",
+        contentUrl: `${siteUrl}${item.src}`,
+        url: absoluteUrl(locale, routes.gallery.path),
+        name: alt,
+        caption: alt,
+        width: item.width,
+        height: item.height,
+        creator: { "@id": personId },
+        creditText: siteName,
+      };
+    }),
   };
 }
 
@@ -216,6 +305,14 @@ export function webPageJsonLd({
     isPartOf: { "@id": websiteId },
     about: { "@id": salonId },
     primaryImageOfPage: `${siteUrl}${defaultOgImage}`,
+    /**
+     * 音声アシスタントや読み上げに、まず読ませたい範囲を指定します。
+     * 各ページ冒頭の見出しと要約ブロックを対象にしています。
+     */
+    speakable: {
+      "@type": "SpeakableSpecification",
+      cssSelector: ["h1", "[data-speakable]"],
+    },
   };
 }
 

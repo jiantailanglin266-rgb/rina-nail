@@ -11,6 +11,7 @@ import { hasSocialAccounts } from "@/data/social";
 import { links, siteName, store, telHref } from "@/data/site";
 import type { Locale } from "@/i18n/config";
 import type { Messages } from "@/i18n/dictionary";
+import { bookingLink } from "@/lib/booking";
 
 type Props = {
   locale: Locale;
@@ -19,6 +20,7 @@ type Props = {
 
 export function Footer({ locale, messages }: Props) {
   const tel = telHref(links.phone);
+  const booking = bookingLink(locale);
 
   return (
     /* マーキーが本文との間を仕切るため、以前ほど大きな余白は取りません */
@@ -127,7 +129,7 @@ export function Footer({ locale, messages }: Props) {
             {messages.footer.bookingHeading}
           </h2>
           <p className="text-muted mt-3 text-xs">{messages.footer.bookingNote}</p>
-          <ActionLink href={links.booking} external size="sm" className="mt-4">
+          <ActionLink href={booking.href} external={booking.external} size="sm" className="mt-4">
             {messages.common.book}
           </ActionLink>
         </div>

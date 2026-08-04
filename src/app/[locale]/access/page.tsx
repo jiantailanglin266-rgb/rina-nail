@@ -17,6 +17,7 @@ import { buildBreadcrumbs } from "@/lib/breadcrumbs";
 import type { LocalePageProps } from "@/lib/route-params";
 import { pageMetadata } from "@/lib/seo";
 import { webPageJsonLd } from "@/lib/structured-data";
+import { bookingLink } from "@/lib/booking";
 
 export async function generateMetadata({ params }: LocalePageProps): Promise<Metadata> {
   const { locale } = await params;
@@ -30,6 +31,7 @@ export default async function AccessPage({ params }: LocalePageProps) {
   if (!isLocale(locale)) notFound();
 
   const messages = await getMessages(locale);
+  const booking = bookingLink(locale);
   const page = messages.access;
   const { crumbs, jsonLd } = buildBreadcrumbs(locale, messages, "access");
   const tel = telHref(links.phone);
@@ -117,7 +119,7 @@ export default async function AccessPage({ params }: LocalePageProps) {
               <h2 className="text-lg">{page.contactHeading}</h2>
               <p className="text-muted mt-4 text-sm leading-relaxed">{page.contactNote}</p>
               <div className="mt-5 flex flex-wrap gap-3">
-                <ActionLink href={links.booking} external>
+                <ActionLink href={booking.href} external={booking.external}>
                   {messages.common.book}
                 </ActionLink>
                 {tel ? (

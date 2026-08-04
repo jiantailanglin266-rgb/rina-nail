@@ -6,10 +6,11 @@ import { ActionLink } from "@/components/ui/ActionLink";
 import { GradientText } from "@/components/ui/GradientText";
 import { SocialLinks } from "@/components/ui/SocialLinks";
 import { socialAccounts } from "@/data/social";
-import { links, siteName } from "@/data/site";
+import { siteName } from "@/data/site";
 import { localeHref, mainNavKeys, routes } from "@/data/navigation";
 import type { Locale } from "@/i18n/config";
 import type { Messages } from "@/i18n/dictionary";
+import { bookingLink } from "@/lib/booking";
 
 type Props = {
   locale: Locale;
@@ -29,6 +30,7 @@ export function Header({ locale, messages }: Props) {
 
   // 未設定なら、モバイルメニュー側の見出しごと出しません
   const hasSocial = socialAccounts().length > 0;
+  const booking = bookingLink(locale);
 
   return (
     <header className="border-line/70 fixed inset-x-0 top-0 z-50 border-b bg-white/85 backdrop-blur-xl">
@@ -82,7 +84,7 @@ export function Header({ locale, messages }: Props) {
             className="hidden sm:block"
           />
           {/* ActionLink 側が inline-flex を持つため、打ち消しには max-md:hidden を使います */}
-          <ActionLink href={links.booking} external size="sm" className="max-md:hidden">
+          <ActionLink href={booking.href} external={booking.external} size="sm" className="max-md:hidden">
             {messages.common.bookShort}
           </ActionLink>
           <MobileMenu
@@ -90,7 +92,8 @@ export function Header({ locale, messages }: Props) {
             openLabel={messages.common.openMenu}
             closeLabel={messages.common.closeMenu}
             menuLabel={messages.common.menuLabel}
-            bookingHref={links.booking}
+            bookingHref={booking.href}
+            bookingExternal={booking.external}
             bookingLabel={messages.common.book}
             socialHeading={hasSocial ? messages.common.social.heading : undefined}
             social={

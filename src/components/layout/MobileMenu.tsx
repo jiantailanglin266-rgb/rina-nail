@@ -4,6 +4,8 @@ import { useEffect, useState, type ReactNode } from "react";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
 
+import { withBasePath } from "@/lib/base-path";
+
 export type MobileNavItem = { href: string; label: string };
 
 type Props = {
@@ -12,6 +14,8 @@ type Props = {
   closeLabel: string;
   menuLabel: string;
   bookingHref: string;
+  /** 外部の予約サイトを開くか（予約URLが未設定のときはサイト内リンクになります） */
+  bookingExternal: boolean;
   bookingLabel: string;
   /**
    * SNSアイコン。サーバーコンポーネント（`SocialLinks`）を
@@ -29,6 +33,7 @@ export function MobileMenu({
   closeLabel,
   menuLabel,
   bookingHref,
+  bookingExternal,
   bookingLabel,
   social,
   socialHeading,
@@ -104,11 +109,11 @@ export function MobileMenu({
           </ul>
 
           <a
-            href={bookingHref}
+            // 生の <a> のため basePath を明示的に付けます（外部URLのときは付けません）
+            href={bookingExternal ? bookingHref : withBasePath(bookingHref)}
             className="mt-8 flex w-full items-center justify-center rounded-full [background-image:var(--gradient-signature)] px-6 py-4 text-base font-medium text-white"
-            {...(bookingHref.startsWith("http")
-              ? { target: "_blank", rel: "noopener noreferrer" }
-              : {})}
+            onClick={() => setOpen(false)}
+            {...(bookingExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
           >
             {bookingLabel}
           </a>

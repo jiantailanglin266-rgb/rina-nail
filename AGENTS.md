@@ -82,3 +82,39 @@ next/image が src に `basePath` を付けません。その結果 `/rina-nail/
 
 `src/components/ui/AppImage.tsx` が `withBasePath()` を適用するので、必ずこれを経由してください。
 通常のビルド（Vercel など）では basePath が空文字のため、挙動は変わりません。
+
+## 予約CTAは必ず `bookingLink()` を経由する
+
+`links.booking` を直接 `href` に渡さないでください。
+
+予約URLが未設定（`{{BOOKING_URL}}`）のとき、その文字列がそのまま `href` に入り、
+**押しても存在しないURLへ飛ぶ行き止まりのリンク**になります。
+実際にトップページだけで30箇所発生していました。
+
+`src/lib/booking.ts` の `bookingLink(locale)` が、未設定時はアクセスページへ
+フォールバックします。新しい予約CTAを追加するときも必ずこれを使ってください。
+
+## サイト内リンクを生の `<a>` で書かない
+
+`next/link` は basePath を自動で付けますが、生の `<a>` は付きません。
+GitHub Pages はサブディレクトリ配信のため、`/ja/menu` は404になります
+（正: `/rina-nail/ja/menu/`）。実際に3件発生していました。
+
+やむを得ず `<a>` を使う場合は `withBasePath()` を必ず通してください。
+
+## 未確定の値を JSON-LD に出力しない
+
+プレースホルダー（`{{...}}`）をそのまま構造化データに出すと、
+緯度経度や電話番号が不正な値として解釈され、
+**LocalBusiness 全体が無効と判定されるおそれ**があります。
+「項目が無い」ほうが「間違った値がある」より安全です。
+
+`structured-data.ts` の `compact()` で `undefined` のキーを落としています。
+新しい項目を追加するときも、未確定なら `resolved()` で `undefined` にしてください。
+`tests/seo.test.ts` にプレースホルダー混入を検出する回帰テストがあります。
+
+## 口コミ（Review / AggregateRating）を勝手に追加しない
+
+自作・架空の口コミを構造化データに書くことは Google のスパムポリシー違反で、
+手動対策の対象になります。**実在するお客様の声を、ご本人の許可を得て掲載できるように
+なってから**実装してください。

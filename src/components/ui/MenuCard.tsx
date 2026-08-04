@@ -15,8 +15,9 @@ type Props = {
 /**
  * メニュー1件のカード。
  *
- * 金額が未確定のメニューは、架空の価格を出さずに
- * プレースホルダー（{{PRICE_...}}）と注記を表示します。
+ * 金額が未確定のメニューは、架空の価格を出さずに「料金確定後に掲載します」と表示します。
+ * プレースホルダー文字列（`{{PRICE_...}}`）自体は、お客様に見せる意味がないため出しません
+ * （未設定であることは `docs/PLACEHOLDERS.md` と llms.txt 側で管理します）。
  */
 export function MenuCard({ item, locale, messages }: Props) {
   const text = messages.menu.items[item.id as keyof Messages["menu"]["items"]];
@@ -25,7 +26,7 @@ export function MenuCard({ item, locale, messages }: Props) {
     ? item.from
       ? interpolate(messages.common.priceFrom, { price: formatPrice(item.price!, locale) })
       : formatPrice(item.price!, locale)
-    : item.pricePlaceholder;
+    : messages.common.priceTbd;
 
   return (
     <article className="gradient-frame glass-card flex h-full flex-col rounded-2xl p-6">
@@ -41,10 +42,6 @@ export function MenuCard({ item, locale, messages }: Props) {
           )}
         </p>
       </div>
-
-      {!hasPrice ? (
-        <p className="text-muted mt-1 text-right text-[0.7rem]">{messages.common.priceTbd}</p>
-      ) : null}
 
       <p className="text-muted mt-4 flex-1 text-sm leading-relaxed">{text.description}</p>
 

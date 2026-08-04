@@ -41,7 +41,7 @@ import { isLocale } from "@/i18n/config";
 import { getMessages } from "@/i18n/dictionary";
 import type { LocalePageProps } from "@/lib/route-params";
 import { pageMetadata } from "@/lib/seo";
-import { faqJsonLd, webPageJsonLd } from "@/lib/structured-data";
+import { faqJsonLd, howToJsonLd, webPageJsonLd } from "@/lib/structured-data";
 
 export async function generateMetadata({ params }: LocalePageProps): Promise<Metadata> {
   const { locale } = await params;
@@ -364,6 +364,7 @@ export default async function HomePage({ params }: LocalePageProps) {
         data={[
           webPageJsonLd({ locale, messages, routeKey: "home", summary: home.summary }),
           faqJsonLd(messages),
+          howToJsonLd(locale, messages),
         ]}
       />
     </>

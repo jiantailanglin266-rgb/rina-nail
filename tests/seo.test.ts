@@ -7,7 +7,14 @@ import { allRoutes } from "@/data/navigation";
 import { locales } from "@/i18n/config";
 import { siteUrl } from "@/data/site";
 import { buildLanguageAlternates } from "@/lib/seo";
-import { faqJsonLd, salonJsonLd, webPageJsonLd } from "@/lib/structured-data";
+import {
+  faqJsonLd,
+  galleryImagesJsonLd,
+  howToJsonLd,
+  salonJsonLd,
+  webPageJsonLd,
+} from "@/lib/structured-data";
+import { galleryItems } from "@/data/gallery";
 import { buildLlmsTxt } from "@/lib/llms-txt";
 
 describe("sitemap.xml", () => {
@@ -58,9 +65,31 @@ describe("robots.txt", () => {
 describe("hreflang", () => {
   it("x-default は原文（日本語）を指す", () => {
     const languages = buildLanguageAlternates("/menu");
-    expect(languages["x-default"]).toBe(`${siteUrl}/ja/menu`);
-    expect(languages.ja).toBe(`${siteUrl}/ja/menu`);
-    expect(languages["zh-Hant"]).toBe(`${siteUrl}/zh-tw/menu`);
+    expect(languages["x-default"]).toBe(`${siteUrl}/ja/menu/`);
+    expect(languages.ja).toBe(`${siteUrl}/ja/menu/`);
+    expect(languages["zh-Hant"]).toBe(`${siteUrl}/zh-tw/menu/`);
+  });
+});
+
+describe("URLの正規化", () => {
+  /**
+   * 静的エクスポートは `trailingSlash: true` のため、正規URLは末尾スラッシュ付きです。
+   * sitemap と canonical / hreflang の表記がずれると、
+   * sitemap 上の全URLが「リダイレクトされるURL」として扱われます。
+   */
+  it("sitemap のURLがすべて末尾スラッシュ付き（canonical と同じ表記）", () => {
+    for (const entry of sitemap()) {
+      expect(entry.url.endsWith("/")).toBe(true);
+    }
+  });
+
+  it("sitemap のURLと hreflang のURLが完全に一致する", () => {
+    const sitemapUrls = new Set(sitemap().map((entry) => entry.url));
+    for (const entry of sitemap()) {
+      for (const url of Object.values(entry.alternates?.languages ?? {})) {
+        expect(sitemapUrls.has(url as string)).toBe(true);
+      }
+    }
   });
 });
 
@@ -120,6 +149,52 @@ describe("llms.txt", () => {
   it("断定的な医療・効果表現を含まない", () => {
     for (const forbidden of ["傷まない", "治る", "治療", "No.1", "日本一"]) {
       expect(text).not.toContain(forbidden);
+    }
+  });
+});
+
+describe("未確定情報の扱い（構造化データ）", () => {
+  /**
+   * プレースホルダー（`{{...}}`）を JSON-LD にそのまま出力すると、
+   * 緯度経度や電話番号が不正な値として解釈され、
+   * LocalBusiness 全体が無効と判定されるおそれがあります。
+   * 「間違った値がある」より「項目が無い」ほうが安全なため、未確定の項目は出力しません。
+   */
+  const salon = salonJsonLd("ja", ja);
+  const serialized = JSON.stringify(salon);
+
+  it("JSON-LD にプレースホルダー文字列が一切出力されない", () => {
+    expect(serialized).not.toMatch(/\{\{[A-Z_]+\}\}/);
+  });
+
+  it("未設定の緯度経度・電話番号・予約導線はキーごと省略される", () => {
+    expect(salon).not.toHaveProperty("geo");
+    expect(salon).not.toHaveProperty("telephone");
+    expect(salon).not.toHaveProperty("potentialAction");
+  });
+
+  it("緯度経度が無くても地図の場所は hasMap で示している", () => {
+    expect(String(salon.hasMap)).toContain("google.com/maps");
+  });
+
+  it("商圏（areaServed）に四日市市を含む", () => {
+    const areas = salon.areaServed as { name: string }[];
+    expect(areas.map((a) => a.name)).toContain("四日市市");
+  });
+});
+
+describe("HowTo / ImageGallery", () => {
+  it("施術の流れを HowTo として出力し、手順が本文と同数", () => {
+    const howTo = howToJsonLd("ja", ja) as { "@type": string; step: unknown[] };
+    expect(howTo["@type"]).toBe("HowTo");
+    expect(howTo.step).toHaveLength(ja.home.flow.steps.length);
+  });
+
+  it("ギャラリーの全画像を ImageObject として出力する", () => {
+    const gallery = galleryImagesJsonLd("ja", ja) as { associatedMedia: { name: string }[] };
+    expect(gallery.associatedMedia).toHaveLength(galleryItems.length);
+    for (const image of gallery.associatedMedia) {
+      expect(image.name.length).toBeGreaterThan(0);
     }
   });
 });

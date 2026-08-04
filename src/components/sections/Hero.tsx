@@ -11,6 +11,7 @@ import { localeHref, routes } from "@/data/navigation";
 import { isPlaceholder, links } from "@/data/site";
 import type { Locale } from "@/i18n/config";
 import type { Messages } from "@/i18n/dictionary";
+import { bookingLink } from "@/lib/booking";
 
 type Props = {
   locale: Locale;
@@ -24,6 +25,7 @@ type Props = {
  * 画像は LCP 要素になるため `priority` を付け、明示的なサイズ指定で CLS を防ぎます。
  */
 export function Hero({ locale, messages }: Props) {
+  const booking = bookingLink(locale);
   const hero = messages.home.hero;
 
   return (
@@ -58,8 +60,8 @@ export function Hero({ locale, messages }: Props) {
 
           <div className="mt-8 flex flex-wrap items-center gap-3">
             <ActionLink
-              href={links.booking}
-              external
+              href={booking.href}
+              external={booking.external}
               size="lg"
               pulse
               icon={<CalendarCheck className="size-5" aria-hidden="true" />}

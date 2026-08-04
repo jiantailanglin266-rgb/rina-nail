@@ -6,9 +6,9 @@ import { ColorfulGradientBackground } from "@/components/backgrounds/ColorfulGra
 import { ActionLink } from "@/components/ui/ActionLink";
 import { GradientText } from "@/components/ui/GradientText";
 import { localeHref, routes } from "@/data/navigation";
-import { links } from "@/data/site";
 import type { Locale } from "@/i18n/config";
 import type { Messages } from "@/i18n/dictionary";
+import { bookingLink } from "@/lib/booking";
 
 type Props = {
   locale: Locale;
@@ -20,6 +20,8 @@ type Props = {
 
 /** ページ下部の予約CTA。全ページ共通で使用します。 */
 export function CTASection({ locale, messages, heading, lead, note }: Props) {
+  const booking = bookingLink(locale);
+
   return (
     <section className="relative isolate overflow-hidden py-16 sm:py-20">
       {/* サイト内で最も華やかなグラデーション */}
@@ -38,8 +40,8 @@ export function CTASection({ locale, messages, heading, lead, note }: Props) {
 
         <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
           <ActionLink
-            href={links.booking}
-            external
+            href={booking.href}
+            external={booking.external}
             size="lg"
             pulse
             icon={<CalendarCheck className="size-5" aria-hidden="true" />}

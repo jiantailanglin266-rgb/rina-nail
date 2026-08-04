@@ -13,7 +13,7 @@ import { getMessages } from "@/i18n/dictionary";
 import { buildBreadcrumbs } from "@/lib/breadcrumbs";
 import type { LocalePageProps } from "@/lib/route-params";
 import { pageMetadata } from "@/lib/seo";
-import { webPageJsonLd } from "@/lib/structured-data";
+import { galleryImagesJsonLd, webPageJsonLd } from "@/lib/structured-data";
 
 export async function generateMetadata({ params }: LocalePageProps): Promise<Metadata> {
   const { locale } = await params;
@@ -63,6 +63,7 @@ export default async function GalleryPage({ params }: LocalePageProps) {
 
       <JsonLd
         data={[
+          galleryImagesJsonLd(locale, messages),
           webPageJsonLd({
             locale,
             messages,

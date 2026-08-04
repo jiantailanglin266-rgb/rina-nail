@@ -11,13 +11,13 @@ import { ActionLink } from "@/components/ui/ActionLink";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { JsonLd } from "@/components/ui/JsonLd";
 import { localeHref, routes } from "@/data/navigation";
-import { links } from "@/data/site";
 import { isLocale } from "@/i18n/config";
 import { getMessages } from "@/i18n/dictionary";
 import { buildBreadcrumbs } from "@/lib/breadcrumbs";
 import type { LocalePageProps } from "@/lib/route-params";
 import { pageMetadata } from "@/lib/seo";
-import { webPageJsonLd } from "@/lib/structured-data";
+import { howToJsonLd, webPageJsonLd } from "@/lib/structured-data";
+import { bookingLink } from "@/lib/booking";
 
 export async function generateMetadata({ params }: LocalePageProps): Promise<Metadata> {
   const { locale } = await params;
@@ -31,6 +31,7 @@ export default async function FirstVisitPage({ params }: LocalePageProps) {
   if (!isLocale(locale)) notFound();
 
   const messages = await getMessages(locale);
+  const booking = bookingLink(locale);
   const page = messages.firstVisit;
   const { crumbs, jsonLd } = buildBreadcrumbs(locale, messages, "firstVisit");
 
@@ -58,7 +59,7 @@ export default async function FirstVisitPage({ params }: LocalePageProps) {
                 <p key={paragraph}>{paragraph}</p>
               ))}
             </div>
-            <ActionLink href={links.booking} external className="mt-6">
+            <ActionLink href={booking.href} external={booking.external} className="mt-6">
               {messages.common.book}
             </ActionLink>
           </div>
@@ -159,6 +160,7 @@ export default async function FirstVisitPage({ params }: LocalePageProps) {
       <JsonLd
         data={[
           webPageJsonLd({ locale, messages, routeKey: "firstVisit", summary: page.summary }),
+          howToJsonLd(locale, messages),
           jsonLd,
         ]}
       />

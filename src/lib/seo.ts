@@ -5,9 +5,17 @@ import { routes, type RouteKey } from "@/data/navigation";
 import { defaultLocale, locales, localeHtmlLang, localeOgLocale, type Locale } from "@/i18n/config";
 import type { Messages } from "@/i18n/dictionary";
 
-/** ロケール付きの絶対URLを作ります */
+/**
+ * ロケール付きの絶対URLを作ります。
+ *
+ * 静的エクスポート（`trailingSlash: true`）では各ページが `<path>/index.html` に
+ * 出力され、正規URLは末尾スラッシュ付きになります。
+ * sitemap.xml と canonical の表記が食い違うと、sitemap 上の全URLが
+ * 「リダイレクトされるURL」として扱われるため、ここで表記を1つに統一します。
+ */
 export function absoluteUrl(locale: Locale, path: string): string {
-  return `${siteUrl}/${locale}${path}`;
+  const url = `${siteUrl}/${locale}${path}`;
+  return url.endsWith("/") ? url : `${url}/`;
 }
 
 /**
