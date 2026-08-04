@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { Pause, Play } from "lucide-react";
 
-import type { SiteVideo } from "@/data/media";
+import { videoAspectRatio, type SiteVideo } from "@/data/media";
 import type { Messages } from "@/i18n/dictionary";
 import { withBasePath } from "@/lib/base-path";
 
@@ -85,9 +85,24 @@ export function BrandVideo({ video, messages }: Props) {
   }
 
   return (
-    <div className="gradient-frame relative overflow-hidden rounded-3xl bg-black/5 p-1.5 sm:p-2">
+    <div
+      className="gradient-frame relative mx-auto overflow-hidden rounded-3xl bg-black/5 p-1.5 sm:p-2"
+      /*
+       * スマートフォンでは画面いっぱいに、パソコンでは動画の実寸までで止めます。
+       *
+       * 実寸（864px）より大きく表示すると引き伸ばしになり、輪郭がぼやけます。
+       * 逆に幅を固定してしまうと、スマートフォンで左右に余白が出て小さく見えます。
+       * 「上限だけ決めて、それ以下では画面幅に合わせる」のが、
+       * どちらの画面でも最も鮮明で大きく見える設定です。
+       * 枠の余白（p-1.5 / sm:p-2）の分だけ上限を広げています。
+       */
+      style={{ maxWidth: `calc(${video.width}px + 1rem)` }}
+    >
       <video
         ref={ref}
+        // 実寸を渡しておくと、読み込み前でも高さが確定します
+        width={video.width}
+        height={video.height}
         // 操作なしで再生・繰り返し。音声は鳴りません
         autoPlay
         muted
@@ -100,7 +115,7 @@ export function BrandVideo({ video, messages }: Props) {
         aria-label={text.label}
         onPlay={() => setPlaying(true)}
         onPause={() => setPlaying(false)}
-        style={{ aspectRatio: video.aspectRatio } as CSSProperties}
+        style={{ aspectRatio: videoAspectRatio(video) } as CSSProperties}
         className="w-full rounded-[1.25rem] object-cover"
       >
         {/* 生の <source> は basePath が自動で付かないため、明示的に付けます */}

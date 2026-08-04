@@ -10,13 +10,13 @@ export type SiteVideo = {
   /** `public/` からのパス */
   src: string;
   /**
-   * 表示する縦横比（CSSの `aspect-ratio` の書式）。
+   * 動画そのものの画素数（実寸）。
    *
-   * **縦向きの動画の場合は `"9 / 16"` に変更してください。**
-   * ここを実際の比率に合わせておくと、読み込み前後で高さが変わらず、
-   * 表示のガタつき（CLS）が起きません。
+   * これより大きく表示すると引き伸ばしになり、輪郭がぼやけます。
+   * 表示側でこの値を上限に使うため、動画を差し替えたら必ず実寸に合わせてください。
    */
-  aspectRatio: string;
+  width: number;
+  height: number;
   /**
    * 最初のコマの代わりに表示する画像（`public/` からのパス）。
    * 未設定なら動画の1コマ目が使われます。
@@ -24,13 +24,23 @@ export type SiteVideo = {
   poster?: string;
 };
 
-/** ファーストビューの直下に置くブランド動画 */
+/**
+ * 表示する縦横比（CSSの `aspect-ratio` の書式）。
+ *
+ * 実寸から組み立てるため、`width` / `height` を直せば自動で追従します。
+ * 読み込み前から高さが確定するので、表示のガタつき（CLS）が起きません。
+ */
+export function videoAspectRatio(video: SiteVideo): string {
+  return `${video.width} / ${video.height}`;
+}
+
+/** ファーストビューの直下に置く、サイトの入り口の動画 */
 export const heroVideo: SiteVideo = {
-  src: "/videos/rina-nail-cm.mp4",
+  src: "/videos/rina-nail-opening.mp4",
   /*
-   * 実際の動画は 1728×992 です（16:9 の 1728×972 より少しだけ縦長）。
-   * 16 / 9 にすると上下がわずかに切れるため、実寸の比率をそのまま指定しています。
-   * 動画を差し替えたら、この値も新しい動画の比率に合わせてください。
+   * 実寸は 864×496 です（16:9 の 864×486 より少しだけ縦長）。
+   * 16 / 9 として扱うと上下がわずかに切れるため、実寸をそのまま使います。
    */
-  aspectRatio: "1728 / 992",
+  width: 864,
+  height: 496,
 };
