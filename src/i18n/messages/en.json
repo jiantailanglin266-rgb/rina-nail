@@ -264,199 +264,84 @@
     }
   },
   "booking": {
-    "title": "Online booking",
-    "lead": "Choose your menu and a time. Duration and price update as you select.",
-    "summary": "Book Rina nail online. Choose a menu and options, pick an open slot from the calendar, and complete your booking on the spot. A confirmation email follows.",
-    "steps": {
-      "menu": "Menu",
-      "options": "Options",
-      "staff": "Staff",
-      "datetime": "Date & time",
-      "info": "Your details",
-      "confirm": "Confirm",
-      "done": "Done"
-    },
-    "stepOf": "Step {current} of {total}",
-    "next": "Next",
-    "back": "Back",
-    "prevMonth": "Previous month",
-    "nextMonth": "Next month",
-    "confirmAndBook": "Confirm booking",
-    "selectMenu": "Select a menu",
-    "optionsLead": "Add anything else you would like. You can select more than one, or none.",
-    "optionsSkip": "No options",
-    "staffLead": "Choose your preferred nail artist.",
-    "staffAny": "No preference",
-    "dateLead": "Choose a date.",
-    "timeLead": "Choose an available time.",
-    "noSlots": "No openings on this day. Please choose another date.",
-    "loadingSlots": "Checking availability…",
-    "closedDay": "Closed",
-    "selectedDateTime": "Selected",
-    "infoLead": "Please enter your contact details. We will send a confirmation email.",
-    "required": "Required",
-    "optional": "Optional",
-    "fields": {
-      "name": "Name",
-      "kana": "Name (kana)",
-      "phone": "Phone",
-      "email": "Email",
-      "needsOff": "Gel removal",
-      "nailCondition": "Nail condition",
-      "allergy": "Allergies",
-      "color": "Preferred colour",
-      "design": "Preferred design",
-      "note": "Notes",
-      "visitType": "Visit",
-      "contactPreference": "Preferred contact"
-    },
-    "placeholders": {
-      "name": "Hanako Yamada",
-      "kana": "ヤマダ ハナコ",
-      "phone": "09012345678",
-      "email": "example@mail.com",
-      "nailCondition": "Chipped, thin, etc.",
-      "allergy": "Metal allergy, etc.",
-      "color": "Beige tones",
-      "design": "Simple / I will bring an image",
-      "note": "Anything else"
-    },
-    "off": {
-      "none": "None",
-      "own": "Removal of gel applied here",
-      "other": "Removal of gel from another salon"
-    },
-    "visit": {
-      "first": "First visit",
-      "repeat": "Returning"
-    },
-    "contact": {
-      "email": "Email",
-      "phone": "Phone"
-    },
-    "agree": {
-      "terms": "I agree to the terms of use",
-      "cancel": "I agree to the cancellation policy",
-      "privacy": "I agree to the privacy policy",
-      "readMore": "Read"
-    },
-    "errors": {
-      "required": "This field is required",
-      "kana": "Please use hiragana or katakana",
-      "phone": "Please check the phone number",
-      "email": "Please check the email address",
-      "tooLong": "Too long",
-      "fixFields": "Please check the highlighted fields"
-    },
-    "api": {
-      "slotTaken": "Sorry — that time was just booked by someone else. Please choose another time.",
-      "outsideHours": "That date and time is not available. Please choose another.",
-      "pastDate": "You cannot choose a past time.",
-      "tooSoon": "Same-day bookings close 3 hours before the appointment.",
-      "dailyLimit": "This day is fully booked. Please choose another day.",
-      "invalidInput": "Please check your details.",
-      "invalidToken": "This link is not valid. Please use the link in your confirmation email.",
-      "expiredToken": "This link has expired. Please contact us.",
-      "alreadyCancelled": "This booking has already been cancelled.",
-      "rateLimited": "Please wait a moment and try again.",
-      "calendarError": "We could not reach the booking system. Please try again shortly.",
-      "network": "Connection failed. Please check your signal and try again.",
-      "unknown": "Something went wrong. Please try again shortly."
-    },
-    "confirmLead": "Please check the details and confirm.",
-    "totalDuration": "Estimated duration",
-    "totalPrice": "Estimated price",
-    "priceUndecided": "Quoted at your visit",
-    "submitting": "Confirming your booking…",
-    "done": {
-      "heading": "Your booking is confirmed",
-      "lead": "We have sent a confirmation email. Please check your spam folder if it does not arrive.",
-      "reservationId": "Booking number",
-      "addToCalendar": "Add to calendar",
-      "backToTop": "Back to home",
-      "manageNote": "You can change or cancel from the link in your confirmation email."
-    },
-    "manage": {
-      "title": "Manage your booking",
-      "lead": "Please use the link from your confirmation email.",
-      "loading": "Loading your booking…",
-      "current": "Your booking",
-      "reschedule": "Change date and time",
-      "cancel": "Cancel booking",
-      "cancelConfirm": "Cancel this booking?",
-      "cancelled": "Your booking has been cancelled.",
-      "rescheduled": "Your booking has been moved.",
-      "noToken": "Invalid link. Please use the link in your confirmation email."
-    },
-    "disabled": {
-      "heading": "Online booking is being set up",
-      "lead": "Online booking is not available yet. Please contact us instead."
-    },
+    "title": "Book online",
+    "lead": "Choose an open date and time from the calendar and fill in the form. Only times that are currently available are shown.",
+    "summary": "Book Rina nail online. Pick an open slot from the Google Calendar booking page, any time of day. Google sends a confirmation email once your booking is complete.",
     "cta": "Book online",
-    "menus": {
-      "oneColor": {
-        "name": "One color",
-        "description": "A simple single-colour gel finish, suitable for workplaces with restrictions."
+    "ctaShort": "See availability",
+    "noticesHeading": "Before you book",
+    "notices": {
+      "selectFromCalendar": "Choose your preferred date and time in the calendar below. Only available times are shown.",
+      "confirmationMail": "After booking, Google Calendar will send you a confirmation email.",
+      "durationVaries": "The time required varies with the treatment. Please note your preferred menu in the booking form.",
+      "checkSpam": "If the confirmation email does not arrive, please check your spam folder.",
+      "sameDayChange": "For same-day changes or cancellations, please contact the salon directly."
+    },
+    "calendarHeading": "Booking",
+    "frameTitle": "Nail salon booking calendar",
+    "loading": "Loading the booking calendar.",
+    "fallbackLead": "If the calendar does not appear, you can book here instead.",
+    "fallbackButton": "Book with Google Calendar",
+    "openInNewTab": "Opens in a new tab",
+    "afterHeading": "After booking",
+    "after": {
+      "mailSent": "Google Calendar sends a confirmation email once your booking is complete.",
+      "mailIsConfirmation": "Your booking is confirmed when that email arrives.",
+      "mailNotArrived": "If it does not arrive, please check the address you entered and your spam folder."
+    },
+    "changeHeading": "Changes and cancellations",
+    "change": {
+      "fromMail": "To change or cancel, please follow the instructions in your confirmation email.",
+      "sameDay": "For last-minute changes or same-day cancellations, please contact the salon directly."
+    },
+    "policiesHeading": "Good to know",
+    "policies": {
+      "lateArrival": {
+        "label": "If you are late",
+        "body": "Please let us know. We may need to adjust the treatment."
       },
-      "gradation": {
-        "name": "Gradation",
-        "description": "Colour layered from the base outwards, so regrowth is less noticeable."
+      "sameDayCancel": {
+        "label": "Same-day cancellation",
+        "body": "If something comes up, please contact us as early as you can."
       },
-      "french": {
-        "name": "French",
-        "description": "The classic tip design. Width and colour adjusted to your preference."
+      "noShow": {
+        "label": "No-show",
+        "body": "Repeated cancellations without notice may mean we cannot take future bookings."
       },
-      "flatSimple": {
-        "name": "Flat-rate simple",
-        "description": "A fixed-price menu with simple art."
-      },
-      "flatDesign": {
-        "name": "Flat-rate design",
-        "description": "A fixed-price menu with art and parts for a fuller look."
+      "offNeeded": {
+        "label": "Gel removal",
+        "body": "We also remove gel applied at other salons. Please note it in the booking form."
       },
       "broughtDesign": {
-        "name": "Your own design",
-        "description": "We work from an image you bring. Results vary with nail shape."
+        "label": "Your own design",
+        "body": "Please bring an image. Results may vary with your nail shape."
       },
-      "gelOff": {
-        "name": "Gel removal",
-        "description": "Removal only. Gel applied at another salon is also welcome."
+      "allergy": {
+        "label": "Allergies",
+        "body": "Please tell us in advance. We may ask you to postpone if your skin is irritated."
       },
-      "sculpture": {
-        "name": "Sculpture",
-        "description": "For added length and strength. Please consult on shape."
+      "payment": {
+        "label": "Payment",
+        "body": "Credit cards, Apple Pay, iD and QUICPay are accepted."
       },
-      "nailCare": {
-        "name": "Nail care",
-        "description": "Cuticle and shape care only, without colour."
+      "children": {
+        "label": "Children",
+        "body": "The salon is fully private, so please ask us in advance."
       },
-      "footNail": {
-        "name": "Foot nails",
-        "description": "Gel nails for your toes."
-      },
-      "extension": {
-        "name": "Length extension",
-        "description": "Rebuilds broken or short nails. From one nail."
-      },
-      "repair": {
-        "name": "Crack repair",
-        "description": "Reinforces a cracked nail. From one nail."
-      },
-      "consult": {
-        "name": "Other enquiry",
-        "description": "Anything not listed above. We will discuss and suggest."
+      "parking": {
+        "label": "Parking",
+        "body": "Parking is available on site. See the access page for directions."
       }
     },
-    "options": {
-      "offOther": "Removal (other salon)",
-      "offOwn": "Removal (our salon)",
-      "extension": "Length extension",
-      "repair": "Crack repair",
-      "parts": "Add parts",
-      "art": "Add art",
-      "footChange": "Change to foot",
-      "colorAdd": "Add colour",
-      "stone": "Add stones"
+    "contactHeading": "Phone and enquiries",
+    "contactLead": "If online booking does not work or you have any questions, please get in touch.",
+    "privacyHeading": "Handling of personal data",
+    "privacyLead": "Bookings use Google Calendar's appointment feature. Details you enter are processed through Google's services and used to manage your booking and contact you.",
+    "notConfigured": {
+      "heading": "Online booking is being set up",
+      "lead": "Online booking will open shortly. In the meantime, please contact us by phone or via the salon information page.",
+      "callUs": "Call us",
+      "viewAccess": "Salon information"
     }
   },
   "nav": {
@@ -558,6 +443,13 @@
         "ONE-ON-ONE SALON",
         "NAIL ART"
       ]
+    },
+    "brandVideo": {
+      "heading": "About Rina nail",
+      "lead": "A short film of the salon.",
+      "label": "Rina nail introduction video",
+      "play": "Play video",
+      "pause": "Pause video"
     },
     "concept": {
       "eyebrow": "CONCEPT",
@@ -1121,7 +1013,10 @@
       {
         "heading": "6. Use of the booking service",
         "body": [
-          "Bookings may be taken through an external booking service. Personal information handled on that service is governed by that provider's own terms."
+          "Bookings may be taken through an external booking service. Personal information handled on that service is governed by that provider's own terms.",
+          "Bookings are handled through Google Calendar's appointment schedule feature. Information you enter when booking is processed through Google's services and managed in the salon's Google Calendar.",
+          "Google's own privacy policy may apply to that processing. Please refer to Google's terms for details.",
+          "Booking information is used to manage your appointment and to contact you."
         ]
       },
       {

@@ -142,10 +142,14 @@ function geoCoordinates(): JsonLdObject | undefined {
   return { "@type": "GeoCoordinates", latitude, longitude };
 }
 
-/** 予約導線。予約URLが未設定なら出力しません */
+/**
+ * 予約導線。
+ *
+ * サイト内に予約ページがあるため、常にそこを指します。
+ * 外部の予約サイトURLが設定されている場合はそちらを優先します。
+ */
 function reserveAction(locale: Locale): JsonLdObject | undefined {
-  const bookingUrl = resolved(placeholders.bookingUrl);
-  if (!bookingUrl) return undefined;
+  const bookingUrl = resolved(placeholders.bookingUrl) ?? absoluteUrl(locale, routes.booking.path);
   return {
     "@type": "ReserveAction",
     target: {

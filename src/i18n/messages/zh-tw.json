@@ -248,198 +248,83 @@
   },
   "booking": {
     "title": "網路預約",
-    "lead": "請選擇項目與時間。所需時間與費用會自動計算。",
-    "summary": "Rina nail 的網路預約頁面。選擇項目與附加項，從日曆挑選空檔即可完成預約，並會收到確認信。",
-    "steps": {
-      "menu": "項目",
-      "options": "附加",
-      "staff": "美甲師",
-      "datetime": "日期時間",
-      "info": "顧客資訊",
-      "confirm": "確認",
-      "done": "完成"
-    },
-    "stepOf": "步骤 {current} / {total}",
-    "next": "下一步",
-    "back": "返回",
-    "prevMonth": "上個月",
-    "nextMonth": "下個月",
-    "confirmAndBook": "確認預約",
-    "selectMenu": "選擇項目",
-    "optionsLead": "如需追加項目請選擇（可多選，也可不選）。",
-    "optionsSkip": "不追加",
-    "staffLead": "請選擇美甲師。",
-    "staffAny": "不指定",
-    "dateLead": "請選擇日期。",
-    "timeLead": "請選擇空檔。",
-    "noSlots": "當天沒有空位，請選擇其他日期。",
-    "loadingSlots": "正在確認空位…",
-    "closedDay": "公休",
-    "selectedDateTime": "已選擇",
-    "infoLead": "請填寫聯絡方式，我們會寄送確認信。",
-    "required": "必填",
-    "optional": "選填",
-    "fields": {
-      "name": "Name",
-      "kana": "Name (kana)",
-      "phone": "Phone",
-      "email": "Email",
-      "needsOff": "Gel removal",
-      "nailCondition": "Nail condition",
-      "allergy": "Allergies",
-      "color": "Preferred colour",
-      "design": "Preferred design",
-      "note": "Notes",
-      "visitType": "Visit",
-      "contactPreference": "Preferred contact"
-    },
-    "placeholders": {
-      "name": "Hanako Yamada",
-      "kana": "ヤマダ ハナコ",
-      "phone": "09012345678",
-      "email": "example@mail.com",
-      "nailCondition": "Chipped, thin, etc.",
-      "allergy": "Metal allergy, etc.",
-      "color": "Beige tones",
-      "design": "Simple / I will bring an image",
-      "note": "Anything else"
-    },
-    "off": {
-      "none": "None",
-      "own": "Removal of gel applied here",
-      "other": "Removal of gel from another salon"
-    },
-    "visit": {
-      "first": "First visit",
-      "repeat": "Returning"
-    },
-    "contact": {
-      "email": "Email",
-      "phone": "Phone"
-    },
-    "agree": {
-      "terms": "I agree to the terms of use",
-      "cancel": "I agree to the cancellation policy",
-      "privacy": "I agree to the privacy policy",
-      "readMore": "Read"
-    },
-    "errors": {
-      "required": "This field is required",
-      "kana": "Please use hiragana or katakana",
-      "phone": "Please check the phone number",
-      "email": "Please check the email address",
-      "tooLong": "Too long",
-      "fixFields": "Please check the highlighted fields"
-    },
-    "api": {
-      "slotTaken": "Sorry — that time was just booked by someone else. Please choose another time.",
-      "outsideHours": "That date and time is not available. Please choose another.",
-      "pastDate": "You cannot choose a past time.",
-      "tooSoon": "Same-day bookings close 3 hours before the appointment.",
-      "dailyLimit": "This day is fully booked. Please choose another day.",
-      "invalidInput": "Please check your details.",
-      "invalidToken": "This link is not valid. Please use the link in your confirmation email.",
-      "expiredToken": "This link has expired. Please contact us.",
-      "alreadyCancelled": "This booking has already been cancelled.",
-      "rateLimited": "Please wait a moment and try again.",
-      "calendarError": "We could not reach the booking system. Please try again shortly.",
-      "network": "Connection failed. Please check your signal and try again.",
-      "unknown": "Something went wrong. Please try again shortly."
-    },
-    "confirmLead": "請確認內容後完成預約。",
-    "totalDuration": "預計所需時間",
-    "totalPrice": "費用參考",
-    "priceUndecided": "到店時說明",
-    "submitting": "正在確認預約…",
-    "done": {
-      "heading": "Your booking is confirmed",
-      "lead": "We have sent a confirmation email. Please check your spam folder if it does not arrive.",
-      "reservationId": "Booking number",
-      "addToCalendar": "Add to calendar",
-      "backToTop": "Back to home",
-      "manageNote": "You can change or cancel from the link in your confirmation email."
-    },
-    "manage": {
-      "title": "Manage your booking",
-      "lead": "Please use the link from your confirmation email.",
-      "loading": "Loading your booking…",
-      "current": "Your booking",
-      "reschedule": "Change date and time",
-      "cancel": "Cancel booking",
-      "cancelConfirm": "Cancel this booking?",
-      "cancelled": "Your booking has been cancelled.",
-      "rescheduled": "Your booking has been moved.",
-      "noToken": "Invalid link. Please use the link in your confirmation email."
-    },
-    "disabled": {
-      "heading": "Online booking is being set up",
-      "lead": "Online booking is not available yet. Please contact us instead."
-    },
+    "lead": "請從日曆中選擇空檔的日期與時間並填寫資訊。日曆上顯示的時段即為目前可預約的時間。",
+    "summary": "Rina nail 的網路預約頁面。可從 Google 日曆預約畫面選擇空檔，24小時受理。預約完成後 Google 會寄送確認信。",
     "cta": "網路預約",
-    "menus": {
-      "oneColor": {
-        "name": "單色",
-        "description": "單色美甲，適合有工作限制的顧客。"
+    "ctaShort": "查看空檔",
+    "noticesHeading": "預約前請確認",
+    "notices": {
+      "selectFromCalendar": "請從下方日曆選擇希望的日期與時間。僅顯示可預約的時段。",
+      "confirmationMail": "預約完成後，Google 日曆會寄送確認信。",
+      "durationVaries": "所需時間會因項目而異。請在預約表單中填寫希望的項目。",
+      "checkSpam": "若未收到確認信，請查看垃圾郵件匣。",
+      "sameDayChange": "當天的變更或取消，請直接聯繫店家。"
+    },
+    "calendarHeading": "預約",
+    "frameTitle": "美甲沙龍預約日曆",
+    "loading": "正在載入預約日曆。",
+    "fallbackLead": "若日曆未顯示，請從這裡預約。",
+    "fallbackButton": "使用 Google 日曆預約",
+    "openInNewTab": "在新分頁開啟",
+    "afterHeading": "預約之後",
+    "after": {
+      "mailSent": "預約完成後，Google 日曆會寄送確認信。",
+      "mailIsConfirmation": "收到確認信即代表預約完成。",
+      "mailNotArrived": "若未收到，請確認填寫的信箱與垃圾郵件匣。"
+    },
+    "changeHeading": "變更與取消",
+    "change": {
+      "fromMail": "變更或取消請參考預約完成信中的說明。",
+      "sameDay": "臨時變更或當天取消，請直接聯繫店家。"
+    },
+    "policiesHeading": "使用須知",
+    "policies": {
+      "lateArrival": {
+        "label": "迟到时",
+        "body": "请先联系我们。可能需要调整施作内容。"
       },
-      "gradation": {
-        "name": "漸層",
-        "description": "由甲根向外自然過渡，長出後不明顯。"
+      "sameDayCancel": {
+        "label": "当天取消",
+        "body": "如有不得已的情况，请尽早联系我们。"
       },
-      "french": {
-        "name": "法式",
-        "description": "經典的甲尖設計，寬度與顏色可調整。"
+      "noShow": {
+        "label": "未到店",
+        "body": "若多次未联系即取消，今后可能无法接受预约。"
       },
-      "flatSimple": {
-        "name": "定額簡約套餐",
-        "description": "含簡單彩繪的定額菜單。"
-      },
-      "flatDesign": {
-        "name": "定額設計套餐",
-        "description": "含彩繪與飾品的華麗定額菜單。"
+      "offNeeded": {
+        "label": "是否需要卸甲",
+        "body": "他店施作的甲油胶也可卸除，请在预约表单中注明。"
       },
       "broughtDesign": {
-        "name": "自帶圖案",
-        "description": "依您提供的圖片提案，還原度依甲型而異。"
+        "label": "自带图案",
+        "body": "请携带图片。还原度可能因甲型而异。"
       },
-      "gelOff": {
-        "name": "卸甲",
-        "description": "僅卸除凝膠。他店施作也可。"
+      "allergy": {
+        "label": "过敏",
+        "body": "如有顾虑请事先告知。皮肤有异常时可能需要暂缓施作。"
       },
-      "sculpture": {
-        "name": "延甲",
-        "description": "需要長度與強度時。形狀可討論。"
+      "payment": {
+        "label": "付款",
+        "body": "可使用各种信用卡、Apple Pay、iD、QUICPay。"
       },
-      "nailCare": {
-        "name": "指甲護理",
-        "description": "僅修整甘皮與甲型，不上色。"
+      "children": {
+        "label": "携带儿童",
+        "body": "本店为完全私密空间，请事先咨询。"
       },
-      "footNail": {
-        "name": "足部美甲",
-        "description": "足部的凝膠美甲。"
-      },
-      "extension": {
-        "name": "延長",
-        "description": "修補斷裂或過短的指甲，可單片。"
-      },
-      "repair": {
-        "name": "裂痕補強",
-        "description": "補強快裂開的指甲，可單片。"
-      },
-      "consult": {
-        "name": "其他諮詢",
-        "description": "以上以外的需求，我們會先了解再提案。"
+      "parking": {
+        "label": "停车场",
+        "body": "店内设有停车位。详细路线请见交通页面。"
       }
     },
-    "options": {
-      "offOther": "他店卸甲",
-      "offOwn": "本店卸甲",
-      "extension": "延長",
-      "repair": "裂痕補強",
-      "parts": "追加飾品",
-      "art": "追加彩繪",
-      "footChange": "改為足部",
-      "colorAdd": "追加顏色",
-      "stone": "追加鑽飾"
+    "contactHeading": "電話與洽詢",
+    "contactLead": "若網路預約無法完成或有任何疑問，歡迎隨時聯繫我們。",
+    "privacyHeading": "個人資料的處理",
+    "privacyLead": "預約使用 Google 日曆的預約功能。您填寫的資訊將透過 Google 的服務處理，用於預約管理與聯絡。",
+    "notConfigured": {
+      "heading": "網路預約正在準備中",
+      "lead": "線上預約即將開放，敬請稍候。如有急事，請透過電話或店家資訊頁面聯繫我們。",
+      "callUs": "撥打電話",
+      "viewAccess": "查看店家資訊"
     }
   },
   "nav": {
@@ -541,6 +426,13 @@
         "ONE-ON-ONE SALON",
         "NAIL ART"
       ]
+    },
+    "brandVideo": {
+      "heading": "關於 Rina nail",
+      "lead": "透過短片了解沙龍的氛圍。",
+      "label": "Rina nail 介紹影片",
+      "play": "播放影片",
+      "pause": "暫停影片"
     },
     "concept": {
       "eyebrow": "CONCEPT",
@@ -1104,7 +996,10 @@
       {
         "heading": "6. 關於預約網站的利用",
         "body": [
-          "預約可能透過外部預約服務受理。該服務上的個人資料處理，依該服務的規定辦理。"
+          "預約可能透過外部預約服務受理。該服務上的個人資料處理，依該服務的規定辦理。",
+          "預約受理使用 Google 提供的「Google 日曆預約時段」功能。您在預約時填寫的資訊將透過 Google 的服務處理，並在本店的 Google 日曆中管理。",
+          "此時可能適用 Google 的隱私權政策，詳情請參閱 Google 的相關規定。",
+          "預約資訊僅用於預約管理與聯絡。"
         ]
       },
       {

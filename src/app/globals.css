@@ -155,6 +155,22 @@
 
 @layer components {
   /*
+   * Googleカレンダー予約画面（iframe）の高さ。
+   *
+   * 実際の値は src/data/booking/config.ts から CSS変数で渡されます。
+   * スマートフォンでいちばん高くするのは、Google側の入力フォームが縦に長く、
+   * 低いとiframe内に二重スクロールが生まれて操作しづらくなるためです。
+   */
+  .booking-frame {
+    height: var(--booking-frame-mobile, 900px);
+  }
+  @media (min-width: 40rem) {
+    .booking-frame {
+      height: var(--booking-frame-desktop, 800px);
+    }
+  }
+
+  /*
    * X字マーキーの帯の傾き。
    *
    * 同じ角度でも、画面が広いほど帯の端の上下の振れ幅が大きくなります。

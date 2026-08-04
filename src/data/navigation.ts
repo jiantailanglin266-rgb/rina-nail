@@ -51,6 +51,8 @@ export const allRoutes: Route[] = Object.values(routes);
 
 /** ヘッダー・モバイルメニューに並べる主要ナビ */
 export const mainNavKeys: RouteKey[] = [
+  // 予約はナビの先頭に置きます（最も押してほしい導線のため）
+  "booking",
   "menu",
   "gallery",
   "fillIn",

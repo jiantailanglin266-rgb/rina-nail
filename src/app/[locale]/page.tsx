@@ -14,6 +14,9 @@ import {
 } from "lucide-react";
 
 import { Marquee } from "@/components/animations/Marquee";
+import { BrandVideo } from "@/components/sections/BrandVideo";
+import { heroVideo } from "@/data/media";
+import { publicFileExists } from "@/lib/public-assets";
 import { GradientMesh } from "@/components/backgrounds/GradientMesh";
 import { Reveal } from "@/components/animations/Reveal";
 import { Section } from "@/components/layout/Section";
@@ -75,6 +78,31 @@ export default async function HomePage({ params }: LocalePageProps) {
   return (
     <>
       <Hero locale={locale} messages={messages} />
+
+      {/*
+        ブランド動画。ファーストビューの直下に置きます。
+        動画ファイルが public に無い場合は、このセクションごと描画しません
+        （空の黒い枠を公開しないため）。
+      */}
+      {publicFileExists(heroVideo.src) ? (
+        <Section
+          preset="concept"
+          salvia={{ variant: "section", density: "low", showFlowers: false, showBranches: false }}
+          aria-labelledby="brand-video-heading"
+        >
+          <div className="mx-auto max-w-4xl">
+            <SectionHeading
+              id="brand-video-heading"
+              eyebrow="MOVIE"
+              heading={home.brandVideo.heading}
+              lead={home.brandVideo.lead}
+            />
+            <div className="mt-8">
+              <BrandVideo video={heroVideo} messages={messages} />
+            </div>
+          </div>
+        </Section>
+      ) : null}
 
       {/* マーキー（装飾。同じ情報は本文にも記載しています） */}
       <div className="border-line/70 relative isolate overflow-hidden border-y bg-white py-5 sm:py-7">

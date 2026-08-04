@@ -248,198 +248,83 @@
   },
   "booking": {
     "title": "网上预约",
-    "lead": "请选择项目与时间。所需时间与费用会自动计算。",
-    "summary": "Rina nail 的网上预约页面。选择项目与附加项，从日历中挑选空闲时段即可完成预约，并会收到确认邮件。",
-    "steps": {
-      "menu": "项目",
-      "options": "附加",
-      "staff": "美甲师",
-      "datetime": "日期时间",
-      "info": "客户信息",
-      "confirm": "确认",
-      "done": "完成"
-    },
-    "stepOf": "步骤 {current} / {total}",
-    "next": "下一步",
-    "back": "返回",
-    "prevMonth": "上个月",
-    "nextMonth": "下个月",
-    "confirmAndBook": "确认预约",
-    "selectMenu": "选择项目",
-    "optionsLead": "如需追加项目请选择（可多选，也可不选）。",
-    "optionsSkip": "不追加",
-    "staffLead": "请选择美甲师。",
-    "staffAny": "不指定",
-    "dateLead": "请选择日期。",
-    "timeLead": "请选择空闲时段。",
-    "noSlots": "当天没有空位，请选择其他日期。",
-    "loadingSlots": "正在确认空位…",
-    "closedDay": "公休",
-    "selectedDateTime": "已选择",
-    "infoLead": "请填写联系方式，我们会发送确认邮件。",
-    "required": "必填",
-    "optional": "选填",
-    "fields": {
-      "name": "Name",
-      "kana": "Name (kana)",
-      "phone": "Phone",
-      "email": "Email",
-      "needsOff": "Gel removal",
-      "nailCondition": "Nail condition",
-      "allergy": "Allergies",
-      "color": "Preferred colour",
-      "design": "Preferred design",
-      "note": "Notes",
-      "visitType": "Visit",
-      "contactPreference": "Preferred contact"
-    },
-    "placeholders": {
-      "name": "Hanako Yamada",
-      "kana": "ヤマダ ハナコ",
-      "phone": "09012345678",
-      "email": "example@mail.com",
-      "nailCondition": "Chipped, thin, etc.",
-      "allergy": "Metal allergy, etc.",
-      "color": "Beige tones",
-      "design": "Simple / I will bring an image",
-      "note": "Anything else"
-    },
-    "off": {
-      "none": "None",
-      "own": "Removal of gel applied here",
-      "other": "Removal of gel from another salon"
-    },
-    "visit": {
-      "first": "First visit",
-      "repeat": "Returning"
-    },
-    "contact": {
-      "email": "Email",
-      "phone": "Phone"
-    },
-    "agree": {
-      "terms": "I agree to the terms of use",
-      "cancel": "I agree to the cancellation policy",
-      "privacy": "I agree to the privacy policy",
-      "readMore": "Read"
-    },
-    "errors": {
-      "required": "This field is required",
-      "kana": "Please use hiragana or katakana",
-      "phone": "Please check the phone number",
-      "email": "Please check the email address",
-      "tooLong": "Too long",
-      "fixFields": "Please check the highlighted fields"
-    },
-    "api": {
-      "slotTaken": "Sorry — that time was just booked by someone else. Please choose another time.",
-      "outsideHours": "That date and time is not available. Please choose another.",
-      "pastDate": "You cannot choose a past time.",
-      "tooSoon": "Same-day bookings close 3 hours before the appointment.",
-      "dailyLimit": "This day is fully booked. Please choose another day.",
-      "invalidInput": "Please check your details.",
-      "invalidToken": "This link is not valid. Please use the link in your confirmation email.",
-      "expiredToken": "This link has expired. Please contact us.",
-      "alreadyCancelled": "This booking has already been cancelled.",
-      "rateLimited": "Please wait a moment and try again.",
-      "calendarError": "We could not reach the booking system. Please try again shortly.",
-      "network": "Connection failed. Please check your signal and try again.",
-      "unknown": "Something went wrong. Please try again shortly."
-    },
-    "confirmLead": "请确认内容后完成预约。",
-    "totalDuration": "预计所需时间",
-    "totalPrice": "费用参考",
-    "priceUndecided": "到店时说明",
-    "submitting": "正在确认预约…",
-    "done": {
-      "heading": "Your booking is confirmed",
-      "lead": "We have sent a confirmation email. Please check your spam folder if it does not arrive.",
-      "reservationId": "Booking number",
-      "addToCalendar": "Add to calendar",
-      "backToTop": "Back to home",
-      "manageNote": "You can change or cancel from the link in your confirmation email."
-    },
-    "manage": {
-      "title": "Manage your booking",
-      "lead": "Please use the link from your confirmation email.",
-      "loading": "Loading your booking…",
-      "current": "Your booking",
-      "reschedule": "Change date and time",
-      "cancel": "Cancel booking",
-      "cancelConfirm": "Cancel this booking?",
-      "cancelled": "Your booking has been cancelled.",
-      "rescheduled": "Your booking has been moved.",
-      "noToken": "Invalid link. Please use the link in your confirmation email."
-    },
-    "disabled": {
-      "heading": "Online booking is being set up",
-      "lead": "Online booking is not available yet. Please contact us instead."
-    },
+    "lead": "请从日历中选择空闲的日期与时间并填写信息。日历上显示的时段即为目前可预约的时间。",
+    "summary": "Rina nail 的网上预约页面。可从 Google 日历预约画面选择空闲时段，24小时受理。预约完成后 Google 会发送确认邮件。",
     "cta": "网上预约",
-    "menus": {
-      "oneColor": {
-        "name": "单色",
-        "description": "单色美甲，适合有工作限制的顾客。"
+    "ctaShort": "查看空位",
+    "noticesHeading": "预约前请确认",
+    "notices": {
+      "selectFromCalendar": "请从下方日历选择希望的日期与时间。仅显示可预约的时段。",
+      "confirmationMail": "预约完成后，Google 日历会发送确认邮件。",
+      "durationVaries": "所需时间会因项目而异。请在预约表单中填写希望的项目。",
+      "checkSpam": "若未收到确认邮件，请查看垃圾邮件文件夹。",
+      "sameDayChange": "当天的变更或取消，请直接联系店铺。"
+    },
+    "calendarHeading": "预约",
+    "frameTitle": "美甲沙龙预约日历",
+    "loading": "正在载入预约日历。",
+    "fallbackLead": "若日历未显示，请从这里预约。",
+    "fallbackButton": "使用 Google 日历预约",
+    "openInNewTab": "在新标签页中打开",
+    "afterHeading": "预约之后",
+    "after": {
+      "mailSent": "预约完成后，Google 日历会发送确认邮件。",
+      "mailIsConfirmation": "收到确认邮件即代表预约完成。",
+      "mailNotArrived": "若未收到，请确认填写的邮箱地址与垃圾邮件文件夹。"
+    },
+    "changeHeading": "变更与取消",
+    "change": {
+      "fromMail": "变更或取消请参考预约完成邮件中的说明。",
+      "sameDay": "临时变更或当天取消，请直接联系店铺。"
+    },
+    "policiesHeading": "使用须知",
+    "policies": {
+      "lateArrival": {
+        "label": "迟到时",
+        "body": "请先联系我们。可能需要调整施作内容。"
       },
-      "gradation": {
-        "name": "渐变",
-        "description": "由甲根向外自然过渡，长出后不明显。"
+      "sameDayCancel": {
+        "label": "当天取消",
+        "body": "如有不得已的情况，请尽早联系我们。"
       },
-      "french": {
-        "name": "法式",
-        "description": "经典的甲尖设计，宽度与颜色可调整。"
+      "noShow": {
+        "label": "未到店",
+        "body": "若多次未联系即取消，今后可能无法接受预约。"
       },
-      "flatSimple": {
-        "name": "定额简约套餐",
-        "description": "含简单彩绘的定额菜单。"
-      },
-      "flatDesign": {
-        "name": "定额设计套餐",
-        "description": "含彩绘与饰品的华丽定额菜单。"
+      "offNeeded": {
+        "label": "是否需要卸甲",
+        "body": "他店施作的甲油胶也可卸除，请在预约表单中注明。"
       },
       "broughtDesign": {
-        "name": "自带图案",
-        "description": "根据您提供的图片提案，还原度依甲型而异。"
+        "label": "自带图案",
+        "body": "请携带图片。还原度可能因甲型而异。"
       },
-      "gelOff": {
-        "name": "卸甲",
-        "description": "仅卸除甲油胶。他店施作也可。"
+      "allergy": {
+        "label": "过敏",
+        "body": "如有顾虑请事先告知。皮肤有异常时可能需要暂缓施作。"
       },
-      "sculpture": {
-        "name": "延长甲",
-        "description": "需要长度与强度时。形状可商量。"
+      "payment": {
+        "label": "付款",
+        "body": "可使用各种信用卡、Apple Pay、iD、QUICPay。"
       },
-      "nailCare": {
-        "name": "指甲护理",
-        "description": "仅修整甘皮与甲型，不上色。"
+      "children": {
+        "label": "携带儿童",
+        "body": "本店为完全私密空间，请事先咨询。"
       },
-      "footNail": {
-        "name": "足部美甲",
-        "description": "足部的甲油胶美甲。"
-      },
-      "extension": {
-        "name": "延长",
-        "description": "修补断裂或过短的指甲，可单片。"
-      },
-      "repair": {
-        "name": "裂痕加固",
-        "description": "加固快裂开的指甲，可单片。"
-      },
-      "consult": {
-        "name": "其他咨询",
-        "description": "以上以外的需求，我们会先了解再提案。"
+      "parking": {
+        "label": "停车场",
+        "body": "店内设有停车位。详细路线请见交通页面。"
       }
     },
-    "options": {
-      "offOther": "他店卸甲",
-      "offOwn": "本店卸甲",
-      "extension": "延长",
-      "repair": "裂痕加固",
-      "parts": "追加饰品",
-      "art": "追加彩绘",
-      "footChange": "改为足部",
-      "colorAdd": "追加颜色",
-      "stone": "追加钻饰"
+    "contactHeading": "电话与咨询",
+    "contactLead": "若网上预约无法完成或有任何疑问，欢迎随时联系我们。",
+    "privacyHeading": "个人信息的处理",
+    "privacyLead": "预约使用 Google 日历的预约功能。您填写的信息将通过 Google 的服务处理，用于预约管理与联络。",
+    "notConfigured": {
+      "heading": "网上预约正在准备中",
+      "lead": "线上预约即将开放，敬请稍候。如有急事，请通过电话或店铺信息页面联系我们。",
+      "callUs": "拨打电话",
+      "viewAccess": "查看店铺信息"
     }
   },
   "nav": {
@@ -541,6 +426,13 @@
         "ONE-ON-ONE SALON",
         "NAIL ART"
       ]
+    },
+    "brandVideo": {
+      "heading": "关于 Rina nail",
+      "lead": "通过短片了解沙龙的氛围。",
+      "label": "Rina nail 介绍影片",
+      "play": "播放影片",
+      "pause": "暂停影片"
     },
     "concept": {
       "eyebrow": "CONCEPT",
@@ -1104,7 +996,10 @@
       {
         "heading": "6. 关于预约网站的利用",
         "body": [
-          "预约可能透过外部预约服务受理。该服务上的个人信息处理，依该服务的规定办理。"
+          "预约可能透过外部预约服务受理。该服务上的个人信息处理，依该服务的规定办理。",
+          "预约受理使用 Google 提供的「Google 日历预约时段」功能。您在预约时填写的信息将通过 Google 的服务处理，并在本店的 Google 日历中管理。",
+          "此时可能适用 Google 的隐私政策，详情请参阅 Google 的相关规定。",
+          "预约信息仅用于预约管理与联络。"
         ]
       },
       {

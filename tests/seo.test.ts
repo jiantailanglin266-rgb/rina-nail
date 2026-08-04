@@ -167,10 +167,16 @@ describe("未確定情報の扱い（構造化データ）", () => {
     expect(serialized).not.toMatch(/\{\{[A-Z_]+\}\}/);
   });
 
-  it("未設定の緯度経度・電話番号・予約導線はキーごと省略される", () => {
+  it("未設定の緯度経度・電話番号はキーごと省略される", () => {
     expect(salon).not.toHaveProperty("geo");
     expect(salon).not.toHaveProperty("telephone");
-    expect(salon).not.toHaveProperty("potentialAction");
+  });
+
+  it("予約導線はサイト内の予約ページを指す（常に有効なURL）", () => {
+    // 外部予約サイトが未設定でも、サイト内に予約ページがあるため導線は出せます
+    const action = salon.potentialAction as { target: { urlTemplate: string } };
+    expect(action.target.urlTemplate).toContain("/ja/booking/");
+    expect(action.target.urlTemplate).not.toMatch(/\{\{.*\}\}/);
   });
 
   it("緯度経度が無くても地図の場所は hasMap で示している", () => {
