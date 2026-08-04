@@ -25,7 +25,10 @@ let shouldShowCache: boolean | null = null;
 function readShouldShow(): boolean {
   if (shouldShowCache === null) {
     try {
-      shouldShowCache = sessionStorage.getItem(STORAGE_KEY) !== "1";
+      // 確認用スイッチ: URLに ?intro=1 を付けると、再生済みでも必ず流します。
+      // 「一度だけ」の仕様上、動作確認のたびにタブを開き直すのは大変なためです
+      const forced = new URLSearchParams(window.location.search).has("intro");
+      shouldShowCache = forced || sessionStorage.getItem(STORAGE_KEY) !== "1";
     } catch {
       // プライベートブラウズ等で保存できない環境では、
       // 「ページを移るたびに毎回流れる」よりも「流さない」に倒します
