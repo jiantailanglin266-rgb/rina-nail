@@ -15,50 +15,56 @@ type Props = {
 /**
  * ブランド動画（ファーストビュー直下）。
  *
- * ## 自動再生の扱い
+ * ## 再生のしかた
  *
- * 音声なしで自動再生し、繰り返します。広告動画としては一般的な挙動ですが、
- * **動きが苦手な方のために必ず止められるようにしています。**
+ * **操作なしで自動再生し、繰り返します。** 音声は鳴りません。
+ * `autoPlay muted loop playsInline` をHTMLの属性として指定しているため、
+ * JavaScriptが動かない場合でもブラウザ自身が再生します。
  *
- * - `prefers-reduced-motion` が有効な環境では自動再生しません（1コマ目で静止）
- * - 再生／一時停止ボタンを常に表示します
- * - 音声は最初から鳴りません（`muted`）
+ * `playsInline` は必須です。これが無いと、iPhoneでは再生時に
+ * 全画面のプレーヤーが開いてしまい、サイトの表示が置き換わってしまいます。
+ * 付けることで、ページ内に埋め込まれたまま再生されます。
  *
- * ## 通信量への配慮
+ * 動きを止めたい方のために、一時停止ボタンは常に表示しています
+ * （サロン様のご要望により、「動きを減らす」設定の端末でも自動再生します）。
  *
- * **画面に入るまで再生を始めません。**
- * ページを開いた瞬間に再生を始めると、下までスクロールしない方にも
- * 動画（約9MB）を丸ごとダウンロードさせてしまいます。
- * スマートフォンの通信量に直接響くため、表示領域に入ってから読み込みます。
+ * ## 再生中もページの見た目を変えない
  *
- * ## 表示のガタつき対策
- *
- * 縦横比を先に指定しているため、動画の読み込み前後で高さが変わりません。
- * `preload="metadata"` と合わせて、最初の表示速度（LCP）にも影響させません。
+ * - 縦横比を先に指定しているため、読み込み前後で高さが変わりません（ガタつき防止）
+ * - 全画面にならず、枠の中だけで再生します
+ * - 操作ボタンは枠の内側に重ねており、本文の位置に影響しません
+ * - 画面外へスクロールすると再生を止めます（通信量と電池の節約。
+ *   戻ってくると再開するため、見え方は変わりません）
  */
 export function BrandVideo({ video, messages }: Props) {
   const text = messages.home.brandVideo;
   const ref = useRef<HTMLVideoElement>(null);
-  const [playing, setPlaying] = useState(false);
+  const [playing, setPlaying] = useState(true);
+  /** 利用者が自分で止めた場合は、勝手に再開しません */
+  const pausedByUser = useRef(false);
 
   useEffect(() => {
     const element = ref.current;
     if (!element) return;
 
-    // 動きを減らす設定のときは自動再生しません（1コマ目で静止します）
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-
-    // 画面に入ったときだけ再生を始め、外れたら止めます（通信量と電池の節約）
+    /*
+     * 自動再生はブラウザ側の判断で拒否されることがあります
+     * （省電力モードなど）。その場合に備え、
+     * 画面に入ったときにもう一度だけ再生を試みます。
+     * 失敗しても何も壊さず、一時停止ボタンから手動で再生できます。
+     */
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          // 自動再生はブラウザに拒否されることがあるため、失敗しても何も壊しません
-          element.play().catch(() => setPlaying(false));
+          if (!pausedByUser.current && element.paused) {
+            element.play().catch(() => setPlaying(false));
+          }
         } else if (!element.paused) {
+          // 画面外では止めます（戻れば再開するので、見え方は変わりません）
           element.pause();
         }
       },
-      { threshold: 0.35 },
+      { threshold: 0.2 },
     );
 
     observer.observe(element);
@@ -70,10 +76,11 @@ export function BrandVideo({ video, messages }: Props) {
     if (!element) return;
 
     if (element.paused) {
-      void element.play().then(() => setPlaying(true));
+      pausedByUser.current = false;
+      void element.play().catch(() => setPlaying(false));
     } else {
+      pausedByUser.current = true;
       element.pause();
-      setPlaying(false);
     }
   }
 
@@ -81,10 +88,13 @@ export function BrandVideo({ video, messages }: Props) {
     <div className="gradient-frame relative overflow-hidden rounded-3xl bg-black/5 p-1.5 sm:p-2">
       <video
         ref={ref}
-        // 音声なし・繰り返し。iOSでは playsInline が無いと全画面で開いてしまいます
+        // 操作なしで再生・繰り返し。音声は鳴りません
+        autoPlay
         muted
         loop
         playsInline
+        // iPhoneで全画面に切り替わらないようにします（サイトの表示を保つため）
+        disablePictureInPicture
         preload="metadata"
         poster={video.poster ? withBasePath(video.poster) : undefined}
         aria-label={text.label}
@@ -100,9 +110,9 @@ export function BrandVideo({ video, messages }: Props) {
       <button
         type="button"
         onClick={toggle}
-        // 状態を色や記号だけでなく、読み上げ用の文言でも伝えます
+        // 状態を記号だけでなく、読み上げ用の文言でも伝えます
         aria-label={playing ? text.pause : text.play}
-        className="focus-visible:outline-purple absolute right-4 bottom-4 inline-flex size-11 items-center justify-center rounded-full bg-white/85 text-ink shadow-lg backdrop-blur transition hover:bg-white"
+        className="text-ink absolute right-4 bottom-4 inline-flex size-11 items-center justify-center rounded-full bg-white/80 shadow-lg backdrop-blur transition hover:bg-white"
       >
         {playing ? (
           <Pause className="size-5" aria-hidden="true" />
