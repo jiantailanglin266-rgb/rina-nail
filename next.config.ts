@@ -29,6 +29,15 @@ const nextConfig: NextConfig = {
           imageSizes: [96, 128, 256, 384],
         },
       }),
+  /*
+   * basePath をブラウザ用バンドルにも焼き込みます。
+   * GITHUB_PAGES / PAGES_BASE_PATH はサーバー側でしか読めないため、
+   * クライアントコンポーネント（イントロ動画など）が withBasePath を使うと
+   * 本番でだけ basePath が欠けて404になります。env で渡すと両方に埋め込まれます。
+   */
+  env: {
+    NEXT_PUBLIC_BASE_PATH: basePath,
+  },
   poweredByHeader: false,
   compress: true,
   experimental: {
