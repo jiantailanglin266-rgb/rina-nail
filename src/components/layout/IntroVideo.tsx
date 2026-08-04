@@ -145,13 +145,19 @@ export function IntroVideo({ video, messages }: Props) {
         height={video.height}
         onEnded={leave}
         onError={leave}
+        /*
+         * パソコン（lg以上）では画面全体を動画で覆います（はみ出た分は切り取り）。
+         * スマートフォンは縦長画面のため、覆うと横長動画の中央しか見えなくなります。
+         * そこで従来どおり「画面幅に合わせて中央に表示」のままにしています。
+         * lg では幅と高さの両方を指定するため、aspect-ratio は自動的に無効になります。
+         */
         style={
           {
             aspectRatio: videoAspectRatio(video),
-            maxWidth: `${video.width}px`,
+            "--intro-max-w": `${video.width}px`,
           } as CSSProperties
         }
-        className="w-full rounded-2xl"
+        className="w-full max-w-[var(--intro-max-w)] rounded-2xl lg:absolute lg:inset-0 lg:h-full lg:max-w-none lg:rounded-none lg:object-cover"
       >
         <source src={withBasePath(video.src)} type="video/mp4" />
       </video>
