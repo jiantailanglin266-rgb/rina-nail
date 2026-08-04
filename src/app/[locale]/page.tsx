@@ -16,7 +16,8 @@ import {
 import { Marquee } from "@/components/animations/Marquee";
 import { BrandVideo } from "@/components/sections/BrandVideo";
 import { heroVideo } from "@/data/media";
-import { publicFileExists } from "@/lib/public-assets";
+import { ImageMarquee } from "@/components/sections/ImageMarquee";
+import { publicFileExists, publicImagesIn } from "@/lib/public-assets";
 import { GradientMesh } from "@/components/backgrounds/GradientMesh";
 import { Reveal } from "@/components/animations/Reveal";
 import { Section } from "@/components/layout/Section";
@@ -74,6 +75,8 @@ export default async function HomePage({ params }: LocalePageProps) {
   const featuredMenu = menuItems.filter((item) => item.category !== "care").slice(0, 3);
   const featuredGallery = galleryItems.slice(0, homeGalleryCount);
   const featuredFaq = messages.faq.groups[0].items.slice(0, 5);
+  // public/images/marquee/ に置いた写真をそのまま流します（置くだけで反映されます）
+  const marqueeImages = publicImagesIn("/images/marquee");
 
   return (
     <>
@@ -112,6 +115,18 @@ export default async function HomePage({ params }: LocalePageProps) {
           <Marquee items={home.marquee.lineTwo} direction="right" className="mt-3 sm:mt-4" />
         </div>
       </div>
+
+      {/*
+        写真マーキー。public/images/marquee/ に写真を置くと表示されます。
+        背景はサイトのグラデーションをそのまま使い、上下左右をフェードさせて
+        写真の帯が浮いて見えないようにしています。
+      */}
+      {marqueeImages.length >= 4 ? (
+        <div className="relative isolate overflow-hidden bg-[image:var(--gradient-glass)] py-6 sm:py-9">
+          <GradientMesh opacity={0.55} className="-z-10" />
+          <ImageMarquee images={marqueeImages} label={home.gallery.heading} />
+        </div>
+      ) : null}
 
       {/* ページ要約（生成AI・検索エンジン向け） */}
       <div className="container-page pt-14 sm:pt-16">
