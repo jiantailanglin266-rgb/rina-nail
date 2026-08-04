@@ -1,7 +1,7 @@
 import { describe, expect, it, vi } from "vitest";
 
 import { checkBookingUrl } from "@/data/booking/config";
-import { routes } from "@/data/navigation";
+import { allRoutes, mainNavKeys, routes } from "@/data/navigation";
 import ja from "@/i18n/messages/ja.json";
 import en from "@/i18n/messages/en.json";
 import ko from "@/i18n/messages/ko.json";
@@ -132,6 +132,16 @@ describe("予約導線", () => {
 
   it("予約ページは検索エンジンに公開する（noindex を付けない）", () => {
     expect(routes.booking.priority).toBeGreaterThanOrEqual(0.8);
+  });
+
+  it("ヘッダーのナビに予約を並べない（予約ボタンと導線が重複するため）", () => {
+    // 同じ遷移先のリンクを2つ並べると迷わせるうえ、
+    // その幅をSNSアイコンに使っています
+    expect(mainNavKeys).not.toContain("booking");
+  });
+
+  it("予約ページはサイトマップに含まれる（ナビに無くても検索対象）", () => {
+    expect(allRoutes.map((route) => route.key)).toContain("booking");
   });
 });
 

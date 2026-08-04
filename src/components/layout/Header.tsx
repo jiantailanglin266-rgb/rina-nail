@@ -66,15 +66,20 @@ export function Header({ locale, messages }: Props) {
 
         {/* 右側の操作群。ナビゲーションに押し潰されないよう shrink-0 で固定幅を保ちます */}
         <div className="flex shrink-0 items-center gap-2 sm:gap-3">
-          {/* SNSアイコン。ヘッダーは横幅が限られるため、主要3件だけを小さめに置きます
-              （全件はフッターとモバイルメニューに表示）。
-              狭い画面ではナビゲーションが折り返すため非表示にします */}
+          {/*
+            SNSアイコン。スマートフォンでもパソコンでも表示します。
+
+            ヘッダーの横幅は限られるため、件数を画面幅で変えています。
+            - 狭い画面: 2件（ロゴとメニューボタンで幅を使うため）
+            - 広い画面: 3件
+            全件はフッターとモバイルメニューに掲載しています。
+          */}
           <SocialLinks
             messages={messages}
             uid="header-"
             size="xs"
             maxItems={3}
-            className="flex-nowrap gap-1.5 max-xl:hidden"
+            className="flex-nowrap gap-1 sm:gap-1.5 [&>li:nth-child(3)]:max-sm:hidden"
           />
 
           <LanguageSwitcher

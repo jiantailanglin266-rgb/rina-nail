@@ -49,10 +49,14 @@ export const routes: Record<RouteKey, Route> = {
 
 export const allRoutes: Route[] = Object.values(routes);
 
-/** ヘッダー・モバイルメニューに並べる主要ナビ */
+/**
+ * ヘッダー・モバイルメニューに並べる主要ナビ。
+ *
+ * 予約ページは入れていません。ヘッダー右側の「予約する」ボタンが
+ * 同じページへ遷移するため、並べると同じ導線が2つ出てしまいます。
+ * その幅をSNSアイコンに使っています（フッターとモバイルメニューには掲載）。
+ */
 export const mainNavKeys: RouteKey[] = [
-  // 予約はナビの先頭に置きます（最も押してほしい導線のため）
-  "booking",
   "menu",
   "gallery",
   "fillIn",
