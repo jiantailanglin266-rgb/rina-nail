@@ -159,8 +159,8 @@ async function main() {
   for (const [index, [slug, label]] of GALLERY.entries()) {
     const gradient = GRADIENTS[index % GRADIENTS.length];
     await renderJpeg(`images/gallery/${slug}.jpg`, {
-      width: 1000,
-      height: 1250,
+      width: 1200,
+      height: 900,
       from: gradient[0],
       via: gradient[1],
       to: gradient[2],

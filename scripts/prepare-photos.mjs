@@ -64,68 +64,68 @@ const SLOTS = [
   { out: "images/gallery/office-02.jpg", width: 1000, height: 1250, hints: ["office", "オフィス"] },
   {
     out: "images/gallery/nuance-01.jpg",
-    width: 1000,
-    height: 1250,
+    width: 1200,
+    height: 900,
     hints: ["nuance", "ニュアンス"],
   },
   {
     out: "images/gallery/nuance-02.jpg",
-    width: 1000,
-    height: 1250,
+    width: 1200,
+    height: 900,
     hints: ["nuance", "ニュアンス"],
   },
   {
     out: "images/gallery/glitter-01.jpg",
-    width: 1000,
-    height: 1250,
+    width: 1200,
+    height: 900,
     hints: ["glitter", "lame", "ラメ", "グリッター"],
   },
   {
     out: "images/gallery/glitter-02.jpg",
-    width: 1000,
-    height: 1250,
+    width: 1200,
+    height: 900,
     hints: ["glitter", "lame", "ラメ", "グリッター"],
   },
   {
     out: "images/gallery/gorgeous-01.jpg",
-    width: 1000,
-    height: 1250,
+    width: 1200,
+    height: 900,
     hints: ["gorgeous", "bijou", "ゴージャス", "ビジュー"],
   },
   {
     out: "images/gallery/gorgeous-02.jpg",
-    width: 1000,
-    height: 1250,
+    width: 1200,
+    height: 900,
     hints: ["gorgeous", "bijou", "ゴージャス", "ビジュー"],
   },
   {
     out: "images/gallery/seasonal-01.jpg",
-    width: 1000,
-    height: 1250,
+    width: 1200,
+    height: 900,
     hints: ["seasonal", "season", "季節"],
   },
   {
     out: "images/gallery/seasonal-02.jpg",
-    width: 1000,
-    height: 1250,
+    width: 1200,
+    height: 900,
     hints: ["seasonal", "season", "季節"],
   },
   {
     out: "images/gallery/mens-01.jpg",
-    width: 1000,
-    height: 1250,
+    width: 1200,
+    height: 900,
     hints: ["mens", "men", "メンズ"],
   },
   {
     out: "images/gallery/mens-02.jpg",
-    width: 1000,
-    height: 1250,
+    width: 1200,
+    height: 900,
     hints: ["mens", "men", "メンズ"],
   },
 ];
 
-/** マーキーは縦位置のカードなので、ギャラリーと同じ 4:5 で書き出します */
-const MARQUEE = { dir: "images/marquee", width: 800, height: 1000, hints: ["marquee", "マーキー"] };
+/** マーキーは横位置のカード（3:2）です。作例写真が横位置で撮られているためです */
+const MARQUEE = { dir: "images/marquee", width: 1200, height: 800, hints: ["marquee", "マーキー"] };
 
 /** 縦長スロット（ギャラリー・ヒーロー・オーナー）かどうか */
 function isPortraitSlot(slot) {

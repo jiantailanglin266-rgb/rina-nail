@@ -48,15 +48,17 @@ export function ImageMarquee({ images, label, className }: Props) {
           {sequence.map((src, index) => (
             <div
               key={`${src}-${index}`}
-              className="border-white/60 relative h-40 w-32 shrink-0 overflow-hidden rounded-2xl border shadow-[0_10px_30px_-18px_rgba(77,22,125,0.5)] sm:h-56 sm:w-44"
+              // 作例写真が横位置で撮られているため、カードも横位置（3:2）にしています。
+              // 縦位置にすると左右が切れて、片手が画面から外れてしまいます。
+              className="border-white/60 relative h-28 w-42 shrink-0 overflow-hidden rounded-2xl border shadow-[0_10px_30px_-18px_rgba(77,22,125,0.5)] sm:h-40 sm:w-60"
             >
               <AppImage
                 src={src}
                 alt=""
-                width={440}
-                height={560}
+                width={600}
+                height={400}
                 loading="lazy"
-                sizes="(max-width: 640px) 128px, 176px"
+                sizes="(max-width: 640px) 168px, 240px"
                 className="size-full object-cover"
               />
             </div>

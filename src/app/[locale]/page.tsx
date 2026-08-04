@@ -161,7 +161,7 @@ export default async function HomePage({ params }: LocalePageProps) {
             <div className="gradient-frame overflow-hidden rounded-[2rem]">
               <AppImage
                 src="/images/salon/salon-01.jpg"
-                alt={home.concept.heading}
+                alt={home.concept.imageAlt}
                 width={1400}
                 height={933}
                 loading="lazy"

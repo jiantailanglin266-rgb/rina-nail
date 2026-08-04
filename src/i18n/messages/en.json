@@ -454,6 +454,7 @@
     "concept": {
       "eyebrow": "CONCEPT",
       "heading": "Time set aside for one person.",
+      "imageAlt": "A treatment in progress: the nail artist shaping a client's nails with a file",
       "lead": "A private, one-to-one space where the treatment is shaped around the condition of your nails.",
       "body": [
         "Rina nail is a by-appointment private nail salon in Hirao-cho, Yokkaichi. Because no two guests are ever booked at the same time, you can relax without worrying about anyone else in the room.",
@@ -530,7 +531,7 @@
       "name": "Rina Nakamura",
       "role": "Owner / Nail artist",
       "message": "From understated to full sparkle — leave it with me.",
-      "imageAlt": "Portrait of owner and nail artist Rina Nakamura (placeholder image)",
+      "imageAlt": "Owner and nail artist Rina Nakamura at work",
       "greeting": [
         "Thank you for choosing Rina nail from all the salons you could have picked.",
         "Through an unhurried consultation, I check the condition of your nails and the look you have in mind so that I can bring your ideas as close to life as possible.",
@@ -653,8 +654,8 @@
   "gallery": {
     "title": "Nail design gallery",
     "lead": "Examples of past work, grouped by category — from understated to striking.",
-    "summary": "The Rina nail design gallery, grouped into seven categories: simple, office, nuance, glitter, gorgeous, seasonal and men's. The images currently shown are placeholders. If a design catches your eye, mention it when you book or during the consultation.",
-    "note": "The images shown are placeholders. Photographs of real work will be published in due course.",
+    "summary": "The Rina nail design gallery, grouped into seven categories: simple, office, nuance, glitter, gorgeous, seasonal and men's. Only the men's category is still a placeholder while those photographs are prepared. If a design catches your eye, mention it when you book or during the consultation.",
+    "note": "The photographs shown are of real work done at Rina nail. Only the men's category is still a placeholder while those photographs are prepared.",
     "filterLabel": "Filter by category",
     "all": "All",
     "altTemplate": "{category} nail design example {index}",
@@ -1076,7 +1077,7 @@
         "heading": "6. Website content",
         "body": [
           "Information published on this website may change without notice.",
-          "Some images on this site are placeholders prepared as design references."
+          "Some images on this site are still placeholders prepared as design references."
         ]
       },
       {
