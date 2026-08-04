@@ -24,11 +24,17 @@ type Props = {
  * - 再生／一時停止ボタンを常に表示します
  * - 音声は最初から鳴りません（`muted`）
  *
+ * ## 通信量への配慮
+ *
+ * **画面に入るまで再生を始めません。**
+ * ページを開いた瞬間に再生を始めると、下までスクロールしない方にも
+ * 動画（約9MB）を丸ごとダウンロードさせてしまいます。
+ * スマートフォンの通信量に直接響くため、表示領域に入ってから読み込みます。
+ *
  * ## 表示のガタつき対策
  *
  * 縦横比を先に指定しているため、動画の読み込み前後で高さが変わりません。
- * `preload="metadata"` にしているのは、ファーストビューの直下にあり
- * 最初の表示速度（LCP）に影響させたくないためです。
+ * `preload="metadata"` と合わせて、最初の表示速度（LCP）にも影響させません。
  */
 export function BrandVideo({ video, messages }: Props) {
   const text = messages.home.brandVideo;
@@ -39,15 +45,24 @@ export function BrandVideo({ video, messages }: Props) {
     const element = ref.current;
     if (!element) return;
 
-    // 動きを減らす設定のときは自動再生しません
-    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduceMotion) return;
+    // 動きを減らす設定のときは自動再生しません（1コマ目で静止します）
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
-    // 自動再生はブラウザに拒否されることがあるため、失敗しても何も壊さないようにします
-    element
-      .play()
-      .then(() => setPlaying(true))
-      .catch(() => setPlaying(false));
+    // 画面に入ったときだけ再生を始め、外れたら止めます（通信量と電池の節約）
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          // 自動再生はブラウザに拒否されることがあるため、失敗しても何も壊しません
+          element.play().catch(() => setPlaying(false));
+        } else if (!element.paused) {
+          element.pause();
+        }
+      },
+      { threshold: 0.35 },
+    );
+
+    observer.observe(element);
+    return () => observer.disconnect();
   }, []);
 
   function toggle() {

@@ -27,5 +27,10 @@ export type SiteVideo = {
 /** ファーストビューの直下に置くブランド動画 */
 export const heroVideo: SiteVideo = {
   src: "/videos/rina-nail-cm.mp4",
-  aspectRatio: "16 / 9",
+  /*
+   * 実際の動画は 1728×992 です（16:9 の 1728×972 より少しだけ縦長）。
+   * 16 / 9 にすると上下がわずかに切れるため、実寸の比率をそのまま指定しています。
+   * 動画を差し替えたら、この値も新しい動画の比率に合わせてください。
+   */
+  aspectRatio: "1728 / 992",
 };
