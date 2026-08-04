@@ -5,13 +5,12 @@ import { useEffect, useRef, useState, useSyncExternalStore, type CSSProperties }
 import { videoAspectRatio, type SiteVideo } from "@/data/media";
 import type { Messages } from "@/i18n/dictionary";
 import { withBasePath } from "@/lib/base-path";
+import { INTRO_STORAGE_KEY as STORAGE_KEY } from "@/lib/intro-boot";
 
 type Props = {
   video: SiteVideo;
   messages: Messages;
 };
-
-const STORAGE_KEY = "intro-played";
 
 /**
  * 「流すかどうか」の判定は、最初に読んだ結果をタブ内で固定します。
@@ -63,6 +62,15 @@ const subscribe = () => () => {};
  *
  * サーバー側では描画しない（getServerSnapshot が false を返す）ため、
  * JavaScriptが無効な環境ではイントロ自体が存在せず、本文がそのまま表示されます。
+ *
+ * ## 表示前に本文が一瞬見えてしまう問題（ちらつき）への対策
+ *
+ * このコンポーネントはReactの起動後にしか描画できないため、それだけだと
+ * HTMLの表示からReact起動までの一瞬、本文が見えます。そこでレイアウトの
+ * インラインスクリプト（src/lib/intro-boot.ts）が初回描画前に判定し、
+ * 白い覆い（#intro-boot）を先に立ち上げます。ここでは、オーバーレイの
+ * 描画後にその覆いを引き取って外します。判定条件は intro-boot.ts と
+ * 一致させる必要があります。
  */
 export function IntroVideo({ video, messages }: Props) {
   const text = messages.intro;
@@ -86,6 +94,17 @@ export function IntroVideo({ video, messages }: Props) {
       // 保存できなくても、このタブの表示は readShouldShow のキャッシュが抑えます
     }
   }, [shouldShow]);
+
+  /*
+   * 起動用の白い覆い（レイアウトのインラインスクリプトが表示）を引き取ります。
+   *
+   * 覆いを外すのは「このオーバーレイが描画された後」です。effect は描画後に
+   * 走るため、覆い → オーバーレイの入れ替わりに隙間ができず、本文は見えません。
+   * 流さない判定のとき（shouldShow=false）は属性が立っていないので何もしません。
+   */
+  useEffect(() => {
+    if (visible) document.documentElement.removeAttribute("data-intro");
+  }, [visible]);
 
   useEffect(() => {
     if (!visible) return;

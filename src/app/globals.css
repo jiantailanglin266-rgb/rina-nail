@@ -746,3 +746,19 @@
     pointer-events: none;
   }
 }
+
+/*
+  イントロ起動時の白い覆い。
+
+  レイアウトのインラインスクリプト（src/lib/intro-boot.ts）が
+  「このタブでイントロを流す」と判定したときだけ <html> に data-intro を立て、
+  この覆いを初回描画から表示します。React（IntroVideo）の起動を待つと、
+  その間の一瞬だけ本文が見えてしまうためです。
+  覆いの解除は IntroVideo が引き取ります（未起動時は16秒で自動解除）。
+*/
+#intro-boot {
+  display: none;
+}
+html[data-intro] #intro-boot {
+  display: block;
+}

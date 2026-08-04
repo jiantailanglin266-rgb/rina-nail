@@ -24,6 +24,7 @@ import { defaultOgImage, siteName, siteUrl } from "@/data/site";
 import { isLocale, localeHtmlLang, localeOgLocale, locales, type Locale } from "@/i18n/config";
 import { getMessages } from "@/i18n/dictionary";
 import { withBasePath } from "@/lib/base-path";
+import { introBootScript } from "@/lib/intro-boot";
 import { publicFileExists } from "@/lib/public-assets";
 import type { LocaleLayoutProps, LocalePageProps } from "@/lib/route-params";
 import { absoluteUrl, buildLanguageAlternates } from "@/lib/seo";
@@ -148,6 +149,19 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
       className={`${notoSansJp.variable} ${zenKaku.variable} ${shippori.variable} ${cormorant.variable} ${montserrat.variable}`}
     >
       <body className="antialiased">
+        {/*
+          イントロのちらつき防止。Reactの起動を待たず、HTML解析の時点で
+          「イントロを流すか」を判定して白い覆いを立ち上げます。
+          本文より前に置くことで、最初の描画から覆いが効きます。
+          （JavaScript無効時はスクリプトが動かないため、覆いは出ません）
+        */}
+        {publicFileExists(introVideo.src) ? (
+          <>
+            <script dangerouslySetInnerHTML={{ __html: introBootScript }} />
+            <div id="intro-boot" className="fixed inset-0 z-[999] bg-white" aria-hidden="true" />
+          </>
+        ) : null}
+
         {/*
           スクロール表示（Reveal）は初期状態が opacity: 0 のため、
           JavaScript が無効・読み込み失敗の場合に中身が見えなくなります。
